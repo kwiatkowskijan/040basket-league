@@ -1,0 +1,10 @@
+<h1>{{ tournament?.name }}</h1>
+
+<div class="teams">
+    <h3>Drużyny</h3>
+    <ul>
+        @for (team of teamsInTournament; track $index) {
+        <li> {{ team.name }}</li>
+        }
+    </ul>
+</div>

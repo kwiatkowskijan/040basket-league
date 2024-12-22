@@ -1,0 +1,9 @@
+.listing {
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 10px;
+    border: 0.8px solid lightgray;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between
+}

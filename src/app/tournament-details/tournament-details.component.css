@@ -1,0 +1,13 @@
+h1 {
+    margin-bottom: 30px;
+}
+
+.teams {
+    border: 0.6px solid lightgray;
+    padding: 20px 30px;
+    background-color: #fff;
+}
+
+.teams h3 {
+    margin-bottom: 15px;
+}

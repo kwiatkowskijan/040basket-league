@@ -1,0 +1,11 @@
+<div class="listing-filtering">
+    <form>
+        <input type="text" placeholder="Search tournament..." />
+
+    </form>
+</div>
+
+<div class="listing-container">
+    <app-tournament *ngFor="let tournament of tournamentList" [tournament]="tournament"></app-tournament>
+</div>
+

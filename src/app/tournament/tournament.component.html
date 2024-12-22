@@ -1,0 +1,7 @@
+<div class="listing">
+    <div class="listing-info">
+        <h3>{{ tournament.name }}</h3>
+        <p>{{tournament.startDate}}</p>
+    </div>
+    <a [routerLink]="['/tournament', tournament.id]">Details</a>
+</div>

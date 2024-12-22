@@ -1,0 +1,19 @@
+.listing-filtering {
+    padding-bottom: 30px;
+}
+
+.listing-filtering form input{
+    border: solid 0.6px lightgray;
+    border-radius: 0px;
+    padding: 10px 5px;
+}
+
+.listing-filtering form input:focus {
+    border-radius: 0px;
+}
+
+.listing-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
