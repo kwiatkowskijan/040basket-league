@@ -25,3 +25,9 @@
     padding: 15px 0;
     color: #fff;
 }
+
+@media (max-width: 768px) {
+    .main-navbar {
+        display: none;
+    }
+}
