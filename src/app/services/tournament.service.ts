@@ -12,12 +12,15 @@ export class TournamentService {
 
   async getAllTournaments() : Promise<Tournament[]> {
     const data = await fetch(this.url);
-    // console.log(data.json());
     return await data.json() ?? [];
   }
 
   async getTournamentById(id: Number): Promise<Tournament | undefined> {
     const data = await fetch(`${this.url}/${id}`);
     return await data.json() ?? [];
+  }
+
+  editTournament(place: String, startDate: Date, endDate: Date) {
+    console.log(place, startDate, endDate);
   }
 }

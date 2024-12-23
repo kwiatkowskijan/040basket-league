@@ -1,5 +1,27 @@
 <h1>{{ tournament?.name }}</h1>
 
+<div>
+    <ul [hidden]="isEditing">
+        <li>Place: {{ tournament?.place }}</li>
+        <li>Start date: {{ tournament?.startDate | date: 'dd.MM.yyyy' }}</li>
+        <li>End date: {{ tournament?.endDate | date: 'dd.MM.yyyy' }}</li>
+    </ul>
+    <ul [hidden]="!isEditing">
+        <form [formGroup]="editForm" (ngSubmit)="editTournament(editForm)">
+            <label for="place">Place</label>
+            <input type="text" id="place" formControlName="place" [value]="tournament?.place">
+
+            <label for="start-date">Place</label>
+            <input type="date" id="start-date" formControlName="startDate" [value]="tournament?.startDate">
+
+            <label for="end-date">Place</label>
+            <input type="date" id="end-date" formControlName="endDate" [value]="tournament?.endDate">
+
+            <button type="submit">Save</button>
+        </form>
+    </ul>
+</div>
+
 <div class="teams">
     <h3>Drużyny</h3>
     <ul>
@@ -8,3 +30,5 @@
         }
     </ul>
 </div>
+
+<button type="button" (click)="turnOnEditMode()">Edit</button>
