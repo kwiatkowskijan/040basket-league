@@ -7,15 +7,15 @@
         <li>End date: {{ tournament?.endDate | date: 'dd.MM.yyyy' }}</li>
     </ul>
     <ul [hidden]="!isEditing">
-        <form [formGroup]="editForm" (ngSubmit)="editTournament(editForm)">
+        <form [formGroup]="editTournamentForm" (ngSubmit)="editTournament(editTournamentForm)">
             <label for="place">Place</label>
-            <input type="text" id="place" formControlName="place" [value]="tournament?.place">
+            <input type="text" id="place" formControlName="place">
 
             <label for="start-date">Place</label>
-            <input type="date" id="start-date" formControlName="startDate" [value]="tournament?.startDate">
+            <input type="date" id="start-date" formControlName="startDate">
 
             <label for="end-date">Place</label>
-            <input type="date" id="end-date" formControlName="endDate" [value]="tournament?.endDate">
+            <input type="date" id="end-date" formControlName="endDate">
 
             <button type="submit">Save</button>
         </form>

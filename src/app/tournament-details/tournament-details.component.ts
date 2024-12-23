@@ -21,7 +21,8 @@ export class TournamentDetailsComponent {
   tournament: Tournament | undefined;
   teamsInTournament: Team[] = [];
   isEditing = false;
-  editForm = new FormGroup({
+
+  editTournamentForm = new FormGroup({
     place: new FormControl(''),
     startDate: new FormControl(),
     endDate: new FormControl()
@@ -29,9 +30,15 @@ export class TournamentDetailsComponent {
 
   constructor() {
     const tournamentId = Number(this.route.snapshot.params["id"]);
-    
+
     this.tournamentService.getTournamentById(tournamentId).then(tournament => {
       this.tournament = tournament;
+
+      this.editTournamentForm.setValue({
+        place: this.tournament?.place || '',
+        startDate: this.tournament?.startDate || '',
+        endDate: this.tournament?.endDate || ''
+      });
     });
 
     this.teamsService.getTeamsByTournament(tournamentId).then(teamsInTournament => {
@@ -40,11 +47,11 @@ export class TournamentDetailsComponent {
   }
 
   turnOnEditMode() {
-      this.isEditing = true;
+    this.isEditing = true;
   }
 
   editTournament(form: FormGroup) {
-    if(this.tournament) {
+    if (this.tournament) {
       console.log(form);
       this.tournament.place = form.value.place ?? '';
       this.tournament.startDate = form.value.startDate ?? '';
