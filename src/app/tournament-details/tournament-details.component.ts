@@ -35,9 +35,9 @@ export class TournamentDetailsComponent {
       this.tournament = tournament;
 
       this.editTournamentForm.setValue({
-        place: this.tournament?.place || '',
-        startDate: this.tournament?.startDate || '',
-        endDate: this.tournament?.endDate || ''
+        place: this.tournament?.place ?? '',
+        startDate: this.tournament?.startDate ?? '',
+        endDate: this.tournament?.endDate ?? ''
       });
     });
 
