@@ -1,60 +1,74 @@
 {
-    "tournaments": [
-        {
-            "id": 0,
-            "name": "040Basket Tournament 1.0",
-            "startDate": "2023-09-09",
-            "endDate": "2023-09-09",
-            "place": "MOSiR Puszczykowo"
-        },
-        {
-            "id": 1,
-            "name": "040Basket Tournament 2.0",
-            "startDate": "2024-09-14",
-            "endDate": "2024-09-14",
-            "place": "Hala Puszczykowo"
-        },
-        {
-            "id": 2,
-            "name": "040Basket Tournament 3.0",
-            "startDate": "2025-09-14",
-            "endDate": "2025-09-14",
-            "place": "MOSiR Puszczykowo"
-        },
-        {
-            "id": 3,
-            "name": "040Basket Tournament 1.0",
-            "startDate": "2023-09-09",
-            "endDate": "2023-09-09",
-            "place": "MOSiR Puszczykowo"
-        },
-        {
-            "id": 4,
-            "name": "040Basket Tournament 2.0",
-            "startDate": "2024-09-14",
-            "endDate": "2024-09-14",
-            "place": "Hala Puszczykowo"
-        },
-        {
-            "id": 5,
-            "name": "040Basket Tournament 3.0",
-            "startDate": "2025-09-14",
-            "endDate": "2025-09-14",
-            "place": "MOSiR Puszczykowo"
-        }
-    ],
-    "teams": [
-        {
-            "id": 0,
-            "name": "Otwieracze",
-            "city": "Poznań",
-            "tournamentId": 1
-        },
-        {
-            "id": 1,
-            "name": "Angry Weasels",
-            "city": "Poznań",
-            "tournamentId": 1
-        }
-    ]
+  "tournaments": [
+    {
+      "id": "0",
+      "name": "040Basket Tournament 1.0",
+      "startDate": "2023-09-09",
+      "endDate": "2023-09-09",
+      "place": "MOSiR Puszczykowo"
+    },
+    {
+      "id": "1",
+      "name": "040Basket Tournament 1.7",
+      "startDate": "2023-09-09",
+      "endDate": "2023-09-09",
+      "place": "MOSiR Puszczykowo 1"
+    },
+    {
+      "id": "2",
+      "name": "040Basket Tournament 3.0",
+      "startDate": "2025-09-14",
+      "endDate": "2025-09-14",
+      "place": "MOSiR Puszczykowo"
+    },
+    {
+      "id": "3",
+      "name": "040Basket Tournament 1.0",
+      "startDate": "2023-09-09",
+      "endDate": "2023-09-09",
+      "place": "MOSiR Puszczykowo"
+    },
+    {
+      "id": "4",
+      "name": "040Basket Tournament 2.0",
+      "startDate": "2024-09-14",
+      "endDate": "2024-09-14",
+      "place": "Hala Puszczykowo"
+    },
+    {
+      "id": "5",
+      "name": "040Basket Tournament 3.0",
+      "startDate": "2025-09-14",
+      "endDate": "2025-09-14",
+      "place": "MOSiR Puszczykowo"
+    },
+    {
+      "id": "0",
+      "name": "040Basket Tournament 1.0",
+      "startDate": "2023-09-09",
+      "endDate": "2023-09-09",
+      "place": "MOSiR Puszczykowo"
+    },
+    {
+      "id": "1",
+      "name": "040Basket Tournament 1.0",
+      "startDate": "2023-09-09",
+      "endDate": "2023-09-09",
+      "place": "MOSiR Puszczykowo"
+    }
+  ],
+  "teams": [
+    {
+      "id": "0",
+      "name": "Otwieracze",
+      "city": "Poznań",
+      "tournamentId": 1
+    },
+    {
+      "id": "1",
+      "name": "Angry Weasels",
+      "city": "Poznań",
+      "tournamentId": 1
+    }
+  ]
 }
