@@ -57,6 +57,8 @@ export class TournamentDetailsComponent {
       this.tournament.startDate = form.value.startDate ?? '';
       this.tournament.endDate = form.value.endDate ?? '';
       console.log(this.tournament);
+      this.tournament = this.tournamentService.editTournament(this.tournament);
+      console.log(this.tournament);
     }
   }
 }
