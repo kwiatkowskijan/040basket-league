@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { Tournament } from '../models/tournament';
 
 
@@ -22,7 +23,7 @@ export class TournamentService {
     return await data.json() ?? [];
   }
 
-  editTournament(tournament: Tournament) {
+  editTournament(tournament: Tournament) : Observable<Tournament> {
     return this.http.put(`${this.url}/${tournament.id}`, tournament);
   }
 }
