@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { Tournament } from '../models/tournament';
 import { TournamentService } from '../services/tournament.service';
 import { TournamentComponent } from '../tournament/tournament.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-tournament-list',
   standalone: true,
-  imports: [TournamentComponent, CommonModule],
+  imports: [TournamentComponent, CommonModule, RouterLink],
   templateUrl: './tournament-list.component.html',
   styleUrls: ['./tournament-list.component.css']
 })
