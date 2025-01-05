@@ -10,9 +10,13 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Poppins", serif;
 }
 
-body {
+html, body {
+    font-family: "Poppins", serif;
+    height: 100%;
+}
+
+body { 
     background-color: var(--background);
 }

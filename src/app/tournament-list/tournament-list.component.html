@@ -1,7 +1,9 @@
 <div class="listing-filtering">
     <form>
-        <input type="text" placeholder="Search tournament..." />
-
+        <mat-form-field appearance="outline">
+            <mat-label>Search tournament</mat-label>
+            <input matInput type="text" placeholder="Search tournament"/>
+        </mat-form-field>
     </form>
     <a [routerLink]="['/tournament']">Add tournament</a>
 </div>
