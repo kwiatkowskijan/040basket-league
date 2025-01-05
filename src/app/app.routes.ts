@@ -15,6 +15,11 @@ export const routes: Routes = [
         title: 'Tournaments'
     },
     {
+        path: 'tournament',
+        component: TournamentDetailsComponent,
+        title: 'Details'
+    },
+    {
         path: 'tournament/:id',
         component: TournamentDetailsComponent,
         title: 'Details'

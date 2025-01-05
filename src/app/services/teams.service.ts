@@ -11,7 +11,7 @@ export class TeamsService {
   constructor() { }
 
   async getTeamsByTournament(tournamentId: Number): Promise<Team[]> {
-    const data = await fetch(`${this.url}?tournament=${tournamentId}`);
+    const data = await fetch(`${this.url}?tournamentId=${tournamentId}`);
     return await data.json() ?? [];
   }
 }
