@@ -2,13 +2,23 @@
     <form>
         <mat-form-field appearance="outline">
             <mat-label>Search tournament</mat-label>
-            <input matInput type="text" placeholder="Search tournament"/>
+            <input 
+            matInput 
+            type="text"
+            placeholder="Search tournament" 
+            [formControl]="searchTournamentControl"
+            [matAutocomplete]="auto"/>
+            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="filterTournaments($event.option.value)">
+                @for (option of filteredOptions | async; track option) {
+                  <mat-option [value]="option">{{option}}</mat-option>
+                }
+            </mat-autocomplete>
         </mat-form-field>
     </form>
     <a [routerLink]="['/tournament']">Add tournament</a>
 </div>
 
 <div class="listing-container">
-    <app-tournament *ngFor="let tournament of tournamentList" [tournament]="tournament"></app-tournament>
+    <app-tournament *ngFor="let tournament of displayedTournamentList" [tournament]="tournament"></app-tournament>
 </div>
 
