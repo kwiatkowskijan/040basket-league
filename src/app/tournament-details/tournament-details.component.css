@@ -8,6 +8,10 @@
     margin-bottom: 20px;
 }
 
+.title-area-buttons button {
+    margin-right: 10px;
+}
+
 .item-content form {
     display: flex;
     flex-direction: column;

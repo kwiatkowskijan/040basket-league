@@ -1,11 +1,14 @@
 <div class="title-area">
     <h1>{{ tournament?.name }}</h1>
-    <button mat-fab aria-label="Example icon button with a delete icon" (click)="turnOnEditMode()">
-        <mat-icon>edit</mat-icon>
-    </button>
-    <button mat-fab aria-label="Example icon button with a delete icon" (click)="deleteTournament()" [hidden]="isNew">
-        <mat-icon>delete</mat-icon>
-    </button>
+    <div class="title-area-buttons">
+        <button mat-fab aria-label="Example icon button with a delete icon" (click)="turnOnEditMode()">
+            <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-fab aria-label="Example icon button with a delete icon" (click)="deleteTournament()"
+            [hidden]="isNew">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </div>
 </div>
 <div class="items-container">
     <div class="item">
@@ -49,9 +52,11 @@
                 </button>
             </div>
         </div>
-        @for (team of teamsInTournament; track $index) {
-        <p>{{ team.name }}</p>
-        }
+        <div class="item-content">
+            @for (team of teamsInTournament; track $index) {
+                <p>{{ team.name }}</p>
+            }
+        </div>
     </div>
     <div class="item">
         <div class="item-title-area">

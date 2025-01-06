@@ -36,19 +36,28 @@ body {
     background-color: #ffffff;
     border-radius: 4px;
     width: 100%;
-    padding: 10px 20px;
+    /* padding: 10px 20px; */
     -webkit-box-shadow: 1px 1px 4px 0px rgba(193, 193, 193, 1);
     -moz-box-shadow: 1px 1px 4px 0px rgba(193, 193, 193, 1);
     box-shadow: 1px 1px 4px 0px rgba(193, 193, 193, 1);
 }
 
 .item-title-area {
+    background-color: var(--brand);
+    color: #fff;
+    border-radius: 4px 4px 0 0;
+    min-height: 76px;
+    padding: 10px 20px;
     margin-bottom: 20px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     align-content: center;
+}
+
+.item-content {
+    padding: 10px 20px;
 }
 
 @media only screen and (max-width: 768px) {

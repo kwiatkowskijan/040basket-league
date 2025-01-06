@@ -3,20 +3,23 @@
         <div class="item-title-area">
             <h2>Current/upcoming tournaments</h2>
         </div>
-        @for (tournament of tournamentList; track $index) {
-            @if (currentDate <= tournament.startDate) {
-                <p>{{ tournament.name }}</p>
-            }
-        }
+        <div class="item-content">
+            @for (tournament of tournamentList; track $index) {
+            @if (currentDate <= tournament.startDate) { <p>{{ tournament.name }}</p>
+                }
+                }
+        </div>
     </div>
     <div class="item">
         <div class="item-title-area">
             <h2>Past tournaments</h2>
         </div>
-        @for (tournament of tournamentList; track $index) {
+        <div class="item-content">
+            @for (tournament of tournamentList; track $index) {
             @if (currentDate > tournament.startDate) {
-                <p>{{ tournament.name }}</p>
+            <p>{{ tournament.name }}</p>
             }
-        }
+            }
+        </div>
     </div>
 </div>
