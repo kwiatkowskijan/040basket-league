@@ -22,13 +22,6 @@
       "place": "MOSiR Puszczykowo"
     },
     {
-      "id": "3",
-      "name": "040Basket Tournament 1.0",
-      "startDate": "2023-09-09",
-      "endDate": "2023-09-09",
-      "place": "MOSiR Puszczykowo"
-    },
-    {
       "id": "4",
       "name": "040Basket Tournament 2.0",
       "startDate": "2024-09-14",
@@ -55,20 +48,6 @@
       "startDate": "2023-09-09",
       "endDate": "2023-09-09",
       "place": "MOSiR Puszczykowo"
-    },
-    {
-      "id": "3ba7",
-      "name": "Nazwa",
-      "place": "fsafsa",
-      "startDate": "2024-12-30",
-      "endDate": "2024-12-31"
-    },
-    {
-      "id": "860b",
-      "name": "sfasas",
-      "place": "sfsafsa",
-      "startDate": "2024-12-30",
-      "endDate": "2024-12-31"
     }
   ],
   "teams": [
@@ -81,6 +60,30 @@
     {
       "id": "1",
       "name": "Angry Weasels",
+      "city": "Poznań",
+      "tournamentId": 1
+    },
+    {
+      "id": "2",
+      "name": "LP3x3",
+      "city": "Poznań",
+      "tournamentId": 1
+    },
+    {
+      "id": "3",
+      "name": "Cegłą o dechę",
+      "city": "Poznań",
+      "tournamentId": 1
+    },
+    {
+      "id": "4",
+      "name": "NWP",
+      "city": "Poznań",
+      "tournamentId": 1
+    },
+    {
+      "id": "5",
+      "name": "LBN Basket",
       "city": "Poznań",
       "tournamentId": 1
     }

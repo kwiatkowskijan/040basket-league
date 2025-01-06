@@ -1,12 +1,12 @@
 import { Routes } from '@angular/router';
 import { TournamentListComponent } from './tournament-list/tournament-list.component';
 import { TournamentDetailsComponent } from './tournament-details/tournament-details.component';
-import { AppComponent } from './app.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 export const routes: Routes = [
     {
         path: '',
-        component: AppComponent,
+        component: DashboardComponent,
         title: 'Dashboard'
     },
     {
