@@ -1,11 +1,48 @@
 <h1>{{ tournament?.name }}</h1>
+<div class="tournament-items-container">
+    <div class="tournament-item">
+        <div class="tournament-item-title-area">
+            <h2>Info</h2>
+            <button mat-fab aria-label="Example icon button with a delete icon">
+                <mat-icon>edit</mat-icon>
+            </button>
+        </div>
+        <p>Place: {{ tournament?.place }}</p>
+        <p>Start date: {{ tournament?.startDate | date: 'dd.MM.yyyy' }}</p>
+        <p>End date: {{ tournament?.endDate | date: 'dd.MM.yyyy' }}</p>
+    </div>
+    <div class="tournament-item">
+        <div class="tournament-item-title-area">
+            <h2>Teams</h2>
+            <div class="action-buttons">
+                <button mat-fab aria-label="Example icon button with a delete icon">
+                    <mat-icon>add</mat-icon>
+                </button>
+                <button mat-fab aria-label="Example icon button with a delete icon">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-fab aria-label="Example icon button with a delete icon">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </div>
+        </div>
+        @for (team of teamsInTournament; track $index) {
+            <p>{{ team.name }}</p>
+        }
+    </div>
+    <div class="tournament-item">
+        <div class="tournament-item-title-area">
+            <h2>Groups</h2>
+        </div>
+    </div>
+    <div class="tournament-item">
+        <div class="tournament-item-title-area">
+            <h2>Play-offs</h2>
+        </div>
+    </div>
+</div>
 
-<div>
-    <ul [hidden]="isEditing">
-        <li>Place: {{ tournament?.place }}</li>
-        <li>Start date: {{ tournament?.startDate | date: 'dd.MM.yyyy' }}</li>
-        <li>End date: {{ tournament?.endDate | date: 'dd.MM.yyyy' }}</li>
-    </ul>
+<!-- <div>
     <ul [hidden]="!isEditing">
         <form [formGroup]="editTournamentForm" (ngSubmit)="editAddTournament(editTournamentForm)">
             <label for="name">Name</label>
@@ -35,4 +72,4 @@
 </div>
 
 <button type="button" (click)="turnOnEditMode()">Edit</button>
-<button type="button" (click)="deleteTournament()" [hidden]="isNew">Delete</button>
+<button type="button" (click)="deleteTournament()" [hidden]="isNew">Delete</button> -->

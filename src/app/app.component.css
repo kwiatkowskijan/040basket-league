@@ -12,18 +12,5 @@
 
 .content-container {
     width: 87.5%;
-}
-
-.content-header {
-    width: 100%;
-    height: 150px;
-    border-bottom: 0.6px solid lightgray;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 0px 200px;
-}
-
-.content {
-    padding: 50px 200px;
+    padding: 50px 300px;
 }

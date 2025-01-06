@@ -7,11 +7,14 @@ import { TournamentService } from '../services/tournament.service';
 import { Team } from '../models/team';
 import { TeamsService } from '../services/teams.service';
 import { TournamentComponent } from '../tournament/tournament.component';
+import {MatIconModule} from '@angular/material/icon';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatButtonModule} from '@angular/material/button';
 
 @Component({
   selector: 'app-tournament-details',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, MatIconModule, MatButtonModule],
   templateUrl: './tournament-details.component.html',
   styleUrl: './tournament-details.component.css'
 })
