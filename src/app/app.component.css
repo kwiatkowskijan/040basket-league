@@ -15,8 +15,13 @@
 }
 
 @media only screen and (max-width: 768px) {
+    .main-container {
+        flex-direction: column;
+    }
+
     .navigation {
-        display: none;
+        width: 100%;
+        min-height: 15%;
     }
 
     .content-container {

@@ -39,7 +39,11 @@
 }
 
 @media (max-width: 768px) {
-    .main-navbar {
+    .logo {
+        border: none;
+    }
+
+    .menu {
         display: none;
     }
 }
