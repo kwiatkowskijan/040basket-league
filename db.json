@@ -83,6 +83,30 @@
       "name": "Angry Weasels",
       "city": "Poznań",
       "tournamentId": 1
+    },
+    {
+      "id": "2",
+      "name": "Otwieracze",
+      "city": "Poznań",
+      "tournamentId": 1
+    },
+    {
+      "id": "3",
+      "name": "Angry Weasels",
+      "city": "Poznań",
+      "tournamentId": 1
+    },
+    {
+      "id": "4",
+      "name": "Otwieracze",
+      "city": "Poznań",
+      "tournamentId": 1
+    },
+    {
+      "id": "5",
+      "name": "Angry Weasels",
+      "city": "Poznań",
+      "tournamentId": 1
     }
   ]
 }

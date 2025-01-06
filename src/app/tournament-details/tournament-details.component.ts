@@ -14,7 +14,7 @@ import {MatButtonModule} from '@angular/material/button';
 @Component({
   selector: 'app-tournament-details',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MatIconModule, MatButtonModule],
+  imports: [CommonModule, ReactiveFormsModule, MatIconModule, MatButtonModule, MatDividerModule],
   templateUrl: './tournament-details.component.html',
   styleUrl: './tournament-details.component.css'
 })

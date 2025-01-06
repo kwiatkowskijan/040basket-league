@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root {
-    --background: #f0f0f0;
+    --background: #e5e5e5;
     --brand: #00471b;
     --accent: #eee1c6;
 }
@@ -19,4 +19,40 @@ html, body {
 
 body { 
     background-color: var(--background);
+}
+
+.items-container {
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+}
+
+.item {
+    background-color: #ffffff;
+    border-radius: 4px;
+    width: 100%;
+    padding: 10px 20px;
+    -webkit-box-shadow: 1px 1px 4px 0px rgba(193, 193, 193, 1);
+    -moz-box-shadow: 1px 1px 4px 0px rgba(193, 193, 193, 1);
+    box-shadow: 1px 1px 4px 0px rgba(193, 193, 193, 1);
+}
+
+.item-title-area {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+}
+
+@media only screen and (max-width: 768px) {
+    .items-container {
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(1, 1fr);
+    }
 }
