@@ -1,11 +1,14 @@
 .listing-filtering {
     padding-bottom: 30px;
+    width: 200px;
+}
+
+.listing-filtering {
+    width: 100%;
 }
 
 .listing-filtering form input{
-    border: solid 0.6px lightgray;
-    border-radius: 0px;
-    padding: 10px 5px;
+    /* background: cyan; */
 }
 
 .listing-filtering form input:focus {
