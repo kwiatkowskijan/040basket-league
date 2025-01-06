@@ -66,6 +66,7 @@ a {
     -webkit-box-shadow: 1px 1px 4px 0px rgba(193, 193, 193, 1);
     -moz-box-shadow: 1px 1px 4px 0px rgba(193, 193, 193, 1);
     box-shadow: 1px 1px 4px 0px rgba(193, 193, 193, 1);
+    transition: max-height 0.5s ease-in-out;
 }
 
 .item-title-area {

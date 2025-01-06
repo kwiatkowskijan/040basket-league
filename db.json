@@ -86,6 +86,42 @@
       "name": "LBN Basket",
       "city": "Poznań",
       "tournamentId": 1
+    },
+    {
+      "id": "6",
+      "name": "Otwieracze",
+      "city": "Poznań",
+      "tournamentId": 1
+    },
+    {
+      "id": "7",
+      "name": "Angry Weasels",
+      "city": "Poznań",
+      "tournamentId": 1
+    },
+    {
+      "id": "8",
+      "name": "LP3x3",
+      "city": "Poznań",
+      "tournamentId": 1
+    },
+    {
+      "id": "9",
+      "name": "Cegłą o dechę",
+      "city": "Poznań",
+      "tournamentId": 1
+    },
+    {
+      "id": "10",
+      "name": "NWP",
+      "city": "Poznań",
+      "tournamentId": 1
+    },
+    {
+      "id": "11",
+      "name": "LBN Basket",
+      "city": "Poznań",
+      "tournamentId": 1
     }
   ]
 }

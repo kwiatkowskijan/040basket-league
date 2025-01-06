@@ -26,6 +26,7 @@ export class TournamentDetailsComponent {
   teamsService = inject(TeamsService);
   tournament: Tournament | undefined;
   teamsInTournament: Team[] = [];
+  maxVisibleTeams = 5;
   isEditing = false;
   isNew = false;
 
@@ -121,6 +122,14 @@ export class TournamentDetailsComponent {
         }
       )
     }
+  }
+
+  addTeamToTournament() {
+
+  }
+
+  loadMoreTeams() {
+    this.maxVisibleTeams = this.teamsInTournament.length;
   }
 }
 
