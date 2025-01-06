@@ -1,5 +1,8 @@
 <div class="title-area">
     <h1>{{ tournament?.name }}</h1>
+    <button mat-fab aria-label="Example icon button with a delete icon" (click)="turnOnEditMode()">
+        <mat-icon>edit</mat-icon>
+    </button>
     <button mat-fab aria-label="Example icon button with a delete icon" (click)="deleteTournament()" [hidden]="isNew">
         <mat-icon>delete</mat-icon>
     </button>
@@ -8,9 +11,6 @@
     <div class="item">
         <div class="item-title-area">
             <h2>Info</h2>
-            <button mat-fab aria-label="Example icon button with a delete icon" (click)="turnOnEditMode()">
-                <mat-icon>edit</mat-icon>
-            </button>
         </div>
         <div [hidden]="isEditing" class="item-content">
             <p>Name: {{ tournament?.name }}</p>
