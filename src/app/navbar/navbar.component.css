@@ -22,8 +22,20 @@
 }
 
 .menu a {
-    padding: 15px 0;
+    padding: 15px 5px;
     color: #fff;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    border-radius: 4px;
+}
+
+.menu a:hover {
+    background-color: #010e06;
+}
+
+.menu mat-icon {
+    margin-right: 5px;
 }
 
 @media (max-width: 768px) {
