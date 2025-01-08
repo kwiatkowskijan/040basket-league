@@ -55,73 +55,79 @@
       "id": "0",
       "name": "Otwieracze",
       "city": "Poznań",
-      "tournamentId": 1
+      "tournamentId": "1"
     },
     {
       "id": "1",
       "name": "Angry Weasels",
       "city": "Poznań",
-      "tournamentId": 1
+      "tournamentId": "1"
     },
     {
       "id": "2",
       "name": "LP3x3",
       "city": "Poznań",
-      "tournamentId": 1
+      "tournamentId": "1"
     },
     {
       "id": "3",
       "name": "Cegłą o dechę",
       "city": "Poznań",
-      "tournamentId": 1
+      "tournamentId": "1"
     },
     {
       "id": "4",
       "name": "NWP",
       "city": "Poznań",
-      "tournamentId": 1
+      "tournamentId": "1"
     },
     {
       "id": "5",
       "name": "LBN Basket",
       "city": "Poznań",
-      "tournamentId": 1
+      "tournamentId": "1"
     },
     {
       "id": "6",
       "name": "Otwieracze",
       "city": "Poznań",
-      "tournamentId": 1
+      "tournamentId": "1"
     },
     {
       "id": "7",
       "name": "Angry Weasels",
       "city": "Poznań",
-      "tournamentId": 1
+      "tournamentId": "1"
     },
     {
       "id": "8",
       "name": "LP3x3",
       "city": "Poznań",
-      "tournamentId": 1
+      "tournamentId": "1"
     },
     {
       "id": "9",
       "name": "Cegłą o dechę",
       "city": "Poznań",
-      "tournamentId": 1
+      "tournamentId": "1"
     },
     {
       "id": "10",
       "name": "NWP",
       "city": "Poznań",
-      "tournamentId": 1
+      "tournamentId": "1"
     },
     {
       "id": "11",
       "name": "LBN Basket",
       "city": "Poznań",
-      "tournamentId": 1
+      "tournamentId": "1"
+    },
+    {
+      "id": 0,
+      "name": "040basket",
+      "city": "Mosina",
+      "tournamentId": "1"
     }
   ]
 }

@@ -6,7 +6,6 @@ import { Tournament } from '../models/tournament';
 import { TournamentService } from '../services/tournament.service';
 import { Team } from '../models/team';
 import { TeamsService } from '../services/teams.service';
-import { TournamentComponent } from '../tournament/tournament.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
@@ -36,6 +35,11 @@ export class TournamentDetailsComponent {
     startDate: new FormControl(),
     endDate: new FormControl()
   });
+
+  addTeamForm = new FormGroup({
+    name: new FormControl(''),
+    city: new FormControl('')
+  })
 
   constructor() {
     const tournamentId = this.route.snapshot.params["id"];
@@ -124,8 +128,29 @@ export class TournamentDetailsComponent {
     }
   }
 
-  addTeamToTournament() {
+  addTeamToTournament(form: FormGroup) {
+    if(this.tournament && !this.isNew) {
 
+      const teamName: string = form.value.name ?? '';
+      const teamCity: string = form.value.city ?? '';
+
+      let team: Team = {
+        id: 0,
+        name: teamName,
+        city: teamCity,
+        tournamentId: this.tournament.id
+      }
+
+      this.teamsService.createTeam(team).subscribe (
+        (data) => {
+          team = data;
+          console.log('Adding succesfull');
+        },
+        (error) => {
+          console.log("Error adding team to tournament", error);
+        }
+      )
+    }
   }
 
   loadMoreTeams() {

@@ -51,7 +51,7 @@
             <div class="item-title-area">
                 <h2>Teams</h2>
                 <div class="action-buttons">
-                    <button mat-fab aria-label="Example icon button with a delete icon" (click)="addTeamToTournament()">
+                    <button mat-fab aria-label="Example icon button with a delete icon">
                         <mat-icon>add</mat-icon>
                     </button>
                 </div>
@@ -62,8 +62,20 @@
                 }
 
                 @if (teamsInTournament.length > maxVisibleTeams) {
-                    <button (click)="loadMoreTeams()">Show all</button>
+                <button (click)="loadMoreTeams()">Show all</button>
                 }
+
+                <form [formGroup]="addTeamForm" (ngSubmit)="addTeamToTournament(addTeamForm)">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Name</mat-label>
+                        <input matInput type="text" id="team-name" formControlName="name">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>City</mat-label>
+                        <input matInput type="text" id="team-city" formControlName="city">
+                    </mat-form-field>
+                    <button type="submit">Save</button>
+                </form>
             </div>
         </div>
         <div class="item">
