@@ -57,15 +57,10 @@
                 </div>
             </div>
             <div class="item-content">
-                @for (team of teamsInTournament.slice(0, maxVisibleTeams); track $index) {
-                <p>{{ team.name }}</p>
-                }
 
-                @if (teamsInTournament.length > maxVisibleTeams) {
-                <button (click)="loadMoreTeams()">Show all</button>
-                }
+                <app-tournament-team-list [tournamentId]="tournamentId"></app-tournament-team-list>
 
-                <form [formGroup]="addTeamForm" (ngSubmit)="addTeamToTournament(addTeamForm)">
+                <!-- <form [formGroup]="addTeamForm" (ngSubmit)="addTeamToTournament(addTeamForm)">
                     <mat-form-field appearance="outline">
                         <mat-label>Name</mat-label>
                         <input matInput type="text" id="team-name" formControlName="name">
@@ -75,7 +70,7 @@
                         <input matInput type="text" id="team-city" formControlName="city">
                     </mat-form-field>
                     <button type="submit">Save</button>
-                </form>
+                </form> -->
             </div>
         </div>
         <div class="item">

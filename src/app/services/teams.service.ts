@@ -12,7 +12,7 @@ export class TeamsService {
 
   constructor(private http: HttpClient) { }
 
-  async getTeamsByTournament(tournamentId: Number): Promise<Team[]> {
+  async getTeamsByTournament(tournamentId: string): Promise<Team[]> {
     const data = await fetch(`${this.url}?tournamentId=${tournamentId}`);
     return await data.json() ?? [];
   }

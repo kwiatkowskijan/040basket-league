@@ -128,6 +128,12 @@
       "name": "040basket",
       "city": "Mosina",
       "tournamentId": "1"
+    },
+    {
+      "id": 0,
+      "name": "040basket2",
+      "city": "Puszczykowo",
+      "tournamentId": "1"
     }
   ]
 }
