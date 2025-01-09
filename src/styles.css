@@ -91,6 +91,7 @@ a {
 
     .section-title {
         padding: 0 5px;
+        justify-content: center;
     }
     
     .section-container {
