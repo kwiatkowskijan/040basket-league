@@ -6,26 +6,26 @@ import { Tournament } from '../models/tournament';
 import { TournamentService } from '../services/tournament.service';
 import { Team } from '../models/team';
 import { TeamsService } from '../services/teams.service';
-import { TournamentComponent } from '../tournament/tournament.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { TournamentTeamListComponent } from '../tournament-team-list/tournament-team-list/tournament-team-list.component';
 
 @Component({
   selector: 'app-tournament-details',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MatIconModule, MatButtonModule, MatDividerModule, MatInputModule, MatFormFieldModule],
+  imports: [CommonModule, ReactiveFormsModule, MatIconModule, MatButtonModule, MatDividerModule, MatInputModule, MatFormFieldModule, TournamentTeamListComponent],
   templateUrl: './tournament-details.component.html',
   styleUrl: './tournament-details.component.css'
 })
 export class TournamentDetailsComponent {
+  tournamentId!: string;
   route: ActivatedRoute = inject(ActivatedRoute);
   tournamentService = inject(TournamentService);
   teamsService = inject(TeamsService);
   tournament: Tournament | undefined;
-  teamsInTournament: Team[] = [];
   isEditing = false;
   isNew = false;
 
@@ -37,11 +37,11 @@ export class TournamentDetailsComponent {
   });
 
   constructor() {
-    const tournamentId = this.route.snapshot.params["id"];
+    this.tournamentId = this.route.snapshot.params["id"];
 
-    console.log(tournamentId);
+    console.log(this.tournamentId);
 
-    if (tournamentId === undefined) {
+    if (this.tournamentId === undefined) {
       this.isNew = true;
       this.isEditing = true;
     }
@@ -50,7 +50,7 @@ export class TournamentDetailsComponent {
       this.tournament = {} as Tournament;
       console.log(this.tournament);
     } else {
-      this.tournamentService.getTournamentById(tournamentId).then(tournament => {
+      this.tournamentService.getTournamentById(this.tournamentId).then(tournament => {
         this.tournament = tournament;
 
         this.editTournamentForm.setValue({
@@ -59,10 +59,6 @@ export class TournamentDetailsComponent {
           startDate: this.tournament?.startDate ?? '',
           endDate: this.tournament?.endDate ?? ''
         });
-      });
-
-      this.teamsService.getTeamsByTournament(tournamentId).then(teamsInTournament => {
-        this.teamsInTournament = teamsInTournament;
       });
     }
   }
@@ -122,6 +118,31 @@ export class TournamentDetailsComponent {
       )
     }
   }
+
+  // addTeamToTournament(form: FormGroup) {
+  //   if(this.tournament && !this.isNew) {
+
+  //     const teamName: string = form.value.name ?? '';
+  //     const teamCity: string = form.value.city ?? '';
+
+  //     let team: Team = {
+  //       id: 0,
+  //       name: teamName,
+  //       city: teamCity,
+  //       tournamentId: this.tournament.id
+  //     }
+
+  //     this.teamsService.createTeam(team).subscribe (
+  //       (data) => {
+  //         team = data;
+  //         console.log('Adding succesfull');
+  //       },
+  //       (error) => {
+  //         console.log("Error adding team to tournament", error);
+  //       }
+  //     )
+  //   }
+  // }
 }
 
 // export class TournamentObject implements Tournament {
