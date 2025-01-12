@@ -36,11 +36,6 @@ export class TournamentDetailsComponent {
     endDate: new FormControl()
   });
 
-  addTeamForm = new FormGroup({
-    name: new FormControl(''),
-    city: new FormControl('')
-  })
-
   constructor() {
     this.tournamentId = this.route.snapshot.params["id"];
 
