@@ -5,7 +5,7 @@
 <div class="item-content">
     @for (team of teamsInTournament.slice(0, maxVisibleTeams); track $index) {
     <div class="team-item">
-        <a>{{ team.name }}</a>
+        <a [routerLink]="['/team', team.id]">{{ team.name }}</a>
     </div>
     }
 
