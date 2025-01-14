@@ -1,0 +1,19 @@
+.team-count {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 0.8px solid var(--border);
+    padding: 10px 20px 30px 20px;
+    margin-bottom: 20px;
+}
+
+.team-counter {
+    font-size: 36px;
+}
+
+.team-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+}

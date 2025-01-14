@@ -19,7 +19,7 @@ export class NavbarComponent {
     },
     {
       route: '/tournaments',
-      icon: 'list',
+      icon: 'emoji_events',
       label: 'Tournaments',
       isActive: false
     },
