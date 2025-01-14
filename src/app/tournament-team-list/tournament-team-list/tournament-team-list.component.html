@@ -1,11 +1,11 @@
 <div class="team-count">
     <span class="team-counter">{{ teamsInTournament.length }}</span>
-    <span>zapisanych drużyn</span>
+    <span>registered teams</span>
 </div>
 <div class="item-content">
     @for (team of teamsInTournament.slice(0, maxVisibleTeams); track $index) {
     <div class="team-item">
-        <a [routerLink]="['/team', team.id]">{{ team.name }}</a>
+        <a [routerLink]="['team/', team.id]">{{ team.name }}</a>
     </div>
     }
 

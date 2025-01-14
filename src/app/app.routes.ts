@@ -26,7 +26,7 @@ export const routes: Routes = [
         title: 'Details'
     },
     {
-        path: 'team/:id',
+        path: 'tournament/:id/team/:id2',
         component: TournamentTeamDetailsComponent,
         title: 'Team'
     }

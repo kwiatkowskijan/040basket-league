@@ -1,5 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Team } from '../../models/team';
+import { TeamsService } from '../../services/teams.service';
 
 @Component({
   selector: 'app-tournament-team-details',
@@ -11,9 +13,14 @@ import { ActivatedRoute } from '@angular/router';
 export class TournamentTeamDetailsComponent {
   teamId!: string;
   route: ActivatedRoute = inject(ActivatedRoute);
+  teamService = inject(TeamsService);
+  team: Team | undefined;
 
   constructor() {
-    this.teamId = this.route.snapshot.params["id"];
-  }
+    this.teamId = this.route.snapshot.params["id2"];
 
+    this.teamService.getTeamById(this.teamId).then(tournament => {
+      this.team = tournament;
+    });
+  }
 }
