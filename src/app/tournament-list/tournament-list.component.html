@@ -8,7 +8,7 @@
             <form>
                 <mat-form-field appearance="outline">
                     <mat-label>Search tournament</mat-label>
-                    <input matInput type="text" placeholder="Search tournament" [formControl]="searchTournamentControl"
+                    <input matInput type="text" placeholder="Ex. 040basket 1.0" [formControl]="searchTournamentControl"
                         [matAutocomplete]="auto" />
                     <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"
                         (optionSelected)="filterTournaments($event.option.value)">
@@ -19,7 +19,7 @@
                 </mat-form-field>
             </form>
         </div>
-        <a [routerLink]="['/tournament']">Add tournament</a>
+        <a mat-flat-button [routerLink]="['/tournament']">Add tournament</a>
     </div>
 
     <div class="listing-container">

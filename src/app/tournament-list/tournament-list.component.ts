@@ -7,17 +7,19 @@ import { RouterLink } from '@angular/router';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
 import { Observable, map, startWith } from 'rxjs';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @Component({
   selector: 'app-tournament-list',
   standalone: true,
-  imports: [TournamentComponent, CommonModule, RouterLink, FormsModule, ReactiveFormsModule, MatInputModule, MatFormFieldModule, MatAutocompleteModule],
+  imports: [TournamentComponent, CommonModule, RouterLink, FormsModule, ReactiveFormsModule, MatInputModule, MatFormFieldModule, MatAutocompleteModule, MatButtonModule, MatDividerModule],
   templateUrl: './tournament-list.component.html',
   styleUrls: ['./tournament-list.component.css']
 })
-export class TournamentListComponent implements OnInit{
+export class TournamentListComponent implements OnInit {
 
   tournamentList: Tournament[] = [];
   displayedTournamentList: Tournament[] = [];
@@ -35,7 +37,7 @@ export class TournamentListComponent implements OnInit{
       console.log(this.tournamentList);
     })
   }
-  
+
   ngOnInit() {
     this.filteredOptions = this.searchTournamentControl.valueChanges.pipe(
       startWith(''),

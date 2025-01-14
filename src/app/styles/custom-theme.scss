@@ -1,0 +1,16 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+@use './_theme-colors' as my-theme;
+
+html {
+  @include mat.theme((
+    color: (
+      theme-type: light,
+      primary: my-theme.$primary-palette,
+    ),
+    typography: Poppins,
+    density: 0,
+    elevated-container-shape: 2px,
+  ));
+}
