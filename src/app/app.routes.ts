@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { TournamentListComponent } from './tournament-list/tournament-list.component';
 import { TournamentDetailsComponent } from './tournament-details/tournament-details.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { TournamentTeamDetailsComponent } from './tournament-team-details/tournament-team-details/tournament-team-details.component';
 
 export const routes: Routes = [
     {
@@ -23,5 +24,10 @@ export const routes: Routes = [
         path: 'tournament/:id',
         component: TournamentDetailsComponent,
         title: 'Details'
-    }
+    },
+    {
+        path: 'tournament/:id/team/:id2',
+        component: TournamentTeamDetailsComponent,
+        title: 'Team'
+    },
 ];

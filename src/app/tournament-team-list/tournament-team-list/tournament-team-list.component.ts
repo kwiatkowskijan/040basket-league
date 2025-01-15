@@ -1,4 +1,5 @@
 import { Component, inject, Input } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { Team } from '../../models/team';
 import { TeamsService } from '../../services/teams.service';
 import { FormsModule, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -10,7 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-tournament-team-list',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, MatInputModule, MatFormFieldModule, MatIconModule, MatButtonModule],
+  imports: [FormsModule, RouterLink, ReactiveFormsModule, MatInputModule, MatFormFieldModule, MatIconModule, MatButtonModule],
   templateUrl: './tournament-team-list.component.html',
   styleUrl: './tournament-team-list.component.css'
 })

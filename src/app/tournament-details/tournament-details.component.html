@@ -47,17 +47,7 @@
                 </form>
             </div>
         </div>
-        <div class="item">
-            <div class="item-title-area">
-                <h2>Teams</h2>
-                <div class="action-buttons">
-                    <button mat-button>
-                        <mat-icon>add</mat-icon>Add team
-                    </button>
-                </div>
-            </div>
-            <app-tournament-team-list [tournamentId]="tournamentId"></app-tournament-team-list>
-        </div>
+        <app-tournament-team-list [tournamentId]="tournamentId"></app-tournament-team-list>
         <div class="item">
             <div class="item-title-area">
                 <h2>Groups</h2>
