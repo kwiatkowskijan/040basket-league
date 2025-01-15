@@ -48,6 +48,13 @@ a {
     margin-bottom: 20px;
 }
 
+.above-items-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
 .items-container {
     width: 100%;
     height: auto;

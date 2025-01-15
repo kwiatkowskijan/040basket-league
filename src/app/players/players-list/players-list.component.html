@@ -1,4 +1,35 @@
-@for(player of playerList; track $index) {
-<p>{{player.name}} {{player.surname}}</p>
-<p>{{player.email}}</p>
-}
+<div class="section-title">
+    <h1>Players</h1>
+</div>
+
+<div class="section-container">
+    <div class="above-items-container">
+        <h2>All players</h2>
+        <button mat-raised-button>
+            <mat-icon>add</mat-icon>Add player
+        </button>
+    </div>
+    <div class="players-items-container">
+        <div class="item">
+            <div class="item-title-area">
+
+            </div>
+            <div class="item-content">
+                <table>
+                    <tr>
+                        <th>Fullname</th>
+                        <th>Email</th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        @for(player of playerList; track $index) {
+                        <td>{{player.name}} {{player.surname}}</td>
+                        <td>{{player.email}}</td>
+                        <td><a>Details</a></td>
+                        }
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
