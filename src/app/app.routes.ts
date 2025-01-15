@@ -29,5 +29,5 @@ export const routes: Routes = [
         path: 'tournament/:id/team/:id2',
         component: TournamentTeamDetailsComponent,
         title: 'Team'
-    }
+    },
 ];
