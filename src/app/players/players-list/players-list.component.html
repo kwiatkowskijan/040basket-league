@@ -25,7 +25,7 @@
                         @for(player of playerList; track $index) {
                         <td>{{player.name}} {{player.surname}}</td>
                         <td>{{player.email}}</td>
-                        <td><a>Details</a></td>
+                        <td><a [routerLink]="['/player', player.id]">Details</a></td>
                         }
                     </tr>
                 </table>

@@ -38,7 +38,7 @@ export const routes: Routes = [
         title: 'Players'
     },
     {
-        path: 'players/:id',
+        path: 'player/:id',
         component: PlayerDetailsComponent,
         title: 'Player'
     }

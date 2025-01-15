@@ -76,6 +76,8 @@ export class TournamentDetailsComponent {
       this.tournament.startDate = form.value.startDate ?? '';
       this.tournament.endDate = form.value.endDate ?? '';
 
+      // Zrozumieć na czym polega subskrypcja
+
       if (this.isNew) {
         this.tournamentService.addTournament(this.tournament).subscribe(
           (data) => {
