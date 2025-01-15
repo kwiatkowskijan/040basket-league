@@ -15,19 +15,21 @@ export class NavbarComponent {
       route: '/',
       icon: 'home',
       label: 'Dashboard',
-      isActive: false
     },
     {
       route: '/tournaments',
       icon: 'emoji_events',
       label: 'Tournaments',
-      isActive: false
     },
     {
       route: '/team',
       icon: 'group',
       label: 'Teams',
-      isActive: false
     },
+    {
+      route: '/players',
+      icon: 'group',
+      label: 'Players'
+    }
   ]
 }

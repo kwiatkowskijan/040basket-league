@@ -81,5 +81,14 @@
       "city": "Poznań",
       "tournamentId": "1"
     }
+  ],
+  "players": [
+    {
+      "id": "0",
+      "email": "kwiatkojan@gmail.com",
+      "name": "Jan",
+      "surname": "Kwiatkowski",
+      "birthDate": "2002-09-19"
+    }
   ]
 }
