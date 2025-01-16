@@ -27,7 +27,7 @@ export class PlayersService {
   }
 
   editPlayer(player: Player): Observable<any> {
-    return this.http.put(`${this.url}/${player.id}`, player.id);
+    return this.http.put(`${this.url}/${player.id}`, player);
   }
 
   deletePlayer(id: string): Observable<any> {

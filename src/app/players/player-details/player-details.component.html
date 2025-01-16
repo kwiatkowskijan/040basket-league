@@ -1,16 +1,20 @@
 <div class="section-title">
-    <h1>{{ player?.name }} {{ player?.surname }}</h1>
+    <h1>Player</h1>
 </div>
 
 <div class="section-container">
+    <div class="above-items-container">
+        <h2>Details</h2>
+        <button [hidden]="isNew" [hidden]="isEditing" mat-raised-button (click)="turnOnEditMode()"><mat-icon>edit</mat-icon>Edit player</button>
+    </div>
     <div class="item-container one-column">
         <div class="item">
             <div class="item-title-area">
                 @if (isNew) {
-                    <h2>Add new player</h2>
+                <h2>Add new player</h2>
                 }
-                @if (!isNew) {
-                    <h2>Player</h2>
+                @else {
+                <h2>{{ player?.name }} {{ player?.surname }}</h2>
                 }
             </div>
             <div class="item-content">
@@ -35,7 +39,16 @@
                             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                             <mat-datepicker #picker></mat-datepicker>
                         </mat-form-field>
-                        <button type="submit" mat-raised-button><mat-icon>add</mat-icon>Add player</button>
+                        @if (isNew) {
+                        <button type="submit" mat-raised-button>
+                            <mat-icon>add</mat-icon>Add player
+                        </button>
+                        } @else {
+                        <button type="submit" mat-raised-button>
+                            <mat-icon>edit</mat-icon>Edit player
+                        </button>
+                        }
+
                     </form>
                 </div>
             </div>
