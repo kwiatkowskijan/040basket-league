@@ -5,10 +5,34 @@
 <div class="section-container">
     <div class="item-container one-column">
         <div class="item">
-            <div [hidden]="!isEditing">
-                <form>
-                    
-                </form>
+            <div class="item-title-area">
+                <h2>Player</h2>
+            </div>
+            <div class="item-content">
+                <div [hidden]="!isEditing">
+                    <form [formGroup]="playerForm" (ngSubmit)="addEditPlayer()">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Name</mat-label>
+                            <input matInput type="text" id="name" formControlName="name">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Surname</mat-label>
+                            <input matInput type="text" id="surname" formControlName="surname">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Email</mat-label>
+                            <input matInput type="text" id="email" formControlName="email">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Birthdate</mat-label>
+                            <input matInput [matDatepicker]="picker">
+                            <mat-hint>MM/DD/YYYY</mat-hint>
+                            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                        <button type="submit" mat-raised-button><mat-icon>add</mat-icon>Add player</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

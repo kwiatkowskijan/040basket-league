@@ -1,18 +1,23 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Player } from '../../models/player';
 import { PlayersService } from '../../services/players.service';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatIconModule} from '@angular/material/icon';
-import {MatInputModule} from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { provideNativeDateAdapter } from '@angular/material/core';
 
 @Component({
   selector: 'app-player-details',
   standalone: true,
-  imports: [ReactiveFormsModule, MatFormFieldModule, MatIconModule, MatInputModule],
+  imports: [ReactiveFormsModule, MatFormFieldModule, MatIconModule, MatInputModule, MatButtonModule, MatDatepickerModule],
   templateUrl: './player-details.component.html',
-  styleUrl: './player-details.component.css'
+  styleUrl: './player-details.component.css',
+  providers: [provideNativeDateAdapter()],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PlayerDetailsComponent {
   playerId!: string;
@@ -26,7 +31,7 @@ export class PlayerDetailsComponent {
     name: new FormControl(''),
     surname: new FormControl(''),
     email: new FormControl(''),
-    birthdate: new FormControl()
+    birthDate: new FormControl()
   })
 
   constructor() {
@@ -42,12 +47,23 @@ export class PlayerDetailsComponent {
     } else {
       this.playerService.getPlayerById(this.playerId).then(player => {
         this.player = player;
+
+        this.playerForm.setValue({
+          name: this.player?.name ?? '',
+          surname: this.player?.surname ?? '',
+          email: this.player?.email ?? '',
+          birthDate: this.player?.birthDate ?? ''
+        });
       })
     }
   }
 
   turnOnEditMode() {
     this.isEditing = true;
+  }
+
+  addEditPlayer() {
+
   }
 
 }
