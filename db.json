@@ -2,17 +2,10 @@
   "tournaments": [
     {
       "id": "0",
-      "name": "040Basket Tournament 1.0",
+      "name": "040Basket Tournament 1.1",
       "startDate": "2023-09-09",
       "endDate": "2023-09-09",
-      "place": "MOSiR Puszczykowo10"
-    },
-    {
-      "id": "1",
-      "name": "040Basket Tournament 1.7",
-      "startDate": "2023-09-09",
-      "endDate": "2023-09-09",
-      "place": "MOSiR Puszczykowo 1"
+      "place": "MOSiR Puszczykowo100"
     },
     {
       "id": "2",
@@ -55,31 +48,31 @@
       "id": "0",
       "name": "Otwieracze",
       "city": "Poznań",
-      "tournamentId": "1"
+      "tournamentId": "2"
     },
     {
       "id": "1",
       "name": "Angry Weasels",
       "city": "Poznań",
-      "tournamentId": "1"
+      "tournamentId": "2"
     },
     {
       "id": "2",
       "name": "LP3x3",
       "city": "Poznań",
-      "tournamentId": "1"
+      "tournamentId": "2"
     },
     {
       "id": "3",
       "name": "Cegłą o dechę",
       "city": "Poznań",
-      "tournamentId": "1"
+      "tournamentId": "2"
     },
     {
       "id": "4",
       "name": "NWP",
       "city": "Poznań",
-      "tournamentId": "1"
+      "tournamentId": "2"
     }
   ],
   "players": [

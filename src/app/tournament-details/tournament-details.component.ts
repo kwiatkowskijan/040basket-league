@@ -39,8 +39,6 @@ export class TournamentDetailsComponent {
   constructor() {
     this.tournamentId = this.route.snapshot.params["id"];
 
-    console.log(this.tournamentId);
-
     if (this.tournamentId === undefined) {
       this.isNew = true;
       this.isEditing = true;
@@ -48,7 +46,6 @@ export class TournamentDetailsComponent {
 
     if (this.isNew) {
       this.tournament = {} as Tournament;
-      console.log(this.tournament);
     } else {
       this.tournamentService.getTournamentById(this.tournamentId).then(tournament => {
         this.tournament = tournament;
@@ -79,45 +76,45 @@ export class TournamentDetailsComponent {
       // Zrozumieć na czym polega subskrypcja
 
       if (this.isNew) {
-        this.tournamentService.addTournament(this.tournament).subscribe(
-          (data) => {
+        this.tournamentService.addTournament(this.tournament).subscribe({
+          next: (data) => {
             this.tournament = data;
             this.isNew = false;
             this.isEditing = false;
             console.log("Adding succesful!")
             console.log(this.tournament);
           },
-          (error) => {
+          error: (error) => {
             console.error('Error fetching posts:', error);
           }
-        );
+        });
       } else {
-        this.tournamentService.editTournament(this.tournament).subscribe(
-          (data) => {
+        this.tournamentService.editTournament(this.tournament).subscribe({
+          next: (data) => {
             this.tournament = data;
             this.isEditing = false;
             console.log("Update succesful!")
             console.log(this.tournament);
           },
-          (error) => {
+          error: (error) => {
             console.error('Error fetching posts:', error);
           }
-        );
+        });
       }
     }
   }
 
   deleteTournament() {
     if (this.tournament && !this.isNew) {
-      this.tournamentService.deleteTournament(this.tournament.id).subscribe(
-        (data) => {
+      this.tournamentService.deleteTournament(this.tournament.id).subscribe({
+        next: (data) => {
           this.tournament = data;
           console.log("Delete succesful!")
         },
-        (error) => {
+        error: (error) => {
           console.error('Error fetching posts:', error);
         }
-      )
+      })
     }
   }
 
