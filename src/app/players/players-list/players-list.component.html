@@ -1,0 +1,33 @@
+<div class="section-title">
+    <h1>Players</h1>
+</div>
+
+<div class="section-container">
+    <div class="above-items-container">
+        <h2>All players</h2>
+        <a mat-raised-button [routerLink]="['/player']"><mat-icon>add</mat-icon>Add player</a>
+    </div>
+    <div class="players-items-container">
+        <div class="item">
+            <div class="item-title-area">
+
+            </div>
+            <div class="item-content">
+                <table>
+                    <tr>
+                        <th>Fullname</th>
+                        <th>Email</th>
+                        <th></th>
+                    </tr>
+                    @for(player of playerList; track $index) {
+                    <tr>
+                        <td>{{player.name}} {{player.surname}}</td>
+                        <td>{{player.email}}</td>
+                        <td><a [routerLink]="['/player', player.id]">Details</a></td>
+                    </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -3,6 +3,8 @@ import { TournamentListComponent } from './tournament-list/tournament-list.compo
 import { TournamentDetailsComponent } from './tournament-details/tournament-details.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TournamentTeamDetailsComponent } from './tournament-team-details/tournament-team-details/tournament-team-details.component';
+import { PlayersListComponent } from './players/players-list/players-list.component';
+import { PlayerDetailsComponent } from './players/player-details/player-details.component';
 
 export const routes: Routes = [
     {
@@ -30,4 +32,19 @@ export const routes: Routes = [
         component: TournamentTeamDetailsComponent,
         title: 'Team'
     },
+    {
+        path: 'players',
+        component: PlayersListComponent,
+        title: 'Players'
+    },
+    {
+        path: 'player',
+        component: PlayerDetailsComponent,
+        title: 'Player'
+    },
+    {
+        path: 'player/:id',
+        component: PlayerDetailsComponent,
+        title: 'Player'
+    }
 ];

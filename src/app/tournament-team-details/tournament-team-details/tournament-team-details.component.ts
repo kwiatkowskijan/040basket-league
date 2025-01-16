@@ -1,4 +1,5 @@
 import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { Team } from '../../models/team';
 import { TeamsService } from '../../services/teams.service';
@@ -6,7 +7,7 @@ import { TeamsService } from '../../services/teams.service';
 @Component({
   selector: 'app-tournament-team-details',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './tournament-team-details.component.html',
   styleUrl: './tournament-team-details.component.css'
 })
@@ -17,10 +18,10 @@ export class TournamentTeamDetailsComponent {
   team: Team | undefined;
 
   constructor() {
-    this.teamId = this.route.snapshot.params["id2"];
+    this.teamId = this.route.snapshot.params["id"];
 
-    this.teamService.getTeamById(this.teamId).then(tournament => {
-      this.team = tournament;
+    this.teamService.getTeamById(this.teamId).then(team => {
+      this.team = team;
     });
   }
 }

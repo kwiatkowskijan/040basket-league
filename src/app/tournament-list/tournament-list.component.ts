@@ -11,11 +11,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { Observable, map, startWith } from 'rxjs';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-tournament-list',
   standalone: true,
-  imports: [TournamentComponent, CommonModule, RouterLink, FormsModule, ReactiveFormsModule, MatInputModule, MatFormFieldModule, MatAutocompleteModule, MatButtonModule, MatDividerModule],
+  imports: [TournamentComponent, CommonModule, RouterLink, FormsModule, ReactiveFormsModule, MatInputModule, MatFormFieldModule, MatAutocompleteModule, MatButtonModule, MatDividerModule, MatIconModule],
   templateUrl: './tournament-list.component.html',
   styleUrls: ['./tournament-list.component.css']
 })
