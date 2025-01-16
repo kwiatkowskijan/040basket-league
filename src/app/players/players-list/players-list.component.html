@@ -19,13 +19,13 @@
                         <th>Email</th>
                         <th></th>
                     </tr>
+                    @for(player of playerList; track $index) {
                     <tr>
-                        @for(player of playerList; track $index) {
                         <td>{{player.name}} {{player.surname}}</td>
                         <td>{{player.email}}</td>
                         <td><a [routerLink]="['/player', player.id]">Details</a></td>
-                        }
                     </tr>
+                    }
                 </table>
             </div>
         </div>

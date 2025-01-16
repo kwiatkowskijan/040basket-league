@@ -6,11 +6,16 @@
     <div class="item-container one-column">
         <div class="item">
             <div class="item-title-area">
-                <h2>Player</h2>
+                @if (isNew) {
+                    <h2>Add new player</h2>
+                }
+                @if (!isNew) {
+                    <h2>Player</h2>
+                }
             </div>
             <div class="item-content">
                 <div [hidden]="!isEditing">
-                    <form [formGroup]="playerForm" (ngSubmit)="addEditPlayer()">
+                    <form [formGroup]="playerForm" (ngSubmit)="createEditPlayer(playerForm)">
                         <mat-form-field appearance="outline">
                             <mat-label>Name</mat-label>
                             <input matInput type="text" id="name" formControlName="name">
@@ -25,7 +30,7 @@
                         </mat-form-field>
                         <mat-form-field appearance="outline">
                             <mat-label>Birthdate</mat-label>
-                            <input matInput [matDatepicker]="picker">
+                            <input matInput [matDatepicker]="picker" formControlName="birthDate">
                             <mat-hint>MM/DD/YYYY</mat-hint>
                             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                             <mat-datepicker #picker></mat-datepicker>

@@ -62,8 +62,37 @@ export class PlayerDetailsComponent {
     this.isEditing = true;
   }
 
-  addEditPlayer() {
+  createEditPlayer(form: FormGroup) {
+    if (this.player) {
+      this.player.name = form.value.name ?? '';
+      this.player.surname = form.value.surname ?? '';
+      this.player.email = form.value.email ?? '';
+      this.player.birthDate = form.value.birthDate ?? '';
 
+      if (this.isNew) {
+        this.playerService.createPlayer(this.player).subscribe({
+          next: (data) => {
+            this.player = data;
+            this.isNew = false;
+            this.isEditing = false;
+            console.log("Adding succesful!")
+          },
+          error: (error) => {
+            console.error('Error fetching posts:', error);
+          }
+        });
+      } else {
+        this.playerService.editPlayer(this.player).subscribe({
+          next: (data) => {
+            this.player = data;
+            this.isEditing = false;
+            console.log("Update succesful!")
+          },
+          error: (error) => {
+            console.error('Error fetching posts:', error);
+          }
+        })
+      }
+    }
   }
-
 }
