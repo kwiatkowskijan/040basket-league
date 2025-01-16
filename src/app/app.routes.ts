@@ -38,6 +38,11 @@ export const routes: Routes = [
         title: 'Players'
     },
     {
+        path: 'player',
+        component: PlayerDetailsComponent,
+        title: 'Player'
+    },
+    {
         path: 'player/:id',
         component: PlayerDetailsComponent,
         title: 'Player'
