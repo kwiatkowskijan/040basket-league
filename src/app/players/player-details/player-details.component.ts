@@ -95,4 +95,18 @@ export class PlayerDetailsComponent {
       }
     }
   }
+
+  deletePlayer() {
+    if (this.player && !this.isNew) {
+      this.playerService.deletePlayer(this.player.id).subscribe({
+        next: (data) => {
+          this.player = data;
+          console.log("Delete succesful!")
+        },
+        error: (error) => {
+          console.error('Error fetching posts:', error);
+        }
+      })
+    }
+  }
 }
