@@ -10,7 +10,7 @@
             <button [hidden]="isNew" [hidden]="isEditing" mat-raised-button (click)="deletePlayer()"><mat-icon>delete</mat-icon>Delete player</button>
         </div>
     </div>
-    <div class="item-container one-column">
+    <div class="items-container one-column">
         <div class="item">
             <div class="item-title-area">
                 @if (isNew) {
@@ -54,6 +54,14 @@
                     </form>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="above-items-container">
+        <h2>Stats</h2>
+    </div>
+    <div class="item-container one-column">
+        <div class="item">
+            Stats
         </div>
     </div>
 </div>
