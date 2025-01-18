@@ -4,6 +4,14 @@
 <div class="section-container">
     <div class="above-items-container">
         <h2>Details</h2>
+        <div class="title-area-buttons">
+            <button mat-raised-button (click)="turnOnEditMode()">
+                <mat-icon>edit</mat-icon>Edit
+            </button>
+            <button mat-raised-button (click)="deleteTeam()" [hidden]="isNew">
+                <mat-icon>delete</mat-icon>Delete
+            </button>
+        </div>
     </div>
     <div class="items-container one-column">
         <div class="item">

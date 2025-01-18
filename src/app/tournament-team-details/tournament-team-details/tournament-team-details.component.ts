@@ -89,4 +89,18 @@ export class TournamentTeamDetailsComponent {
       }
     }
   }
+
+  deleteTeam() {
+    if(this.team && !this.isNew) {
+      this.teamService.deleteTeam(this.team.id).subscribe({
+        next: (data) => {
+          this.team = data;
+          console.log("Delete succesful!")
+        },
+        error: (error) => {
+          console.error('Error fetching posts:', error);
+        }
+      })
+    }
+  }
 }
