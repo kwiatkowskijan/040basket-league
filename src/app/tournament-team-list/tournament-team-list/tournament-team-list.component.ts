@@ -36,28 +36,28 @@ export class TournamentTeamListComponent {
     this.maxVisibleTeams = this.teamsInTournament.length;
   }
 
-  addTeamToTournament(form: FormGroup) {
+  // addTeamToTournament(form: FormGroup) {
 
-    if (this.addTeamForm.valid) {
-      const teamName: string = form.value.name ?? '';
-      const teamCity: string = form.value.city ?? '';
+  //   if (this.addTeamForm.valid) {
+  //     const teamName: string = form.value.name ?? '';
+  //     const teamCity: string = form.value.city ?? '';
 
-      let team: Team = {
-        id: 0,
-        name: teamName,
-        city: teamCity,
-        tournamentId: this.tournamentId
-      }
+  //     let team: Team = {
+  //       id: 0,
+  //       name: teamName,
+  //       city: teamCity,
+  //       tournamentId: this.tournamentId
+  //     }
 
-      this.teamsService.createTeam(team).subscribe(
-        (data) => {
-          team = data;
-          console.log('Adding succesfull');
-        },
-        (error) => {
-          console.log("Error adding team to tournament", error);
-        }
-      )
-    }
-  }
+  //     this.teamsService.createTeam(team).subscribe(
+  //       (data) => {
+  //         team = data;
+  //         console.log('Adding succesfull');
+  //       },
+  //       (error) => {
+  //         console.log("Error adding team to tournament", error);
+  //       }
+  //     )
+  //   }
+  // }
 }

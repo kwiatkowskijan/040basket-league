@@ -4,26 +4,74 @@
 <div class="section-container">
     <div class="above-items-container">
         <h2>Details</h2>
-    </div>   
+        <div class="title-area-buttons">
+            <button mat-raised-button (click)="turnOnEditMode()">
+                <mat-icon>edit</mat-icon>Edit
+            </button>
+            <button mat-raised-button (click)="deleteTeam()" [hidden]="isNew">
+                <mat-icon>delete</mat-icon>Delete
+            </button>
+        </div>
+    </div>
     <div class="items-container one-column">
         <div class="item">
             <div class="item-title-area">
+                @if (isNew) {
+                <h3>Add new team</h3>
+                } @else {
                 <h3>{{ team?.name }}</h3>
+                }
             </div>
-            <div class="item-content">
+            <div [hidden]="isEditing" class="item-content">
                 <p>{{ team?.city }}</p>
+            </div>
+            <div [hidden]="!isEditing" class="item-content">
+                <form [formGroup]="teamForm" (ngSubmit)="createEditTeam(teamForm)">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Name</mat-label>
+                        <input matInput type="text" id="team-name" formControlName="name">
+                        @if (teamForm.controls.name.hasError('required')) {
+                        <mat-error>Name is <strong>required</strong></mat-error>
+                        }
+                        @if (teamForm.controls.name.hasError('maxlength')) {
+                        <mat-error>Name must have max 50 characters</mat-error>
+                        }
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>City</mat-label>
+                        <input matInput type="text" id="team-city" formControlName="city">
+                        @if (teamForm.controls.city.hasError('required')) {
+                        <mat-error>City is <strong>required</strong></mat-error>
+                        }
+                        @if (teamForm.controls.name.hasError('maxlength')) {
+                        <mat-error>Name must have max 50 characters</mat-error>
+                        }
+                    </mat-form-field>
+                    @if (isNew) {
+                    <button type="submit" mat-raised-button>
+                        <mat-icon>add</mat-icon>Add team
+                    </button>
+                    } @else {
+                    <button type="submit" mat-raised-button>
+                        <mat-icon>edit</mat-icon>Edit team
+                    </button>
+                    }
+                </form>
             </div>
         </div>
     </div>
     <div class="items-container two-columns">
-        <div class="item">
+        <div class="item" [hidden]="isEditing">
             <div class="item-title-area">
                 <h3>Stats</h3>
             </div>
         </div>
-        <div class="item">
+        <div class="item" [hidden]="isEditing">
             <div class="item-title-area">
                 <h3>Players</h3>
+                <div class="action-buttons">
+                    <a mat-button><mat-icon>add</mat-icon>Add player</a>
+                </div>
             </div>
         </div>
     </div>

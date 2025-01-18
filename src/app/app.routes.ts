@@ -33,6 +33,11 @@ export const routes: Routes = [
         title: 'Team'
     },
     {
+        path: 'tournament/:id/team',
+        component: TournamentTeamDetailsComponent,
+        title: 'Team'
+    },
+    {
         path: 'players',
         component: PlayersListComponent,
         title: 'Players'

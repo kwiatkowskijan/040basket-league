@@ -59,6 +59,12 @@
       "name": "NWP",
       "city": "Poznań",
       "tournamentId": "2"
+    },
+    {
+      "id": "d709",
+      "name": "fsafas",
+      "city": "safsa",
+      "tournamentId": "2"
     }
   ],
   "players": [
