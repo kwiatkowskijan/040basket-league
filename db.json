@@ -34,37 +34,43 @@
       "id": "0",
       "name": "Otwieracze",
       "city": "Poznań",
-      "tournamentId": "2"
+      "tournamentId": "2",
+      "players": ["0", "a21b"]
     },
     {
       "id": "1",
       "name": "Angry Weasels",
       "city": "Poznań",
-      "tournamentId": "2"
+      "tournamentId": "2",
+      "players": []
     },
     {
       "id": "2",
       "name": "LP3x3",
       "city": "Poznań",
-      "tournamentId": "2"
+      "tournamentId": "2",
+      "players": []
     },
     {
       "id": "3",
       "name": "Cegłą o dechę",
       "city": "Poznań",
-      "tournamentId": "2"
+      "tournamentId": "2",
+      "players": []
     },
     {
       "id": "4",
       "name": "NWP",
       "city": "Poznań",
-      "tournamentId": "2"
+      "tournamentId": "2",
+      "players": []
     },
     {
       "id": "d709",
       "name": "fsafas",
       "city": "safsa",
-      "tournamentId": "2"
+      "tournamentId": "2",
+      "players": []
     }
   ],
   "players": [

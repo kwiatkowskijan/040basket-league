@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Team } from '../models/team';
+import { Player } from '../models/player';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -21,6 +22,10 @@ export class TeamsService {
     const data = await fetch(`${this.url}?tournamentId=${tournamentId}`);
     return await data.json() ?? [];
   }
+
+  // async getAllTeamPlayers(teamId: string): Promise<Player[]> {
+
+  // }
 
   createTeam(team: Team): Observable<any> {
     return this.http.post(this.url, team);
