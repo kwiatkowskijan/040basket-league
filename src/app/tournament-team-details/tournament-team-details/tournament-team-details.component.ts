@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink, Router } from '@angular/router';
 import { Team } from '../../models/team';
 import { TeamsService } from '../../services/teams.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -30,7 +30,7 @@ export class TournamentTeamDetailsComponent {
     city: new FormControl('', [Validators.required, Validators.maxLength(50)])
   })
 
-  constructor() {
+  constructor(private router: Router) {
     this.tournamentId = this.route.snapshot.params["id"];
     this.teamId = this.route.snapshot.params["id2"];
 
@@ -95,6 +95,7 @@ export class TournamentTeamDetailsComponent {
       this.teamService.deleteTeam(this.team.id).subscribe({
         next: (data) => {
           this.team = data;
+          this.router.navigate(['/tournament', this.tournamentId]);
           console.log("Delete succesful!")
         },
         error: (error) => {
