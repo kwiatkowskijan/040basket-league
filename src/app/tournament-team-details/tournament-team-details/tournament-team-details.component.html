@@ -48,11 +48,11 @@
                         }
                     </mat-form-field>
                     @if (isNew) {
-                    <button type="submit" mat-raised-button>
+                    <button type="submit" mat-flat-button>
                         <mat-icon>add</mat-icon>Add team
                     </button>
                     } @else {
-                    <button type="submit" mat-raised-button>
+                    <button type="submit" mat-flat-button>
                         <mat-icon>edit</mat-icon>Edit team
                     </button>
                     }
@@ -75,7 +75,9 @@
             </div>
             <div class="item-content">
                 @for(player of team?.players; track $index) {
-                    <p>{{ player.name }} {{ player.surname }}</p>
+                <div class="team-item">
+                    <a [routerLink]="['/player/', player.id]">{{ player.name }} {{ player.surname }}</a>
+                </div>
                 }
             </div>
         </div>
