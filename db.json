@@ -35,7 +35,22 @@
       "name": "Otwieracze",
       "city": "Poznań",
       "tournamentId": "2",
-      "players": ["0", "a21b"]
+      "players": [
+        {
+          "id": "0",
+          "email": "kwiatkojan@gmail.com",
+          "name": "Jan",
+          "surname": "Kwiatkowski",
+          "birthDate": "2002-09-19"
+        },
+        {
+          "id": "a21b",
+          "name": "Michał",
+          "surname": "Kwiatkowski",
+          "email": "dupa@dupa.pl",
+          "birthDate": ""
+        }
+      ]
     },
     {
       "id": "1",

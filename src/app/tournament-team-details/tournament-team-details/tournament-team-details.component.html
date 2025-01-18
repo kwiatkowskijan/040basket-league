@@ -73,6 +73,11 @@
                     <a mat-button><mat-icon>add</mat-icon>Add player</a>
                 </div>
             </div>
+            <div class="item-content">
+                @for(player of team?.players; track $index) {
+                    <p>{{ player.name }} {{ player.surname }}</p>
+                }
+            </div>
         </div>
     </div>
 </div>

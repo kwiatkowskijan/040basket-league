@@ -23,10 +23,6 @@ export class TeamsService {
     return await data.json() ?? [];
   }
 
-  // async getAllTeamPlayers(teamId: string): Promise<Player[]> {
-
-  // }
-
   createTeam(team: Team): Observable<any> {
     return this.http.post(this.url, team);
   }
