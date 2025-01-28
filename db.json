@@ -82,8 +82,8 @@
     },
     {
       "id": "d709",
-      "name": "fsafas",
-      "city": "safsa",
+      "name": "fsafas1",
+      "city": "safsa1",
       "tournamentId": "2",
       "players": []
     }
@@ -92,7 +92,7 @@
     {
       "id": "0",
       "email": "kwiatkojan@gmail.com",
-      "name": "John",
+      "name": "Jan",
       "surname": "Kwiatkowski",
       "birthDate": "2002-09-19"
     },
@@ -109,6 +109,13 @@
       "surname": "Kwiatkowski",
       "email": "pawel@gmail.com",
       "birthDate": "2016-03-19T23:00:00.000Z"
+    },
+    {
+      "id": "f537",
+      "name": "Debil1",
+      "surname": "debil",
+      "email": "debil@debil.pl",
+      "birthDate": "2025-01-20T23:00:00.000Z"
     }
   ]
 }

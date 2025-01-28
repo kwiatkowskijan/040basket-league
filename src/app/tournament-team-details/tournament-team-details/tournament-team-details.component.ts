@@ -36,6 +36,10 @@ export class TournamentTeamDetailsComponent {
     city: new FormControl('', [Validators.required, Validators.maxLength(50)])
   })
 
+  addPlayersForm = new FormGroup({
+    player: new FormControl('')
+  })
+
   constructor(private router: Router) {
     this.tournamentId = this.route.snapshot.params["id"];
     this.teamId = this.route.snapshot.params["id2"];
@@ -59,19 +63,9 @@ export class TournamentTeamDetailsComponent {
     }
 
     this.playerService.getAllPlayers().then(availblePlayers => {
-
-      console.log(this.availblePlayers);
       this.availblePlayers = availblePlayers.filter(player => {
         return !this.team?.players.some(teamPlayer => String(teamPlayer.id) === String(player.id));
       });
-
-      console.log(this.availblePlayers);
-    });
-  }
-
-  getAllTeamPlayers() {
-    this.team?.players.forEach(player => {
-
     });
   }
 
@@ -129,5 +123,9 @@ export class TournamentTeamDetailsComponent {
         }
       })
     }
+  }
+
+  addPlayersToTeam(form: FormGroup) {
+    
   }
 }

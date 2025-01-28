@@ -22,52 +22,50 @@
                 <h2>{{ player?.name }} {{ player?.surname }}</h2>
                 }
             </div>
-            <div class="item-content">
-                <div [hidden]="!isEditing">
-                    <form [formGroup]="playerForm" (ngSubmit)="createEditPlayer(playerForm)">
-                        <mat-form-field appearance="outline">
-                            <mat-label>Name</mat-label>
-                            <input matInput type="text" id="name" formControlName="name">
-                            @if (playerForm.controls.name.hasError('required')) {
-                            <mat-error>Name is <strong>required</strong></mat-error>
-                            }
-                        </mat-form-field>
-                        <mat-form-field appearance="outline">
-                            <mat-label>Surname</mat-label>
-                            <input matInput type="text" id="surname" formControlName="surname">
-                            @if (playerForm.controls.surname.hasError('required')) {
-                            <mat-error>Surname is <strong>required</strong></mat-error>
-                            }
-                        </mat-form-field>
-                        <mat-form-field appearance="outline">
-                            <mat-label>Email</mat-label>
-                            <input matInput type="text" id="email" formControlName="email">
-                            @if (playerForm.controls.email.hasError('email') &&
-                            !playerForm.controls.email.hasError('required')) {
-                            <mat-error>Please enter a valid email address</mat-error>
-                            }
-                            @if (playerForm.controls.email.hasError('required')) {
-                            <mat-error>Email is <strong>required</strong></mat-error>
-                            }
-                        </mat-form-field>
-                        <mat-form-field appearance="outline">
-                            <mat-label>Birthdate</mat-label>
-                            <input matInput [matDatepicker]="picker" formControlName="birthDate">
-                            <mat-hint>MM/DD/YYYY</mat-hint>
-                            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                            <mat-datepicker #picker></mat-datepicker>
-                        </mat-form-field>
-                        @if (isNew) {
-                        <button type="submit" mat-flat-button>
-                            <mat-icon>add</mat-icon>Add player
-                        </button>
-                        } @else {
-                        <button type="submit" mat-flat-button>
-                            <mat-icon>edit</mat-icon>Edit player
-                        </button>
+            <div [hidden]="!isEditing" class="item-content">
+                <form [formGroup]="playerForm" (ngSubmit)="createEditPlayer(playerForm)">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Name</mat-label>
+                        <input matInput type="text" id="name" formControlName="name">
+                        @if (playerForm.controls.name.hasError('required')) {
+                        <mat-error>Name is <strong>required</strong></mat-error>
                         }
-                    </form>
-                </div>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Surname</mat-label>
+                        <input matInput type="text" id="surname" formControlName="surname">
+                        @if (playerForm.controls.surname.hasError('required')) {
+                        <mat-error>Surname is <strong>required</strong></mat-error>
+                        }
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input matInput type="text" id="email" formControlName="email">
+                        @if (playerForm.controls.email.hasError('email') &&
+                        !playerForm.controls.email.hasError('required')) {
+                        <mat-error>Please enter a valid email address</mat-error>
+                        }
+                        @if (playerForm.controls.email.hasError('required')) {
+                        <mat-error>Email is <strong>required</strong></mat-error>
+                        }
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Birthdate</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="birthDate">
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                    @if (isNew) {
+                    <button type="submit" mat-flat-button>
+                        <mat-icon>add</mat-icon>Add player
+                    </button>
+                    } @else {
+                    <button type="submit" mat-flat-button>
+                        <mat-icon>edit</mat-icon>Edit player
+                    </button>
+                    }
+                </form>
             </div>
         </div>
     </div>
@@ -76,7 +74,9 @@
     </div>
     <div class="item-container one-column">
         <div class="item" [hidden]="isEditing">
-            Stats
+            <div class="item-content">
+                Stats 
+            </div>
         </div>
     </div>
 </div>
