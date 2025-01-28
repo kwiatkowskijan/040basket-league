@@ -34,4 +34,8 @@ export class TeamsService {
   deleteTeam(id: string): Observable<any> {
     return this.http.delete(`${this.url}/${id}`);
   }
+
+  addPlayerToTeam(id: string, player: Player): Observable<any> {
+    return this.http.post(`${this.url}/${id}?players`, player)
+  }
 }

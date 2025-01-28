@@ -70,7 +70,7 @@
             <div class="item-title-area">
                 <h3>Players</h3>
                 <div class="action-buttons">
-                    <a mat-button><mat-icon>add</mat-icon>Add player</a>
+                    <a mat-button (click)="addNewPlayer()"><mat-icon>add</mat-icon>Add player</a>
                 </div>
             </div>
             <div class="item-content">
@@ -79,6 +79,16 @@
                     <a [routerLink]="['/player/', player.id]">{{ player.name }} {{ player.surname }}</a>
                 </div>
                 }
+                <div [hidden]="!isAddingPlayer">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Availble players</mat-label>
+                        <mat-select multiple>
+                            @for (player of availblePlayers; track $index) {
+                            <mat-option>{{player.name}} {{player.surname}}</mat-option>
+                            }
+                        </mat-select>
+                    </mat-form-field>
+                </div>
             </div>
         </div>
     </div>
