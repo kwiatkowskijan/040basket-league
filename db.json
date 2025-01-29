@@ -86,6 +86,12 @@
       "city": "safsa1",
       "tournamentId": "2",
       "players": []
+    },
+    {
+      "id": "6fa1",
+      "name": "sfasf",
+      "city": "safas",
+      "tournamentId": "2"
     }
   ],
   "players": [

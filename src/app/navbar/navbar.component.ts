@@ -22,11 +22,6 @@ export class NavbarComponent {
       label: 'Tournaments',
     },
     {
-      route: '/team',
-      icon: 'group',
-      label: 'Teams',
-    },
-    {
       route: '/players',
       icon: 'group',
       label: 'Players'
