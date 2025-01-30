@@ -7,7 +7,7 @@
     </div>
     <div class="menu">
         @if(tournamentId) {
-        <a>Back to tournament list</a>
+        <a (click)="clearTournamentId()" routerLink="/">Back to tournament list</a>
         @for (item of activatedTournamentNavItem; track $index) {
         <a [routerLink]="item.route" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><mat-icon
                 aria-hidden="false" [fontIcon]="item.icon"></mat-icon>{{item.label}}</a>

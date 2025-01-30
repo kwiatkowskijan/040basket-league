@@ -64,4 +64,8 @@ export class NavbarComponent {
     });
   }
 
+
+  clearTournamentId() {
+    this.tournamentId = '';
+  }
 }
