@@ -4,7 +4,6 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Tournament } from '../models/tournament';
 import { TournamentService } from '../services/tournament.service';
-import { Team } from '../models/team';
 import { TeamsService } from '../services/teams.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
@@ -117,37 +116,4 @@ export class TournamentDetailsComponent {
       })
     }
   }
-
-  // addTeamToTournament(form: FormGroup) {
-  //   if(this.tournament && !this.isNew) {
-
-  //     const teamName: string = form.value.name ?? '';
-  //     const teamCity: string = form.value.city ?? '';
-
-  //     let team: Team = {
-  //       id: 0,
-  //       name: teamName,
-  //       city: teamCity,
-  //       tournamentId: this.tournament.id
-  //     }
-
-  //     this.teamsService.createTeam(team).subscribe (
-  //       (data) => {
-  //         team = data;
-  //         console.log('Adding succesfull');
-  //       },
-  //       (error) => {
-  //         console.log("Error adding team to tournament", error);
-  //       }
-  //     )
-  //   }
-  // }
 }
-
-// export class TournamentObject implements Tournament {
-//   id: number = 0;
-//   name: string = '';
-//   startDate: Date = '';
-//   endDate: Date = ;
-//   place: string = '';
-// };

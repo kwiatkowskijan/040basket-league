@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
-import { RouterModule, RouterLink, ActivatedRoute, Router, NavigationEnd } from '@angular/router';
+import { RouterModule, RouterLink } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
-import { Subscription } from 'rxjs';
+import { TournamentService } from '../services/tournament.service';
 
 @Component({
   selector: 'app-navbar',
@@ -11,9 +11,13 @@ import { Subscription } from 'rxjs';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
+
+  tournamentService = inject(TournamentService);
+  selectedTournamentId: string | null = null;
+
   navItems = [
     {
-      route: '/',
+      route: '/tournaments',
       icon: 'emoji_events',
       label: 'Tournaments',
     },
@@ -24,48 +28,28 @@ export class NavbarComponent {
     }
   ];
 
-  activatedTournamentNavItem = [
-    {
-      route: '/tournament',
-      icon: 'emoji_events',
-      label: 'Dashboard'
-    }
-  ];
-
-  router: Router = inject(Router);
-  activatedRoute: ActivatedRoute = inject(ActivatedRoute);
-  tournamentId!: string;
-
-  constructor() { }
+  tournamentNavItems: Array<{ route: any[], icon: string, label: string }> = [];
 
   ngOnInit() {
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        if (event.urlAfterRedirects.startsWith('/tournament/')) {
-          const urlParts = event.urlAfterRedirects.split('/');
-          this.tournamentId = urlParts[urlParts.length - 1];
+    this.tournamentService.selectedTournament$.subscribe(tournamentId => {
+      this.selectedTournamentId = tournamentId;
 
-          this.activatedTournamentNavItem = [
-            {
-              route: `/tournament/${this.tournamentId}`,
-              icon: 'emoji_events',
-              label: 'Dashboard'
-            }
-          ];
-        }
+      if (this.selectedTournamentId) {
+        this.tournamentNavItems = [
+          {
+            route: ['/tournament', this.selectedTournamentId],
+            icon: 'emoji_events',
+            label: 'Dashboard'
+          },
+          {
+            route: ['/tournament', this.selectedTournamentId, 'teams'],
+            icon: 'emoji_events',
+            label: 'Teams'
+          }
+        ];
+      } else {
+        this.tournamentNavItems = [];
       }
     });
-
-    this.activatedRoute.params.subscribe(params => {
-      if (params['id']) {
-        this.tournamentId = params['id'];
-        console.log('Tournament ID from params:', this.tournamentId);
-      }
-    });
-  }
-
-
-  clearTournamentId() {
-    this.tournamentId = '';
   }
 }

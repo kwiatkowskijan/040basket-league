@@ -139,7 +139,6 @@ export class TournamentTeamDetailsComponent {
         next: (data) => {
           this.team = data;
           this.isAddingPlayer = false;
-          console.log('Gracze zostali pomyślnie dodani do drużyny');
         },
         error: (error) => {
           console.error('Wystąpił błąd podczas dodawania graczy:', error);

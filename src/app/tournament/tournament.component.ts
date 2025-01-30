@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { Tournament } from '../models/tournament';
+import { TournamentService } from '../services/tournament.service';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -11,4 +12,9 @@ import { RouterLink } from '@angular/router';
 })
 export class TournamentComponent {
   @Input() tournament!: Tournament;
+  tournamentService = inject(TournamentService);
+
+  selectTournament(tournamentId: string) {
+    this.tournamentService.setSelectedTournament(tournamentId);  // Ustawienie wybranego turnieju
+  }
 }
