@@ -86,7 +86,7 @@
                             <mat-label>Availble players</mat-label>
                             <mat-select multiple formControlName="player">
                                 @for (player of availblePlayers; track $index) {
-                                <mat-option>{{player.name}} {{player.surname}}</mat-option>
+                                <mat-option [value]="player.id">{{player.name}} {{player.surname}}</mat-option>
                                 }
                             </mat-select>
                         </mat-form-field>

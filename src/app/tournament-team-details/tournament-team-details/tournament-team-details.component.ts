@@ -126,6 +126,25 @@ export class TournamentTeamDetailsComponent {
   }
 
   addPlayersToTeam(form: FormGroup) {
-    
+    if (this.team) {
+      const selectedPlayersIds = form.value.player;
+
+      const selectedPlayers = this.availblePlayers.filter(player =>
+        selectedPlayersIds.includes(player.id)
+      );
+
+      this.team.players.push(...selectedPlayers);
+
+      this.teamService.editTeam(this.team).subscribe({
+        next: (data) => {
+          this.team = data;
+          this.isAddingPlayer = false;
+          console.log('Gracze zostali pomyślnie dodani do drużyny');
+        },
+        error: (error) => {
+          console.error('Wystąpił błąd podczas dodawania graczy:', error);
+        }
+      });
+    }
   }
 }
