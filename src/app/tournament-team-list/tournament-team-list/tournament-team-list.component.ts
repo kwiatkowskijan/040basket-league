@@ -1,5 +1,5 @@
 import { Component, inject, Input } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
 import { Team } from '../../models/team';
 import { TeamsService } from '../../services/teams.service';
 import { FormsModule, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -35,29 +35,4 @@ export class TournamentTeamListComponent {
   loadMoreTeams() {
     this.maxVisibleTeams = this.teamsInTournament.length;
   }
-
-  // addTeamToTournament(form: FormGroup) {
-
-  //   if (this.addTeamForm.valid) {
-  //     const teamName: string = form.value.name ?? '';
-  //     const teamCity: string = form.value.city ?? '';
-
-  //     let team: Team = {
-  //       id: 0,
-  //       name: teamName,
-  //       city: teamCity,
-  //       tournamentId: this.tournamentId
-  //     }
-
-  //     this.teamsService.createTeam(team).subscribe(
-  //       (data) => {
-  //         team = data;
-  //         console.log('Adding succesfull');
-  //       },
-  //       (error) => {
-  //         console.log("Error adding team to tournament", error);
-  //       }
-  //     )
-  //   }
-  // }
 }

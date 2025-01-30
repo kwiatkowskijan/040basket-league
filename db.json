@@ -34,36 +34,77 @@
       "id": "0",
       "name": "Otwieracze",
       "city": "Poznań",
-      "tournamentId": "2"
+      "tournamentId": "2",
+      "players": [
+        {
+          "id": "0",
+          "email": "kwiatkojan@gmail.com",
+          "name": "Jan",
+          "surname": "Kwiatkowski",
+          "birthDate": "2002-09-19"
+        },
+        {
+          "id": "a21b",
+          "name": "Michał",
+          "surname": "Kwiatkowski",
+          "email": "dupa@dupa.pl",
+          "birthDate": ""
+        },
+        {
+          "id": "287d",
+          "name": "Paweł",
+          "surname": "Kwiatkowski",
+          "email": "pawel@gmail.com",
+          "birthDate": "2016-03-19T23:00:00.000Z"
+        },
+        {
+          "id": "f537",
+          "name": "Debil1",
+          "surname": "debil",
+          "email": "debil@debil.pl",
+          "birthDate": "2025-01-20T23:00:00.000Z"
+        }
+      ]
     },
     {
       "id": "1",
       "name": "Angry Weasels",
       "city": "Poznań",
-      "tournamentId": "2"
+      "tournamentId": "2",
+      "players": []
     },
     {
       "id": "2",
       "name": "LP3x3",
       "city": "Poznań",
-      "tournamentId": "2"
+      "tournamentId": "2",
+      "players": []
     },
     {
       "id": "3",
       "name": "Cegłą o dechę",
       "city": "Poznań",
-      "tournamentId": "2"
+      "tournamentId": "2",
+      "players": []
     },
     {
       "id": "4",
       "name": "NWP",
       "city": "Poznań",
-      "tournamentId": "2"
+      "tournamentId": "2",
+      "players": []
     },
     {
       "id": "d709",
-      "name": "fsafas",
-      "city": "safsa",
+      "name": "fsafas1",
+      "city": "safsa1",
+      "tournamentId": "2",
+      "players": []
+    },
+    {
+      "id": "6fa1",
+      "name": "sfasf",
+      "city": "safas",
       "tournamentId": "2"
     }
   ],
@@ -81,6 +122,20 @@
       "surname": "Kwiatkowski",
       "email": "dupa@dupa.pl",
       "birthDate": ""
+    },
+    {
+      "id": "287d",
+      "name": "Paweł",
+      "surname": "Kwiatkowski",
+      "email": "pawel@gmail.com",
+      "birthDate": "2016-03-19T23:00:00.000Z"
+    },
+    {
+      "id": "f537",
+      "name": "Debil1",
+      "surname": "debil",
+      "email": "debil@debil.pl",
+      "birthDate": "2025-01-20T23:00:00.000Z"
     }
   ]
 }

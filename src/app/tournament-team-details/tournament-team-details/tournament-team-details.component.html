@@ -2,6 +2,7 @@
     <h1>Team</h1>
 </div>
 <div class="section-container">
+    <a [routerLink]="['/tournament/', tournamentId]">Back to tournament</a>
     <div class="above-items-container">
         <h2>Details</h2>
         <div class="title-area-buttons">
@@ -48,11 +49,11 @@
                         }
                     </mat-form-field>
                     @if (isNew) {
-                    <button type="submit" mat-raised-button>
+                    <button type="submit" mat-flat-button>
                         <mat-icon>add</mat-icon>Add team
                     </button>
                     } @else {
-                    <button type="submit" mat-raised-button>
+                    <button type="submit" mat-flat-button>
                         <mat-icon>edit</mat-icon>Edit team
                     </button>
                     }
@@ -70,7 +71,29 @@
             <div class="item-title-area">
                 <h3>Players</h3>
                 <div class="action-buttons">
-                    <a mat-button><mat-icon>add</mat-icon>Add player</a>
+                    <a mat-button (click)="addNewPlayer()"><mat-icon>add</mat-icon>Add player</a>
+                </div>
+            </div>
+            <div class="item-content">
+                @for(player of team?.players; track $index) {
+                <div class="team-item">
+                    <a [routerLink]="['/player/', player.id]">{{ player.name }} {{ player.surname }}</a>
+                </div>
+                }
+                <div [hidden]="!isAddingPlayer">
+                    <form [formGroup]="addPlayersForm" (ngSubmit)="addPlayersToTeam(addPlayersForm)">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Availble players</mat-label>
+                            <mat-select multiple formControlName="player">
+                                @for (player of availblePlayers; track $index) {
+                                <mat-option [value]="player.id">{{player.name}} {{player.surname}}</mat-option>
+                                }
+                            </mat-select>
+                        </mat-form-field>
+                        <button type="submit" mat-flat-button>
+                            <mat-icon>add</mat-icon>Add player
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>

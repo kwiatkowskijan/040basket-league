@@ -16,7 +16,6 @@ import { RouterLink } from '@angular/router';
 export class PlayersListComponent {
 
   playerList!: Player[];
-  tableColumHeaders: string[] = ['fullname', 'mail']
 
   constructor(private playersServie: PlayersService) {
     this.playersServie.getAllPlayers().then((playerList: Player[]) => {
