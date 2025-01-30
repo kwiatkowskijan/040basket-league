@@ -35,7 +35,6 @@ export class TournamentListComponent implements OnInit {
       this.tournamentList.forEach(tournament => {
         this.options.push(tournament.name);
       })
-      console.log(this.tournamentList);
     })
   }
 

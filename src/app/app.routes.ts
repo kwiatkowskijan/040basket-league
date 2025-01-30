@@ -9,11 +9,6 @@ import { PlayerDetailsComponent } from './players/player-details/player-details.
 export const routes: Routes = [
     {
         path: '',
-        component: DashboardComponent,
-        title: 'Dashboard'
-    },
-    {
-        path: 'tournaments',
         component: TournamentListComponent,
         title: 'Tournaments'
     },
