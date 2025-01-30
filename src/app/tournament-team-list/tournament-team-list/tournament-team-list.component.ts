@@ -1,5 +1,5 @@
 import { Component, inject, Input } from '@angular/core';
-import { RouterLink, Router } from '@angular/router';
+import { RouterLink, ActivatedRoute } from '@angular/router';
 import { Team } from '../../models/team';
 import { TeamsService } from '../../services/teams.service';
 import { FormsModule, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -20,11 +20,16 @@ export class TournamentTeamListComponent {
   teamsInTournament: Team[] = [];
   maxVisibleTeams = 5;
   teamsService = inject(TeamsService);
+  route: ActivatedRoute = inject(ActivatedRoute);
 
   addTeamForm = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.maxLength(50)]),
     city: new FormControl('', [Validators.required, Validators.maxLength(50)])
   })
+
+  constructor() {
+    this.tournamentId = this.route.snapshot.params["id"];
+  }
 
   ngOnInit() {
     this.teamsService.getTeamsByTournament(this.tournamentId).then(teamsInTournament => {

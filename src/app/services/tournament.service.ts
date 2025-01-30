@@ -38,7 +38,7 @@ export class TournamentService {
     return this.http.delete(`${this.url}/${id}`);
   }
 
-  setSelectedTournament(id: string) {
+  setSelectedTournament(id: string | null) {
     this.selectedTournamentSubject.next(id);
   }
 }

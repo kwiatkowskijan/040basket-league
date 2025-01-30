@@ -29,6 +29,9 @@ export class TournamentListComponent implements OnInit {
   filteredOptions: Observable<string[]> | undefined;
 
   constructor(private tournamentService: TournamentService) {
+
+    this.tournamentService.setSelectedTournament(null);
+
     this.tournamentService.getAllTournaments().then((tournamentList: Tournament[]) => {
       this.tournamentList = tournamentList;
       this.displayedTournamentList = tournamentList;

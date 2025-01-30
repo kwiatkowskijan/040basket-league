@@ -8,6 +8,7 @@
     <div class="menu">
 
         @if(selectedTournamentId) {
+        <a [routerLink]="'tournaments'">Back to tournaments</a>
         @for (item of tournamentNavItems; track $index) {
         <a [routerLink]="item.route" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><mat-icon
                 aria-hidden="false" [fontIcon]="item.icon"></mat-icon>{{item.label}}</a>
