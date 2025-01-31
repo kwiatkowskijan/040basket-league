@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Tournament } from '../models/tournament';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { Tournament  } from '../models/tournament';
 
 
 @Injectable({
@@ -10,6 +10,9 @@ import { Tournament } from '../models/tournament';
 export class TournamentService {
 
   url = "http://localhost:3000/tournaments";
+
+  private selectedTournamentSubject = new BehaviorSubject<string | null> (null);
+  selectedTournament$ = this.selectedTournamentSubject.asObservable();
 
   constructor(private http: HttpClient) { }
 
@@ -33,5 +36,9 @@ export class TournamentService {
 
   deleteTournament(id: string): Observable<any> {
     return this.http.delete(`${this.url}/${id}`);
+  }
+
+  setSelectedTournament(id: string | null) {
+    this.selectedTournamentSubject.next(id);
   }
 }

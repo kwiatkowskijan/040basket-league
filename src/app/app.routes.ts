@@ -1,16 +1,16 @@
 import { Routes } from '@angular/router';
 import { TournamentListComponent } from './tournament-list/tournament-list.component';
 import { TournamentDetailsComponent } from './tournament-details/tournament-details.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { TournamentTeamDetailsComponent } from './tournament-team-details/tournament-team-details/tournament-team-details.component';
+import { TournamentTeamListComponent } from './tournament-team-list/tournament-team-list/tournament-team-list.component';
 import { PlayersListComponent } from './players/players-list/players-list.component';
 import { PlayerDetailsComponent } from './players/player-details/player-details.component';
 
 export const routes: Routes = [
     {
         path: '',
-        component: DashboardComponent,
-        title: 'Dashboard'
+        redirectTo: '/tournaments',
+        pathMatch: 'full'
     },
     {
         path: 'tournaments',
@@ -36,6 +36,11 @@ export const routes: Routes = [
         path: 'tournament/:id/team',
         component: TournamentTeamDetailsComponent,
         title: 'Team'
+    },
+    {
+        path: 'tournament/:id/teams',
+        component: TournamentTeamListComponent,
+        title: 'Teams'
     },
     {
         path: 'players',

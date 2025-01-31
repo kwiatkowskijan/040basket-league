@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterModule, RouterLink } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
+import { TournamentService } from '../services/tournament.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,12 +11,11 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
+
+  tournamentService = inject(TournamentService);
+  selectedTournamentId: string | null = null;
+
   navItems = [
-    {
-      route: '/',
-      icon: 'home',
-      label: 'Dashboard',
-    },
     {
       route: '/tournaments',
       icon: 'emoji_events',
@@ -26,5 +26,30 @@ export class NavbarComponent {
       icon: 'group',
       label: 'Players'
     }
-  ]
+  ];
+
+  tournamentNavItems: Array<{ route: any[], icon: string, label: string }> = [];
+
+  ngOnInit() {
+    this.tournamentService.selectedTournament$.subscribe(tournamentId => {
+      this.selectedTournamentId = tournamentId;
+
+      if (this.selectedTournamentId) {
+        this.tournamentNavItems = [
+          {
+            route: ['/tournament', this.selectedTournamentId],
+            icon: 'emoji_events',
+            label: 'Dashboard'
+          },
+          {
+            route: ['/tournament', this.selectedTournamentId, 'teams'],
+            icon: 'emoji_events',
+            label: 'Teams'
+          }
+        ];
+      } else {
+        this.tournamentNavItems = [];
+      }
+    });
+  }
 }

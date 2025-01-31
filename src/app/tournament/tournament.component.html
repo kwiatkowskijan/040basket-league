@@ -3,5 +3,5 @@
         <h3>{{ tournament.name }}</h3>
         <p>{{tournament.startDate}}</p>
     </div>
-    <a [routerLink]="['/tournament', tournament.id]">Details</a>
+    <a [routerLink]="['/tournament', tournament.id]" (click)="selectTournament(tournament.id)">Details</a>
 </div>
