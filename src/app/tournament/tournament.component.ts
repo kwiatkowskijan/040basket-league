@@ -15,6 +15,6 @@ export class TournamentComponent {
   tournamentService = inject(TournamentService);
 
   selectTournament(tournamentId: string) {
-    this.tournamentService.setSelectedTournament(tournamentId);  // Ustawienie wybranego turnieju
+    this.tournamentService.setSelectedTournament(tournamentId);
   }
 }
