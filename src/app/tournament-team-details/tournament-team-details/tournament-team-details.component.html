@@ -2,9 +2,8 @@
     <h1>Team</h1>
 </div>
 <div class="section-container">
-    <a [routerLink]="['/tournament/', tournamentId]">Back to tournament</a>
     <div class="above-items-container">
-        <h2>Details</h2>
+        <a [routerLink]="['/tournament/', tournamentId]">Back to tournament</a>
         <div class="title-area-buttons">
             <button mat-raised-button (click)="turnOnEditMode()">
                 <mat-icon>edit</mat-icon>Edit
@@ -20,7 +19,7 @@
                 @if (isNew) {
                 <h3>Add new team</h3>
                 } @else {
-                <h3>{{ team?.name }}</h3>
+                <h3>Details</h3>
                 }
             </div>
             <div [hidden]="isEditing" class="item-content">

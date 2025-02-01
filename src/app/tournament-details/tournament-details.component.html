@@ -5,26 +5,43 @@
 <div class="section-container">
     <div class="above-items-container">
         <div class="title-area-buttons">
-            <button mat-raised-button (click)="turnOnEditMode()">
+            <button mat-raised-button (click)="turnOnEditMode()" [hidden]="isEditing">
                 <mat-icon>edit</mat-icon>Edit
             </button>
-            <button mat-raised-button (click)="deleteTournament()" [hidden]="isNew">
+            <button mat-raised-button (click)="deleteTournament()" [hidden]="isNew" [hidden]="isEditing">
                 <mat-icon>delete</mat-icon>Delete
             </button>
         </div>
     </div>
-    <div class="items-container two-columns">
+
+    <div class="items-container two-columns" [style.display]="isEditing ? 'none' : 'grid'">
         <div class="item">
             <div class="item-title-area">
                 <h2>Info</h2>
             </div>
-            <div [hidden]="isEditing" class="item-content">
+            <div class="item-content">
                 <p>Name: {{ tournament?.name }}</p>
                 <p>Place: {{ tournament?.place }}</p>
                 <p>Start date: {{ tournament?.startDate | date: 'dd.MM.yyyy' }}</p>
                 <p>End date: {{ tournament?.endDate | date: 'dd.MM.yyyy' }}</p>
             </div>
-            <div [hidden]="!isEditing" class="item-content">
+        </div>
+        <app-tournament-team-list [tournamentId]="tournamentId"></app-tournament-team-list>
+        <div class="item">
+            <div class="item-title-area">
+                <h2>Groups</h2>
+            </div>
+        </div>
+        <div class="item">
+            <div class="item-title-area">
+                <h2>Play-offs</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="items-container one-column" [style.display]="!isEditing ? 'none' : 'grid'">
+        <div class="item">
+            <div class="item-content">
                 <form [formGroup]="editTournamentForm" (ngSubmit)="editAddTournament(editTournamentForm)">
                     <mat-form-field appearance="outline">
                         <mat-label>Name</mat-label>
@@ -46,16 +63,6 @@
                 </form>
             </div>
         </div>
-        <app-tournament-team-list [tournamentId]="tournamentId"></app-tournament-team-list>
-        <div class="item">
-            <div class="item-title-area">
-                <h2>Groups</h2>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item-title-area">
-                <h2>Play-offs</h2>
-            </div>
-        </div>
     </div>
+
 </div>
