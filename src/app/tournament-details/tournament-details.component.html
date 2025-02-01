@@ -59,35 +59,3 @@
         </div>
     </div>
 </div>
-
-<!-- <div>
-    <ul [hidden]="!isEditing">
-        <form [formGroup]="editTournamentForm" (ngSubmit)="editAddTournament(editTournamentForm)">
-            <label for="name">Name</label>
-            <input type="text" id="name" formControlName="name">
-
-            <label for="place">Place</label>
-            <input type="text" id="place" formControlName="place">
-
-            <label for="start-date">Place</label>
-            <input type="date" id="start-date" formControlName="startDate">
-
-            <label for="end-date">Place</label>
-            <input type="date" id="end-date" formControlName="endDate">
-
-            <button type="submit">Save</button>
-        </form>
-    </ul>
-</div>
-
-<div class="teams">
-    <h3>Drużyny</h3>
-    <ul>
-        @for (team of teamsInTournament; track $index) {
-        <li> {{ team.name }}</li>
-        }
-    </ul>
-</div>
-
-<button type="button" (click)="turnOnEditMode()">Edit</button>
-<button type="button" (click)="deleteTournament()" [hidden]="isNew">Delete</button> -->

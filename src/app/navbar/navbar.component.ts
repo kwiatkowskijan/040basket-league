@@ -43,7 +43,7 @@ export class NavbarComponent {
           },
           {
             route: ['/tournament', this.selectedTournamentId, 'teams'],
-            icon: 'emoji_events',
+            icon: 'groups_2',
             label: 'Teams'
           }
         ];

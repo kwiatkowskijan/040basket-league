@@ -1,9 +1,21 @@
+a {
+    color: #000;
+}
+
 .listing {
     width: 100%;
+    background-color: #ffffff;
+    border-radius: 4px;
     padding: 20px;
     margin-bottom: 10px;
-    border: 0.8px solid lightgray;
     display: flex;
     flex-direction: row;
-    justify-content: space-between
+    justify-content: space-between;
+    -webkit-box-shadow: 1px 1px 4px 0px rgba(193, 193, 193, 1);
+    -moz-box-shadow: 1px 1px 4px 0px rgba(193, 193, 193, 1);
+    box-shadow: 1px 1px 4px 0px rgba(193, 193, 193, 1);
+}
+
+.listing:hover {
+    background-color: #f1f1f1;
 }

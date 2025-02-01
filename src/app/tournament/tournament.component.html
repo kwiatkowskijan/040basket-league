@@ -1,7 +1,8 @@
-<div class="listing">
-    <div class="listing-info">
-        <h3>{{ tournament.name }}</h3>
-        <p>{{tournament.startDate}}</p>
+<a [routerLink]="['/tournament', tournament.id]" (click)="selectTournament(tournament.id)">
+    <div class="listing">
+        <div class="listing-info">
+            <h3>{{ tournament.name }}</h3>
+            <p>{{tournament.startDate}}</p>
+        </div>
     </div>
-    <a [routerLink]="['/tournament', tournament.id]" (click)="selectTournament(tournament.id)">Details</a>
-</div>
+</a>
