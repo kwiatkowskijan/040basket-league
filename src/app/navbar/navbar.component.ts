@@ -28,11 +28,12 @@ export class NavbarComponent {
     }
   ];
 
-  tournamentNavItems: Array<{ route: any[], icon: string, label: string }> = [];
+  tournamentNavItems: Array<{ route: any[] | string, icon: string, label: string }> = [];
 
   ngOnInit() {
     this.tournamentService.selectedTournament$.subscribe(tournamentId => {
       this.selectedTournamentId = tournamentId;
+      console.log(tournamentId);
 
       if (this.selectedTournamentId) {
         this.tournamentNavItems = [
@@ -45,6 +46,11 @@ export class NavbarComponent {
             route: ['/tournament', this.selectedTournamentId, 'teams'],
             icon: 'groups_2',
             label: 'Teams'
+          },
+          {
+            route: '/players',
+            icon: 'group',
+            label: 'Players'
           }
         ];
       } else {

@@ -30,7 +30,7 @@ export class TournamentListComponent implements OnInit {
 
   constructor(private tournamentService: TournamentService) {
 
-    this.tournamentService.setSelectedTournament(null);
+    this.tournamentService.clearSelectedTournament();
 
     this.tournamentService.getAllTournaments().then((tournamentList: Tournament[]) => {
       this.tournamentList = tournamentList;

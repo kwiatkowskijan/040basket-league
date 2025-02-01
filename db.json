@@ -3,7 +3,7 @@
     {
       "id": "0",
       "name": "040Basket Tournament 1.1",
-      "startDate": "2023-09-09",
+      "startDate": "0032-03-11",
       "endDate": "2023-09-09",
       "place": "MOSiR Puszczykowo100"
     },
@@ -56,13 +56,6 @@
           "surname": "Kwiatkowski",
           "email": "pawel@gmail.com",
           "birthDate": "2016-03-19T23:00:00.000Z"
-        },
-        {
-          "id": "f537",
-          "name": "Debil1",
-          "surname": "debil",
-          "email": "debil@debil.pl",
-          "birthDate": "2025-01-20T23:00:00.000Z"
         }
       ]
     },
@@ -135,7 +128,7 @@
       "name": "Debil1",
       "surname": "debil",
       "email": "debil@debil.pl",
-      "birthDate": "2025-01-20T23:00:00.000Z"
+      "birthDate": "2025-01-19T23:00:00.000Z"
     }
   ]
 }
