@@ -1,4 +1,5 @@
 import { Component, Input, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Tournament } from '../models/tournament';
 import { TournamentService } from '../services/tournament.service';
 import { RouterLink } from '@angular/router';
@@ -6,7 +7,7 @@ import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-tournament',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, CommonModule],
   templateUrl: './tournament.component.html',
   styleUrls: ['./tournament.component.css']
 })
