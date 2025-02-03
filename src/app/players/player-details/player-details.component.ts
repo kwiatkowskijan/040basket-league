@@ -1,5 +1,5 @@
 import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Player } from '../../models/player';
 import { PlayersService } from '../../services/players.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -13,7 +13,7 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 @Component({
   selector: 'app-player-details',
   standalone: true,
-  imports: [ReactiveFormsModule, MatFormFieldModule, MatIconModule, MatInputModule, MatButtonModule, MatDatepickerModule],
+  imports: [ReactiveFormsModule, MatFormFieldModule, MatIconModule, MatInputModule, MatButtonModule, MatDatepickerModule, RouterModule],
   templateUrl: './player-details.component.html',
   styleUrl: './player-details.component.css',
   providers: [provideNativeDateAdapter()],

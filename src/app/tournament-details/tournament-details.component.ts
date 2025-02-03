@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Tournament } from '../models/tournament';
 import { TournamentService } from '../services/tournament.service';
@@ -29,8 +29,8 @@ export class TournamentDetailsComponent {
   isNew = false;
 
   editTournamentForm = new FormGroup({
-    name: new FormControl(''),
-    place: new FormControl(''),
+    name: new FormControl('', [Validators.required]),
+    place: new FormControl('', [Validators.required]),
     startDate: new FormControl(),
     endDate: new FormControl()
   });

@@ -46,10 +46,16 @@
                     <mat-form-field appearance="outline">
                         <mat-label>Name</mat-label>
                         <input matInput type="text" id="name" formControlName="name">
+                        @if (editTournamentForm.controls.name.hasError('required')) {
+                        <mat-error>Email is <strong>required</strong></mat-error>
+                        }
                     </mat-form-field>
                     <mat-form-field appearance="outline">
                         <mat-label>Place</mat-label>
                         <input matInput type="text" id="place" formControlName="place">
+                        @if (editTournamentForm.controls.name.hasError('required')) {
+                        <mat-error>Email is <strong>required</strong></mat-error>
+                        }
                     </mat-form-field>
                     <mat-form-field appearance="outline">
                         <mat-label>Start date</mat-label>

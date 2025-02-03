@@ -4,7 +4,7 @@
 
 <div class="section-container">
     <div class="above-items-container">
-        <a routerLink="['/players']">Back to players list</a>
+        <a [routerLink]="['/players']">Back to players list</a>
         <div>
             <button [hidden]="isNew" [hidden]="isEditing" mat-raised-button
                 (click)="turnOnEditMode()"><mat-icon>edit</mat-icon>Edit</button>
