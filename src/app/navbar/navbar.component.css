@@ -28,6 +28,20 @@
     background-color: #05471e;
 }
 
+.tournamentName {
+    color: #fff;
+    width: 100%;
+    padding: 25px 5px 0 5px;
+}
+
+.backToTournaments {
+    color: #ababab;
+    width: 100%;
+    padding: 0 5px 25px 5px;
+    text-decoration: underline;
+    font-size: 10px;
+}
+
 .menu {
     display: flex;
     flex-direction: column;
@@ -54,20 +68,6 @@
 
 .menu mat-icon {
     margin-right: 5px;
-}
-
-.tournamentName {
-    color: #fff;
-    width: 100%;
-    padding: 25px 5px 0 5px;
-}
-
-.backToTournaments {
-    color: #ababab;
-    width: 100%;
-    padding: 0 5px 25px 5px;
-    text-decoration: underline;
-    font-size: 10px;
 }
 
 @media (max-width: 768px) {

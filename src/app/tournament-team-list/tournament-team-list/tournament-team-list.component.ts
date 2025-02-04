@@ -29,11 +29,16 @@ export class TournamentTeamListComponent {
 
   constructor() {
     this.tournamentId = this.route.snapshot.params["id"];
+
+    console.log(this.tournamentId);
   }
 
   ngOnInit() {
     this.teamsService.getTeamsByTournament(this.tournamentId).then(teamsInTournament => {
       this.teamsInTournament = teamsInTournament;
+
+      console.log(teamsInTournament);
+      console.log(this.teamsInTournament);
     });
   }
 
