@@ -10,3 +10,8 @@ form {
 form mat-form-field {
     min-width: 45%;
 }
+
+mat-list-item {
+    display: flex;
+    width: 50%;
+}
