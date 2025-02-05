@@ -38,7 +38,8 @@ export class TournamentTeamDetailsComponent {
   })
 
   addPlayersForm = new FormGroup({
-    player: new FormControl('')
+    player: new FormControl('', [Validators.required]),
+    playerNumber: new FormControl('', [Validators.required, Validators.min(0), Validators.max(99)])
   })
 
   constructor(private router: Router) {
@@ -137,10 +138,15 @@ export class TournamentTeamDetailsComponent {
   addPlayersToTeam(form: FormGroup) {
     if (this.team) {
       const selectedPlayersIds = form.value.player;
+      const selectedPlayerNumber = form.value.playerNumber;
 
       const selectedPlayers = this.availblePlayers.filter(player =>
         selectedPlayersIds.includes(player.id)
       );
+
+      selectedPlayers.forEach(player => {
+        player.number = selectedPlayerNumber;
+      });
 
       this.team.players.push(...selectedPlayers);
 

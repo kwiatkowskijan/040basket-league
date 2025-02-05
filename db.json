@@ -41,28 +41,32 @@
           "email": "kwiatkojan@gmail.com",
           "name": "Jan",
           "surname": "Kwiatkowski",
-          "birthDate": "2002-09-19"
+          "birthDate": "2002-09-19",
+          "number": 1
         },
         {
           "id": "a21b",
           "name": "Michał",
           "surname": "Kwiatkowski",
           "email": "dupa@dupa.pl",
-          "birthDate": ""
+          "birthDate": "",
+          "number": 2
         },
         {
           "id": "287d",
           "name": "Paweł",
           "surname": "Kwiatkowski",
           "email": "pawel@gmail.com",
-          "birthDate": "2016-03-19T23:00:00.000Z"
+          "birthDate": "2016-03-19T23:00:00.000Z",
+          "number": 3
         },
         {
           "id": "f537",
           "name": "Debil1",
           "surname": "debil",
           "email": "debil@debil.pl",
-          "birthDate": "2025-01-19T23:00:00.000Z"
+          "birthDate": "2025-01-19T23:00:00.000Z",
+          "number": 4
         }
       ]
     },
