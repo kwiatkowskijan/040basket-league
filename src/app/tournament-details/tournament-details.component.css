@@ -1,12 +1,10 @@
-.title-area-buttons button {
-    margin-right: 10px;
-}
-
-.item-content form {
+form {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    column-gap: 20px;
+    row-gap: 10px;
 }
 
-.item-content form input {
-    margin-bottom: 10px;
+form mat-form-field {
+    min-width: 45%;
 }

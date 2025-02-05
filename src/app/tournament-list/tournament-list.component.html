@@ -4,7 +4,8 @@
 
 <div class="section-container">
     <div class="title-area">
-        <div class="listing-filtering">
+        <p>Your tournaments</p>
+        <!-- <div class="listing-filtering">
             <form>
                 <mat-form-field appearance="outline">
                     <mat-label>Search tournament</mat-label>
@@ -18,11 +19,11 @@
                     </mat-autocomplete>
                 </mat-form-field>
             </form>
-        </div>
-        <a mat-raised-button [routerLink]="['/tournament']"><mat-icon>add</mat-icon>Add tournament</a>
+        </div> -->
+        <a mat-raised-button [routerLink]="['/tournament']"><mat-icon>add</mat-icon>Add</a>
     </div>
 
-    <div class="listing-container">
+    <div class="items-container three-columns">
         <app-tournament *ngFor="let tournament of displayedTournamentList" [tournament]="tournament"></app-tournament>
     </div>
 </div>

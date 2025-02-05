@@ -11,7 +11,7 @@ export class TournamentService {
 
   url = "http://localhost:3000/tournaments";
 
-  private selectedTournamentSubject = new BehaviorSubject<string | null> (null);
+  private selectedTournamentSubject = new BehaviorSubject<string | null> (this.getStoredTournament());
   selectedTournament$ = this.selectedTournamentSubject.asObservable();
 
   constructor(private http: HttpClient) { }
@@ -38,7 +38,17 @@ export class TournamentService {
     return this.http.delete(`${this.url}/${id}`);
   }
 
-  setSelectedTournament(id: string | null) {
+  setSelectedTournament(id: string) {
+    sessionStorage.setItem('tournamentId', id);
     this.selectedTournamentSubject.next(id);
+  }
+
+  getStoredTournament(): string | null {
+    return sessionStorage.getItem('tournamentId');
+  }
+
+  clearSelectedTournament() {
+    this.selectedTournamentSubject.next(null);
+    sessionStorage.removeItem('tournamentId');
   }
 }

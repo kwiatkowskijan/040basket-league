@@ -1,6 +1,6 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Tournament } from '../models/tournament';
 import { TournamentService } from '../services/tournament.service';
@@ -11,13 +11,17 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { TournamentTeamListComponent } from '../tournament-team-list/tournament-team-list/tournament-team-list.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { provideNativeDateAdapter } from '@angular/material/core';
 
 @Component({
   selector: 'app-tournament-details',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MatIconModule, MatButtonModule, MatDividerModule, MatInputModule, MatFormFieldModule, TournamentTeamListComponent],
+  imports: [CommonModule, ReactiveFormsModule, MatIconModule, MatButtonModule, MatDividerModule, MatInputModule, MatFormFieldModule, TournamentTeamListComponent, MatDatepickerModule],
   templateUrl: './tournament-details.component.html',
-  styleUrl: './tournament-details.component.css'
+  styleUrl: './tournament-details.component.css',
+  providers: [provideNativeDateAdapter()],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TournamentDetailsComponent {
   tournamentId!: string;
@@ -29,8 +33,8 @@ export class TournamentDetailsComponent {
   isNew = false;
 
   editTournamentForm = new FormGroup({
-    name: new FormControl(''),
-    place: new FormControl(''),
+    name: new FormControl('', [Validators.required]),
+    place: new FormControl('', [Validators.required]),
     startDate: new FormControl(),
     endDate: new FormControl()
   });
@@ -71,8 +75,6 @@ export class TournamentDetailsComponent {
       this.tournament.place = form.value.place ?? '';
       this.tournament.startDate = form.value.startDate ?? '';
       this.tournament.endDate = form.value.endDate ?? '';
-
-      // Zrozumieć na czym polega subskrypcja
 
       if (this.isNew) {
         this.tournamentService.addTournament(this.tournament).subscribe({

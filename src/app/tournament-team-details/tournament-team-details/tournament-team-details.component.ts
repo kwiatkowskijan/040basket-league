@@ -30,6 +30,7 @@ export class TournamentTeamDetailsComponent {
   isNew = false;
   isAddingPlayer = false;
   availblePlayers: Player[] = [];
+  teamsPlayers: Player[] = [];
 
   teamForm = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.maxLength(50)]),
@@ -62,9 +63,17 @@ export class TournamentTeamDetailsComponent {
       });
     }
 
-    this.playerService.getAllPlayers().then(availblePlayers => {
-      this.availblePlayers = availblePlayers.filter(player => {
-        return !this.team?.players.some(teamPlayer => String(teamPlayer.id) === String(player.id));
+    this.playerService.getAllPlayers().then(allPlayers => {
+      this.teamService.getTeamsByTournament(this.tournamentId).then(teams => {
+        console.log(teams);
+        teams.forEach(teamItem => {
+          teamItem.players?.forEach(player => {
+            this.teamsPlayers.push(player);
+          })
+        });
+        this.availblePlayers = allPlayers.filter(player => {
+          return !this.teamsPlayers?.find(teamsPlayer => teamsPlayer.id === player.id);
+        });
       });
     });
   }

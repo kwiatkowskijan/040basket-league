@@ -1,0 +1,12 @@
+form {
+    display: flex;
+    /* justify-content: space-around;
+    align-items: center; */
+    flex-wrap: wrap;
+    column-gap: 20px;
+    row-gap: 10px;
+}
+
+form mat-form-field {
+    min-width: 45%;
+}
