@@ -3,8 +3,10 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterLink, Router } from '@angular/router';
 import { Team } from '../../models/team';
 import { Player } from '../../models/player';
+import { Tournament } from '../../models/tournament';
 import { TeamsService } from '../../services/teams.service';
 import { PlayersService } from '../../services/players.service';
+import { TournamentService } from '../../services/tournament.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -28,7 +30,9 @@ export class TournamentTeamDetailsComponent {
   route: ActivatedRoute = inject(ActivatedRoute);
   teamService = inject(TeamsService);
   playerService = inject(PlayersService);
+  tournamentService = inject(TournamentService);
   team: Team | undefined;
+  tournament: Tournament | undefined;
   isEditing = false;
   isNew = false;
   isAddingPlayer = false;
@@ -59,13 +63,16 @@ export class TournamentTeamDetailsComponent {
     } else {
       this.teamService.getTeamById(this.teamId).then(team => {
         this.team = team;
-
         this.teamForm.setValue({
           name: this.team?.name ?? '',
           city: this.team?.city ?? ''
         })
       });
     }
+
+    this.tournamentService.getTournamentById(this.tournamentId).then(tournament => {
+      this.tournament = tournament;
+    })
 
     this.playerService.getAllPlayers().then(allPlayers => {
       this.teamService.getTeamsByTournament(this.tournamentId).then(teams => {

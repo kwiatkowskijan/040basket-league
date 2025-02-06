@@ -5,28 +5,32 @@
       "name": "040Basket Tournament 1.1",
       "startDate": "2024-03-10T23:00:00.000Z",
       "endDate": "2023-09-09",
-      "place": "MOSiR Puszczykowo100"
+      "place": "MOSiR Puszczykowo100",
+      "maxPlayersInTeam": 4
     },
     {
       "id": "2",
       "name": "040Basket Tournament 3.0",
       "startDate": "2025-09-14",
       "endDate": "2025-09-14",
-      "place": "MOSiR Puszczykowo"
+      "place": "MOSiR Puszczykowo",
+      "maxPlayersInTeam": 4
     },
     {
       "id": "4",
       "name": "040Basket Tournament 2.0",
       "startDate": "2024-09-14",
       "endDate": "2024-09-14",
-      "place": "Hala Puszczykowo"
+      "place": "Hala Puszczykowo",
+      "maxPlayersInTeam": 4
     },
     {
       "id": "5",
       "name": "040Basket Tournament 3.0",
       "startDate": "2025-09-14",
       "endDate": "2025-09-14",
-      "place": "MOSiR Puszczykowo"
+      "place": "MOSiR Puszczykowo",
+      "maxPlayersInTeam": 4
     }
   ],
   "teams": [
