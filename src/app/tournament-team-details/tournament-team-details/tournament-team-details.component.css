@@ -1,7 +1,5 @@
 form {
     display: flex;
-    /* justify-content: space-around;
-    align-items: center; */
     flex-wrap: wrap;
     column-gap: 20px;
     row-gap: 10px;
@@ -9,4 +7,42 @@ form {
 
 form mat-form-field {
     min-width: 45%;
+}
+
+.list-item {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 0.7px solid lightgray;
+}
+
+.list-item:last-child {
+    border-bottom: none;
+}
+
+.team-count {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 0.8px solid var(--border);
+    margin-bottom: 20px;
+}
+
+.team-count div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px 30px 20px;
+}
+
+.team-count div:first-child {
+    border-right: 0.8px solid var(--border);
+}
+
+.team-counter {
+    font-size: 36px;
 }

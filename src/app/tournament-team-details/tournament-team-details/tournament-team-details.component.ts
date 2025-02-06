@@ -3,19 +3,24 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterLink, Router } from '@angular/router';
 import { Team } from '../../models/team';
 import { Player } from '../../models/player';
+import { Tournament } from '../../models/tournament';
 import { TeamsService } from '../../services/teams.service';
 import { PlayersService } from '../../services/players.service';
+import { TournamentService } from '../../services/tournament.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
   selector: 'app-tournament-team-details',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, MatSelectModule, RouterLink],
+  imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, MatSelectModule, RouterLink, MatDividerModule, MatListModule, MatMenuModule],
   templateUrl: './tournament-team-details.component.html',
   styleUrl: './tournament-team-details.component.css'
 })
@@ -25,7 +30,9 @@ export class TournamentTeamDetailsComponent {
   route: ActivatedRoute = inject(ActivatedRoute);
   teamService = inject(TeamsService);
   playerService = inject(PlayersService);
+  tournamentService = inject(TournamentService);
   team: Team | undefined;
+  tournament: Tournament | undefined;
   isEditing = false;
   isNew = false;
   isAddingPlayer = false;
@@ -38,7 +45,8 @@ export class TournamentTeamDetailsComponent {
   })
 
   addPlayersForm = new FormGroup({
-    player: new FormControl('')
+    player: new FormControl('', [Validators.required]),
+    playerNumber: new FormControl('', [Validators.required, Validators.min(0), Validators.max(99)])
   })
 
   constructor(private router: Router) {
@@ -55,13 +63,16 @@ export class TournamentTeamDetailsComponent {
     } else {
       this.teamService.getTeamById(this.teamId).then(team => {
         this.team = team;
-
         this.teamForm.setValue({
           name: this.team?.name ?? '',
           city: this.team?.city ?? ''
         })
       });
     }
+
+    this.tournamentService.getTournamentById(this.tournamentId).then(tournament => {
+      this.tournament = tournament;
+    })
 
     this.playerService.getAllPlayers().then(allPlayers => {
       this.teamService.getTeamsByTournament(this.tournamentId).then(teams => {
@@ -137,10 +148,15 @@ export class TournamentTeamDetailsComponent {
   addPlayersToTeam(form: FormGroup) {
     if (this.team) {
       const selectedPlayersIds = form.value.player;
+      const selectedPlayerNumber = form.value.playerNumber;
 
       const selectedPlayers = this.availblePlayers.filter(player =>
         selectedPlayersIds.includes(player.id)
       );
+
+      selectedPlayers.forEach(player => {
+        player.number = selectedPlayerNumber;
+      });
 
       this.team.players.push(...selectedPlayers);
 
@@ -153,6 +169,22 @@ export class TournamentTeamDetailsComponent {
           console.error('Wystąpił błąd podczas dodawania graczy:', error);
         }
       });
+    }
+  }
+
+  removePlayerFromTeam(playerId: string) {
+    if (this.team) {
+      this.team.players = this.team.players.filter(player => player.id !== playerId);
+
+      this.teamService.editTeam(this.team).subscribe({
+        next: (data) => {
+          this.team = data;
+          this.isAddingPlayer = false;
+        },
+        error: (error) => {
+          console.error('Wystąpił błąd podczas usuwania gracza:', error);
+        }
+      })
     }
   }
 }

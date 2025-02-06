@@ -36,7 +36,8 @@ export class TournamentDetailsComponent {
     name: new FormControl('', [Validators.required]),
     place: new FormControl('', [Validators.required]),
     startDate: new FormControl(),
-    endDate: new FormControl()
+    endDate: new FormControl(),
+    maxPlayersInTeam: new FormControl(0, [Validators.required, Validators.min(1)])
   });
 
   constructor() {
@@ -57,7 +58,8 @@ export class TournamentDetailsComponent {
           name: this.tournament?.name ?? '',
           place: this.tournament?.place ?? '',
           startDate: this.tournament?.startDate ?? '',
-          endDate: this.tournament?.endDate ?? ''
+          endDate: this.tournament?.endDate ?? '',
+          maxPlayersInTeam: this.tournament?.maxPlayersInTeam ?? null
         });
       });
     }
@@ -75,6 +77,7 @@ export class TournamentDetailsComponent {
       this.tournament.place = form.value.place ?? '';
       this.tournament.startDate = form.value.startDate ?? '';
       this.tournament.endDate = form.value.endDate ?? '';
+      this.tournament.maxPlayersInTeam = form.value.maxPlayersInTeam ?? null;
 
       if (this.isNew) {
         this.tournamentService.addTournament(this.tournament).subscribe({
