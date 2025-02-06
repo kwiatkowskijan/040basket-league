@@ -50,6 +50,11 @@ export class NavbarComponent {
             label: 'Dashboard'
           },
           {
+            route: ['/tournament', this.selectedTournamentId, 'edit'],
+            icon: 'settings',
+            label: 'Settings'
+          },
+          {
             route: ['/tournament', this.selectedTournamentId, 'teams'],
             icon: 'groups_2',
             label: 'Teams'
