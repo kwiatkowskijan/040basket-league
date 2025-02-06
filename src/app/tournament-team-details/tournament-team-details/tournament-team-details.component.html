@@ -74,12 +74,24 @@
                 </div>
             </div>
             <div class="item-content">
-                <mat-list>
-                    @for(player of team?.players; track $index) {
-                        <mat-list-item><a [routerLink]="['/player/', player.id]">{{ player.name }} {{ player.surname }} ({{ player.number }})</a></mat-list-item>
-                        <mat-divider></mat-divider>
-                    }
-                </mat-list>
+                @for(player of team?.players; track $index) {
+                <div class="list-item">
+                    <a [routerLink]="['/player/', player.id]">{{ player.name }} {{ player.surname }} ({{ player.number }})</a>
+                    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                        <mat-icon>more_vert</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item>
+                            <mat-icon>edit</mat-icon>
+                            <span>Edit</span>
+                        </button>
+                        <button mat-menu-item (click)="removePlayerFromTeam(player.id)">
+                            <mat-icon>delete</mat-icon>
+                            <span>Delete</span>
+                        </button>
+                    </mat-menu>
+                </div>
+                }
                 <div [hidden]="!isAddingPlayer">
                     <form [formGroup]="addPlayersForm" (ngSubmit)="addPlayersToTeam(addPlayersForm)">
                         <mat-form-field appearance="outline">

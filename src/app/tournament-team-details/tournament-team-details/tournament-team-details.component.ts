@@ -13,11 +13,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
   selector: 'app-tournament-team-details',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, MatSelectModule, RouterLink, MatDividerModule, MatListModule],
+  imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, MatSelectModule, RouterLink, MatDividerModule, MatListModule, MatMenuModule],
   templateUrl: './tournament-team-details.component.html',
   styleUrl: './tournament-team-details.component.css'
 })
@@ -161,6 +162,22 @@ export class TournamentTeamDetailsComponent {
           console.error('Wystąpił błąd podczas dodawania graczy:', error);
         }
       });
+    }
+  }
+
+  removePlayerFromTeam(playerId: string) {
+    if (this.team) {
+      this.team.players = this.team.players.filter(player => player.id !== playerId);
+
+      this.teamService.editTeam(this.team).subscribe({
+        next: (data) => {
+          this.team = data;
+          this.isAddingPlayer = false;
+        },
+        error: (error) => {
+          console.error('Wystąpił błąd podczas usuwania gracza:', error);
+        }
+      })
     }
   }
 }

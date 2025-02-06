@@ -58,15 +58,7 @@
           "surname": "Kwiatkowski",
           "email": "pawel@gmail.com",
           "birthDate": "2016-03-19T23:00:00.000Z",
-          "number": 3
-        },
-        {
-          "id": "f537",
-          "name": "Debil1",
-          "surname": "debil",
-          "email": "debil@debil.pl",
-          "birthDate": "2025-01-19T23:00:00.000Z",
-          "number": 4
+          "number": 9
         }
       ]
     },
@@ -110,6 +102,12 @@
       "name": "sfasf",
       "city": "safas",
       "tournamentId": "2"
+    },
+    {
+      "id": "74f8",
+      "name": "Team1",
+      "city": "Poznań",
+      "tournamentId": "4"
     }
   ],
   "players": [
