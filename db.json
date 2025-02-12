@@ -14,7 +14,7 @@
       "startDate": "2025-09-14",
       "endDate": "2025-09-14",
       "place": "MOSiR Puszczykowo",
-      "maxPlayersInTeam": 4
+      "maxPlayersInTeam": 5
     },
     {
       "id": "4",
@@ -71,6 +71,14 @@
           "email": "pawel@gmail.com",
           "birthDate": "2016-03-19T23:00:00.000Z",
           "number": 55
+        },
+        {
+          "id": "42ec",
+          "name": "Marcin",
+          "surname": "Gortat",
+          "email": "marcin@gortat.pl",
+          "birthDate": "2025-02-01T23:00:00.000Z",
+          "number": 10
         }
       ]
     },

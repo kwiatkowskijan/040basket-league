@@ -5,6 +5,7 @@ import { TournamentTeamDetailsComponent } from './tournament-team-details/tourna
 import { TournamentTeamListComponent } from './tournament-team-list/tournament-team-list/tournament-team-list.component';
 import { PlayersListComponent } from './players/players-list/players-list.component';
 import { PlayerDetailsComponent } from './players/player-details/player-details.component';
+import { TournamentSettingsComponent } from './components/tournament/tournament-settings/tournament-settings.component';
 
 export const routes: Routes = [
     {
@@ -41,6 +42,11 @@ export const routes: Routes = [
         path: 'tournament/:id/teams',
         component: TournamentTeamListComponent,
         title: 'Teams'
+    },
+    {
+        path: 'tournament/:id/edit',
+        component: TournamentSettingsComponent,
+        title: 'Edit tournament'
     },
     {
         path: 'players',
