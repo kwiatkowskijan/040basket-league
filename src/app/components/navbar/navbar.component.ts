@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { RouterModule, RouterLink } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
-import { TournamentService } from '../services/tournament.service';
-import { Tournament } from '../models/tournament';
+import { TournamentService } from '../../services/tournament.service';
+import { Tournament } from '../../models/tournament';
 
 @Component({
   selector: 'app-navbar',

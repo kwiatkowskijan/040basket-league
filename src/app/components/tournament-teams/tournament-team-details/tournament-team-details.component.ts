@@ -1,12 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterLink, Router } from '@angular/router';
-import { Team } from '../../models/team';
-import { Player } from '../../models/player';
-import { Tournament } from '../../models/tournament';
-import { TeamsService } from '../../services/teams.service';
-import { PlayersService } from '../../services/players.service';
-import { TournamentService } from '../../services/tournament.service';
+import { Team } from '../../../models/team';
+import { Player } from '../../../models/player';
+import { Tournament } from '../../../models/tournament';
+import { TeamsService } from '../../../services/teams.service';
+import { PlayersService } from '../../../services/players.service';
+import { TournamentService } from '../../../services/tournament.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';

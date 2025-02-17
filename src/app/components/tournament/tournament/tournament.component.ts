@@ -1,7 +1,7 @@
 import { Component, Input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Tournament } from '../models/tournament';
-import { TournamentService } from '../services/tournament.service';
+import { Tournament } from '../../../models/tournament';
+import { TournamentService } from '../../../services/tournament.service';
 import { RouterLink } from '@angular/router';
 
 @Component({

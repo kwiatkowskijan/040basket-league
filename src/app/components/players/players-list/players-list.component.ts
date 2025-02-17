@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PlayersService } from '../../services/players.service';
-import { Player } from '../../models/player';
+import { PlayersService } from '../../../services/players.service';
+import { Player } from '../../../models/player';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';

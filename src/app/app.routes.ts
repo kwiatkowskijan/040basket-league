@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
-import { TournamentListComponent } from './tournament-list/tournament-list.component';
-import { TournamentDetailsComponent } from './tournament-details/tournament-details.component';
-import { TournamentTeamDetailsComponent } from './tournament-team-details/tournament-team-details/tournament-team-details.component';
-import { TournamentTeamListComponent } from './tournament-team-list/tournament-team-list/tournament-team-list.component';
-import { PlayersListComponent } from './players/players-list/players-list.component';
-import { PlayerDetailsComponent } from './players/player-details/player-details.component';
+import { TournamentListComponent } from './components/tournament/tournaments-list/tournament-list.component';
+import { TournamentDetailsComponent } from './components/tournament/tournament-details/tournament-details.component';
+import { TournamentTeamDetailsComponent } from './components/tournament-teams/tournament-team-details/tournament-team-details.component';
+import { TournamentTeamListComponent } from './components/tournament-teams/tournament-team-list/tournament-team-list.component';
+import { PlayersListComponent } from './components/players/players-list/players-list.component';
+import { PlayerDetailsComponent } from './components/players/player-details/player-details.component';
 import { TournamentSettingsComponent } from './components/tournament/tournament-settings/tournament-settings.component';
 
 export const routes: Routes = [

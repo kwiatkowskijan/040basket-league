@@ -1,7 +1,7 @@
 import { Component, inject, Input } from '@angular/core';
 import { RouterLink, ActivatedRoute } from '@angular/router';
-import { Team } from '../../models/team';
-import { TeamsService } from '../../services/teams.service';
+import { Team } from '../../../models/team';
+import { TeamsService } from '../../../services/teams.service';
 import { FormsModule, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
