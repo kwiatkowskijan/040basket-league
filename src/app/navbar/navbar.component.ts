@@ -14,7 +14,7 @@ import { Tournament } from '../models/tournament';
 export class NavbarComponent {
 
   tournamentService = inject(TournamentService);
-  selectedTournamentId: string | null = null;
+  selectedTournamentId: number | null = null;
   tournament: Tournament | undefined;
 
   navItems = [

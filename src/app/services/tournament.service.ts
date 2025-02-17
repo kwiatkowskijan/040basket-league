@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { Tournament  } from '../models/tournament';
+import { Tournament } from '../models/tournament';
 
 
 @Injectable({
@@ -11,7 +11,7 @@ export class TournamentService {
 
   url = "http://localhost:3000/tournaments";
 
-  private selectedTournamentSubject = new BehaviorSubject<string | null> (this.getStoredTournament());
+  private selectedTournamentSubject = new BehaviorSubject<number | null>(this.getStoredTournament());
   selectedTournament$ = this.selectedTournamentSubject.asObservable();
 
   constructor(private http: HttpClient) { }
@@ -21,7 +21,7 @@ export class TournamentService {
     return await data.json() ?? [];
   }
 
-  async getTournamentById(id: string): Promise<Tournament | undefined> {
+  async getTournamentById(id: number): Promise<Tournament | undefined> {
     const data = await fetch(`${this.url}/${id}`);
     return await data.json() ?? [];
   }
@@ -34,17 +34,18 @@ export class TournamentService {
     return this.http.post(this.url, tournament);
   }
 
-  deleteTournament(id: string): Observable<any> {
+  deleteTournament(id: number): Observable<any> {
     return this.http.delete(`${this.url}/${id}`);
   }
 
-  setSelectedTournament(id: string) {
-    sessionStorage.setItem('tournamentId', id);
+  setSelectedTournament(id: number) {
+    sessionStorage.setItem('tournamentId', id.toString());
     this.selectedTournamentSubject.next(id);
   }
 
-  getStoredTournament(): string | null {
-    return sessionStorage.getItem('tournamentId');
+  getStoredTournament(): number | null {
+    const tournamentId = sessionStorage.getItem('tournamentId');
+    return tournamentId !== null ? Number(tournamentId) : null;
   }
 
   clearSelectedTournament() {

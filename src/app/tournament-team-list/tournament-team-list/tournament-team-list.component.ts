@@ -16,7 +16,7 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrl: './tournament-team-list.component.css'
 })
 export class TournamentTeamListComponent {
-  @Input() tournamentId!: string;
+  @Input() tournamentId!: number;
   teamsInTournament: Team[] = [];
   maxVisibleTeams = 5;
   teamsService = inject(TeamsService);

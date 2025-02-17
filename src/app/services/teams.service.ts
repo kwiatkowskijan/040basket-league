@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Team } from '../models/team';
-import { Player } from '../models/player';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -9,17 +8,17 @@ import { Observable } from 'rxjs';
 })
 export class TeamsService {
 
-  url = "http://localhost:3000/teams";
+  url = "http://localhost:3000/tournaments/:id/teams";
 
   constructor(private http: HttpClient) { }
 
-  async getTeamById(teamId: string): Promise<Team> {
+  async getTeamById(teamId: number): Promise<Team> {
     const data = await fetch(`${this.url}/${teamId}`);
     return await data.json() ?? [];
   }
 
-  async getTeamsByTournament(tournamentId: string): Promise<Team[]> {
-    const data = await fetch(`${this.url}?tournamentId=${tournamentId}`);
+  async getTeamsByTournament(tournamentId: number): Promise<Team[]> {
+    const data = await fetch(`http://localhost:3000/tournaments/${tournamentId}/teams`);
     return await data.json() ?? [];
   }
 
@@ -31,7 +30,7 @@ export class TeamsService {
     return this.http.put(`${this.url}/${team.id}`, team)
   }
 
-  deleteTeam(id: string): Observable<any> {
+  deleteTeam(id: number): Observable<any> {
     return this.http.delete(`${this.url}/${id}`);
   }
 }

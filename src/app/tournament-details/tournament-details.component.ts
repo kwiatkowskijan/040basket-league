@@ -24,7 +24,7 @@ import { provideNativeDateAdapter } from '@angular/material/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TournamentDetailsComponent {
-  tournamentId!: string;
+  tournamentId!: number;
   route: ActivatedRoute = inject(ActivatedRoute);
   tournamentService = inject(TournamentService);
   teamsService = inject(TeamsService);
@@ -41,6 +41,8 @@ export class TournamentDetailsComponent {
   });
 
   constructor() {
+    console.log(this.tournament);
+
     this.tournamentId = this.route.snapshot.params["id"];
 
     if (this.tournamentId === undefined) {

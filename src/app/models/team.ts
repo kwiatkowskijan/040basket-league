@@ -1,9 +1,9 @@
 import { Player } from "./player";
 
 export interface Team {
-    id: string,
+    tournamentId: number,
+    id: number,
     name: string,
     city: string,
-    tournamentId: string,
     players: Player[];
 }

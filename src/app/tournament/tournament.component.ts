@@ -15,7 +15,7 @@ export class TournamentComponent {
   @Input() tournament!: Tournament;
   tournamentService = inject(TournamentService);
 
-  selectTournament(tournamentId: string) {
+  selectTournament(tournamentId: number) {
     this.tournamentService.setSelectedTournament(tournamentId);
   }
 }

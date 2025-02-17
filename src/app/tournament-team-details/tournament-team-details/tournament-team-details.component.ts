@@ -25,8 +25,8 @@ import { MatMenuModule } from '@angular/material/menu';
   styleUrl: './tournament-team-details.component.css'
 })
 export class TournamentTeamDetailsComponent {
-  teamId!: string;
-  tournamentId!: string;
+  teamId!: number;
+  tournamentId!: number;
   route: ActivatedRoute = inject(ActivatedRoute);
   teamService = inject(TeamsService);
   playerService = inject(PlayersService);
