@@ -50,8 +50,11 @@ export class TournamentTeamDetailsComponent {
   })
 
   constructor(private router: Router) {
-    this.tournamentId = this.route.snapshot.params["id"];
+    this.tournamentId = Number(this.route.snapshot.params["id"]);
     this.teamId = this.route.snapshot.params["id2"];
+
+    console.log(this.tournamentId);
+    console.log(this.teamId);
 
     if (this.teamId === undefined) {
       this.isNew = true;
@@ -61,7 +64,7 @@ export class TournamentTeamDetailsComponent {
     if (this.isNew) {
       this.team = {} as Team;
     } else {
-      this.teamService.getTeamById(this.teamId).then(team => {
+      this.teamService.getTeamById(this.tournamentId, this.teamId).then(team => {
         this.team = team;
         this.teamForm.setValue({
           name: this.team?.name ?? '',
@@ -99,13 +102,15 @@ export class TournamentTeamDetailsComponent {
 
   createEditTeam(form: FormGroup) {
     if (this.team) {
+      this.team.tournamentId = this.tournamentId;
       this.team.name = form.value.name ?? '';
       this.team.city = form.value.city ?? '';
-      this.team.tournamentId = this.tournamentId;
 
       if (this.isNew) {
-        this.teamService.createTeam(this.team).subscribe({
+        this.teamService.createTeam(this.tournamentId, this.team).subscribe({
           next: (data) => {
+            console.log(data);
+            console.log(this.team)
             this.team = data;
             this.isNew = false;
             this.isEditing = false;
@@ -116,7 +121,7 @@ export class TournamentTeamDetailsComponent {
           }
         });
       } else {
-        this.teamService.editTeam(this.team).subscribe({
+        this.teamService.editTeam(this.tournamentId, this.team).subscribe({
           next: (data) => {
             this.team = data;
             this.isEditing = false;
@@ -132,7 +137,7 @@ export class TournamentTeamDetailsComponent {
 
   deleteTeam() {
     if (this.team && !this.isNew) {
-      this.teamService.deleteTeam(this.team.id).subscribe({
+      this.teamService.deleteTeam(this.tournamentId, this.team.id).subscribe({
         next: (data) => {
           this.team = data;
           this.router.navigate(['/tournament', this.tournamentId]);
@@ -160,7 +165,7 @@ export class TournamentTeamDetailsComponent {
 
       this.team.players.push(...selectedPlayers);
 
-      this.teamService.editTeam(this.team).subscribe({
+      this.teamService.editTeam(this.tournamentId, this.team).subscribe({
         next: (data) => {
           this.team = data;
           this.isAddingPlayer = false;
@@ -176,7 +181,7 @@ export class TournamentTeamDetailsComponent {
     if (this.team) {
       this.team.players = this.team.players.filter(player => player.id !== playerId);
 
-      this.teamService.editTeam(this.team).subscribe({
+      this.teamService.editTeam(this.tournamentId, this.team).subscribe({
         next: (data) => {
           this.team = data;
           this.isAddingPlayer = false;

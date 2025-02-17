@@ -8,12 +8,12 @@ import { Observable } from 'rxjs';
 })
 export class TeamsService {
 
-  url = "http://localhost:3000/tournaments/:id/teams";
+  url = "http://localhost:3000/tournaments";
 
   constructor(private http: HttpClient) { }
 
-  async getTeamById(teamId: number): Promise<Team> {
-    const data = await fetch(`${this.url}/${teamId}`);
+  async getTeamById(tournamentId: number, teamId: number): Promise<Team> {
+    const data = await fetch(`${this.url}/${tournamentId}/teams/${teamId}`);
     return await data.json() ?? [];
   }
 
@@ -22,15 +22,15 @@ export class TeamsService {
     return await data.json() ?? [];
   }
 
-  createTeam(team: Team): Observable<any> {
-    return this.http.post(this.url, team);
+  createTeam(tournamentId: number, team: Team): Observable<any> {
+    return this.http.post(`${this.url}/${tournamentId}/teams`, team);
   }
 
-  editTeam(team: Team): Observable<any> {
-    return this.http.put(`${this.url}/${team.id}`, team)
+  editTeam(tournamentId: number, team: Team): Observable<any> {
+    return this.http.put(`${this.url}/${tournamentId}/teams/${team.id}`, team)
   }
 
-  deleteTeam(id: number): Observable<any> {
-    return this.http.delete(`${this.url}/${id}`);
+  deleteTeam(tournamentId: number, teamId: number): Observable<any> {
+    return this.http.delete(`${this.url}/${tournamentId}/teams/${teamId}`);
   }
 }
