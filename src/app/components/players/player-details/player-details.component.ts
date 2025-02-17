@@ -69,7 +69,7 @@ export class PlayerDetailsComponent {
       this.player.email = form.value.email ?? '';
       this.player.birthDate = form.value.birthDate ?? '';
       
-      this.player.birthDate.toLocaleDateString();
+      //this.player.birthDate.toLocaleDateString();
 
       if (this.isNew) {
         this.playerService.createPlayer(this.player).subscribe({

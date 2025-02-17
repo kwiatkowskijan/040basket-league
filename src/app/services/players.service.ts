@@ -22,11 +22,6 @@ export class PlayersService {
     return await data.json() ?? [];
   }
 
-  // async getPlayersByTeam(id: string): Promise<Player[]> {
-  //   const data = await fetch(`${this.url}?teamId=${id}`);
-  //   return await data.json() ?? [];
-  // } 
-
   createPlayer(player: Player): Observable<any> {
     return this.http.post(this.url, player);
   }
