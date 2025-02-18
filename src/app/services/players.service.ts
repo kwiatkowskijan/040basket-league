@@ -17,7 +17,7 @@ export class PlayersService {
     return await data.json() ?? [];
   }
 
-  async getPlayerById(id: string): Promise<Player | undefined> {
+  async getPlayerById(id: number): Promise<Player | undefined> {
     const data = await fetch(`${this.url}/${id}`);
     return await data.json() ?? [];
   }
@@ -30,7 +30,7 @@ export class PlayersService {
     return this.http.put(`${this.url}/${player.id}`, player);
   }
 
-  deletePlayer(id: string): Observable<any> {
+  deletePlayer(id: number): Observable<any> {
     return this.http.delete(`${this.url}/${id}`);
   }
 }

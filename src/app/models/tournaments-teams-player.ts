@@ -1,4 +1,6 @@
 export interface Player {
+    touenamentId: number,
+    teamId: number,
     id: number,
     email: string,
     name: string,

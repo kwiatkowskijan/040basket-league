@@ -20,7 +20,7 @@ import { provideNativeDateAdapter } from '@angular/material/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PlayerDetailsComponent {
-  playerId!: string;
+  playerId!: number;
   route: ActivatedRoute = inject(ActivatedRoute);
   playerService = inject(PlayersService);
   player: Player | undefined;

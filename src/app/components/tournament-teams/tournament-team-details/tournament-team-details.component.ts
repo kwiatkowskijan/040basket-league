@@ -177,7 +177,7 @@ export class TournamentTeamDetailsComponent {
     }
   }
 
-  removePlayerFromTeam(playerId: string) {
+  removePlayerFromTeam(playerId: number) {
     if (this.team) {
       this.team.players = this.team.players.filter(player => player.id !== playerId);
 
