@@ -1,1 +1,3 @@
-<p>tournaments-teams-players-list works!</p>
+@for(player of tournamentsTeamsPlayers; track $index) {
+    <p>{{ player.name }} {{ player.surname }}</p>
+}

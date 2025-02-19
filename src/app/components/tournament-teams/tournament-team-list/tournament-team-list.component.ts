@@ -33,7 +33,6 @@ export class TournamentTeamListComponent {
   }
 
   ngOnInit() {
-    console.log("To jest NgOnInit");
     this.teamsService.getTeamsByTournament(this.tournamentId).then(teamsInTournament => {
       this.teamsInTournament = teamsInTournament;
     });
