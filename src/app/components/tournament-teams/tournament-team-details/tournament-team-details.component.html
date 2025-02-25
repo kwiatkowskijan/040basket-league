@@ -66,7 +66,8 @@
                 <h3>Stats</h3>
             </div>
         </div>
-        <div class="item" [hidden]="isEditing">
+        <app-tournaments-teams-players-list [tournamentId]="tournamentId" [teamId]="teamId" [hidden]="isEditing"></app-tournaments-teams-players-list>
+        <!-- <div class="item" [hidden]="isEditing">
             <div class="item-title-area">
                 <h3>Players</h3>
                 <div class="action-buttons">
@@ -84,8 +85,7 @@
                 </div>
             </div>
             <div class="item-content">
-                <app-tournaments-teams-players-list [tournamentId]="tournamentId" [teamId]="teamId"></app-tournaments-teams-players-list>
-                <!-- @for(player of team?.players; track $index) {
+                @for(player of team?.players; track $index) {
                 <div class="list-item">
                     <a [routerLink]="['/player/', player.id]">{{ player.name }} {{ player.surname }} ({{ player.number
                         }})</a>
@@ -103,7 +103,7 @@
                         </button>
                     </mat-menu>
                 </div>
-                } -->
+                }
                 <div class="list-item" [style.display]="!isAddingPlayer ? 'none' : 'flex'">
                     <form [formGroup]="addPlayersForm" (ngSubmit)="addPlayersToTeam(addPlayersForm)">
                         <mat-form-field appearance="outline">
@@ -138,6 +138,6 @@
                     </form>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>
