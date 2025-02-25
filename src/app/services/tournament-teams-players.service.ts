@@ -22,15 +22,15 @@ export class TournamentTeamsPlayersService {
     return await data.json() ?? [];
   }
 
-  addPlayerToTeam(tournamentId: number, teamId: number): Observable<any> {
-    return this.http.post(`${this.url}/${tournamentId}/teams`, team);
+  addPlayerToTeam(tournamentId: number, teamId: number, player: TournamentsTeamsPlayer): Observable<any> {
+    return this.http.post(`${this.url}/${tournamentId}/teams/${teamId}/players`, player);
   }
 
-  editPlayerInTeam(tournamentId: number, teamId: number): Observable<any> {
-    return this.http.put(`${this.url}/${tournamentId}/teams/${team.id}`, team)
+  editPlayerInTeam(tournamentId: number, teamId: number, player: TournamentsTeamsPlayer): Observable<any> {
+    return this.http.put(`${this.url}/${tournamentId}/teams/${teamId}/players`, player)
   }
 
-  removePlayerFromTeam(tournamentId: number, teamId: number): Observable<any> {
-    return this.http.delete(`${this.url}/${tournamentId}/teams/${teamId}`);
+  removePlayerFromTeam(tournamentId: number, teamId: number, id: number): Observable<any> {
+    return this.http.delete(`${this.url}/${tournamentId}/teams/${teamId}/players/${id}`);
   }
 }
