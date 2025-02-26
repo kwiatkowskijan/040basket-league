@@ -66,21 +66,20 @@
                 <h3>Stats</h3>
             </div>
         </div>
-        <div class="item" [hidden]="isEditing">
+        <app-tournaments-teams-players-list [tournamentId]="tournamentId" [teamId]="teamId" [hidden]="isEditing"></app-tournaments-teams-players-list>
+        <!-- <div class="item" [hidden]="isEditing">
             <div class="item-title-area">
                 <h3>Players</h3>
                 <div class="action-buttons">
-                    @if(team && team.players && tournament && tournament.maxPlayersInTeam && team.players.length < tournament.maxPlayersInTeam) {
-                        <a mat-button (click)="addNewPlayer()"><mat-icon>add</mat-icon>Add player</a>
-                    }
+                    <a mat-button (click)="addNewPlayer()"><mat-icon>add</mat-icon>Add player</a>
                 </div>
             </div>
             <div class="team-count">
-                <div>   
+                <div>
                     <span class="team-counter">{{ this.team?.players?.length}}</span>
                     <span>players in team</span>
                 </div>
-                <div>   
+                <div>
                     <span class="team-counter">{{ this.tournament?.maxPlayersInTeam }}</span>
                     <span>max players</span>
                 </div>
@@ -139,6 +138,6 @@
                     </form>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>

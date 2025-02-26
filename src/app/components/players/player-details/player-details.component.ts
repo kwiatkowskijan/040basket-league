@@ -1,7 +1,7 @@
 import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { Player } from '../../models/player';
-import { PlayersService } from '../../services/players.service';
+import { Player } from '../../../models/player';
+import { PlayersService } from '../../../services/players.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -20,7 +20,7 @@ import { provideNativeDateAdapter } from '@angular/material/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PlayerDetailsComponent {
-  playerId!: string;
+  playerId!: number;
   route: ActivatedRoute = inject(ActivatedRoute);
   playerService = inject(PlayersService);
   player: Player | undefined;
@@ -69,7 +69,7 @@ export class PlayerDetailsComponent {
       this.player.email = form.value.email ?? '';
       this.player.birthDate = form.value.birthDate ?? '';
       
-      this.player.birthDate.toLocaleDateString();
+      //this.player.birthDate.toLocaleDateString();
 
       if (this.isNew) {
         this.playerService.createPlayer(this.player).subscribe({

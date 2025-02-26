@@ -1,7 +1,7 @@
 import { Component, inject, Input } from '@angular/core';
 import { RouterLink, ActivatedRoute } from '@angular/router';
-import { Team } from '../../models/team';
-import { TeamsService } from '../../services/teams.service';
+import { Team } from '../../../models/team';
+import { TeamsService } from '../../../services/teams.service';
 import { FormsModule, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -16,7 +16,7 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrl: './tournament-team-list.component.css'
 })
 export class TournamentTeamListComponent {
-  @Input() tournamentId!: string;
+  @Input() tournamentId!: number;
   teamsInTournament: Team[] = [];
   maxVisibleTeams = 5;
   teamsService = inject(TeamsService);
@@ -33,7 +33,6 @@ export class TournamentTeamListComponent {
   }
 
   ngOnInit() {
-    console.log("To jest NgOnInit");
     this.teamsService.getTeamsByTournament(this.tournamentId).then(teamsInTournament => {
       this.teamsInTournament = teamsInTournament;
     });

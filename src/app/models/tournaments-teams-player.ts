@@ -1,4 +1,6 @@
-export interface Player {
+export interface TournamentsTeamsPlayer {
+    touenamentId: number,
+    teamId: number,
     id: number,
     email: string,
     name: string,

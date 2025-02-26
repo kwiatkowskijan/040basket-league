@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Tournament } from '../models/tournament';
-import { TournamentService } from '../services/tournament.service';
+import { Tournament } from '../../../models/tournament';
+import { TournamentService } from '../../../services/tournament.service';
 import { TournamentComponent } from '../tournament/tournament.component';
 import { RouterLink } from '@angular/router';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';

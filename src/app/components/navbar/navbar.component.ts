@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { RouterModule, RouterLink } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
-import { TournamentService } from '../services/tournament.service';
-import { Tournament } from '../models/tournament';
+import { TournamentService } from '../../services/tournament.service';
+import { Tournament } from '../../models/tournament';
 
 @Component({
   selector: 'app-navbar',
@@ -14,7 +14,7 @@ import { Tournament } from '../models/tournament';
 export class NavbarComponent {
 
   tournamentService = inject(TournamentService);
-  selectedTournamentId: string | null = null;
+  selectedTournamentId: number | null = null;
   tournament: Tournament | undefined;
 
   navItems = [

@@ -1,8 +1,8 @@
 export interface Tournament {
-    id: string,
+    id: number,
     name: string,
-    startDate: Date,
-    endDate: Date,
+    startDate: string,
+    endDate: string,
     place: string,
     maxPlayersInTeam: number
 }

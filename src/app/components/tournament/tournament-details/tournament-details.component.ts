@@ -2,15 +2,15 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Tournament } from '../models/tournament';
-import { TournamentService } from '../services/tournament.service';
-import { TeamsService } from '../services/teams.service';
+import { Tournament } from '../../../models/tournament';
+import { TournamentService } from '../../../services/tournament.service';
+import { TeamsService } from '../../../services/teams.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { TournamentTeamListComponent } from '../tournament-team-list/tournament-team-list/tournament-team-list.component';
+import { TournamentTeamListComponent } from '../../tournament-teams/tournament-team-list/tournament-team-list.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
 
@@ -24,7 +24,7 @@ import { provideNativeDateAdapter } from '@angular/material/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TournamentDetailsComponent {
-  tournamentId!: string;
+  tournamentId!: number;
   route: ActivatedRoute = inject(ActivatedRoute);
   tournamentService = inject(TournamentService);
   teamsService = inject(TeamsService);
@@ -41,6 +41,8 @@ export class TournamentDetailsComponent {
   });
 
   constructor() {
+    console.log(this.tournament);
+
     this.tournamentId = this.route.snapshot.params["id"];
 
     if (this.tournamentId === undefined) {
