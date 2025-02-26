@@ -15,7 +15,7 @@
 
         @if(selectedTournamentId) {
         @for (item of tournamentNavItems; track $index) {
-        <a [routerLink]="item.route" (click)="toggleNested()" routerLinkActive="active"
+        <a [routerLink]="item.route" (click)="item.subItems && toggleNested()" routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }" class="menu-item">
             <mat-icon aria-hidden="false" [fontIcon]="item.icon"></mat-icon>
             {{item.label}}
@@ -30,7 +30,7 @@
         @if(item.subItems && isNestedMenuOpen()) {
         @for(subItem of item.subItems; track $index) {
             <a [routerLink]="subItem.route" (click)="toggleNested()" routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: true }" class="menu-item">
+            [routerLinkActiveOptions]="{ exact: true }" class="menu-item menu-subitem">
             <mat-icon aria-hidden="false" [fontIcon]="subItem.icon"></mat-icon>
             {{subItem.label}}
             @if(subItem.subItems) {

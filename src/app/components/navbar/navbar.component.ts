@@ -52,18 +52,18 @@ export class NavbarComponent {
             label: 'Dashboard'
           },
           {
-            route: ['/tournament', this.selectedTournamentId, 'edit'],
+            route: [null],
             icon: 'settings',
             label: 'Settings',
             subItems: [
               {
                 route: ['/tournament', this.selectedTournamentId, 'edit'],
-                icon: 'settings',
+                icon: 'settings_applications',
                 label: 'General',
               },
               {
-                route: ['/tournament', this.selectedTournamentId, 'edit'],
-                icon: 'settings',
+                route: [null],
+                icon: 'delete',
                 label: 'Delete tournament',
               }
             ]
@@ -86,6 +86,7 @@ export class NavbarComponent {
   }
 
   toggleNested() {
+    console.log("Nested");
     this.isNestedMenuOpen.set(!this.isNestedMenuOpen());
   }
 }
