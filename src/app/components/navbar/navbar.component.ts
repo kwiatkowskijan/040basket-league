@@ -52,12 +52,12 @@ export class NavbarComponent {
             label: 'Dashboard'
           },
           {
-            route: [null],
+            route: ['/tournament', this.selectedTournamentId, 'settings'],
             icon: 'settings',
             label: 'Settings',
             subItems: [
               {
-                route: ['/tournament', this.selectedTournamentId, 'edit'],
+                route: [null],
                 icon: 'settings_applications',
                 label: 'General',
               },
