@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { RouterModule, RouterLink } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { TournamentService } from '../../services/tournament.service';
@@ -16,6 +16,8 @@ export class NavbarComponent {
   tournamentService = inject(TournamentService);
   selectedTournamentId: number | null = null;
   tournament: Tournament | undefined;
+  isNestedMenuOpen = signal(false);
+
 
   navItems = [
     {
@@ -30,7 +32,7 @@ export class NavbarComponent {
     }
   ];
 
-  tournamentNavItems: Array<{ route: any[] | string, icon: string, label: string }> = [];
+  tournamentNavItems: Array<{ route: any[] | string, icon: string, label: string, subItems?: any[];}> = [];
 
   ngOnInit() {
     this.tournamentService.selectedTournament$.subscribe(tournamentId => {
@@ -52,7 +54,19 @@ export class NavbarComponent {
           {
             route: ['/tournament', this.selectedTournamentId, 'edit'],
             icon: 'settings',
-            label: 'Settings'
+            label: 'Settings',
+            subItems: [
+              {
+                route: ['/tournament', this.selectedTournamentId, 'edit'],
+                icon: 'settings',
+                label: 'General',
+              },
+              {
+                route: ['/tournament', this.selectedTournamentId, 'edit'],
+                icon: 'settings',
+                label: 'Delete tournament',
+              }
+            ]
           },
           {
             route: ['/tournament', this.selectedTournamentId, 'teams'],
@@ -69,5 +83,9 @@ export class NavbarComponent {
         this.tournamentNavItems = [];
       }
     });
+  }
+
+  toggleNested() {
+    this.isNestedMenuOpen.set(!this.isNestedMenuOpen());
   }
 }
