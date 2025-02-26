@@ -36,26 +36,23 @@ export class TournamentTeamDetailsComponent {
   tournament: Tournament | undefined;
   isEditing = false;
   isNew = false;
-  isAddingPlayer = false;
-  availblePlayers: Player[] = [];
-  teamsPlayers: Player[] = [];
+  // isAddingPlayer = false;
+  // availblePlayers: Player[] = [];
+  // teamsPlayers: Player[] = [];
 
   teamForm = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.maxLength(50)]),
     city: new FormControl('', [Validators.required, Validators.maxLength(50)])
   })
 
-  addPlayersForm = new FormGroup({
-    player: new FormControl('', [Validators.required]),
-    playerNumber: new FormControl('', [Validators.required, Validators.min(0), Validators.max(99)])
-  })
+  // addPlayersForm = new FormGroup({
+  //   player: new FormControl('', [Validators.required]),
+  //   playerNumber: new FormControl('', [Validators.required, Validators.min(0), Validators.max(99)])
+  // })
 
   constructor(private router: Router) {
     this.tournamentId = Number(this.route.snapshot.params["id"]);
     this.teamId = this.route.snapshot.params["id2"];
-
-    console.log(this.tournamentId);
-    console.log(this.teamId);
 
     if (this.teamId === undefined) {
       this.isNew = true;
@@ -78,28 +75,27 @@ export class TournamentTeamDetailsComponent {
       this.tournament = tournament;
     })
 
-    this.playerService.getAllPlayers().then(allPlayers => {
-      this.teamService.getTeamsByTournament(this.tournamentId).then(teams => {
-        console.log(teams);
-        teams.forEach(teamItem => {
-          teamItem.players?.forEach(player => {
-            this.teamsPlayers.push(player);
-          })
-        });
-        this.availblePlayers = allPlayers.filter(player => {
-          return !this.teamsPlayers?.find(teamsPlayer => teamsPlayer.id === player.id);
-        });
-      });
-    });
+    // this.playerService.getAllPlayers().then(allPlayers => {
+    //   this.teamService.getTeamsByTournament(this.tournamentId).then(teams => {
+    //     teams.forEach(teamItem => {
+    //       teamItem.players?.forEach(player => {
+    //         this.teamsPlayers.push(player);
+    //       })
+    //     });
+    //     this.availblePlayers = allPlayers.filter(player => {
+    //       return !this.teamsPlayers?.find(teamsPlayer => teamsPlayer.id === player.id);
+    //     });
+    //   });
+    // });
   }
 
   turnOnEditMode() {
     this.isEditing = true;
   }
 
-  addNewPlayer() {
-    this.isAddingPlayer = true;
-  }
+  // addNewPlayer() {
+  //   this.isAddingPlayer = true;
+  // }
 
   createEditTeam(form: FormGroup) {
     if (this.team) {
@@ -151,46 +147,46 @@ export class TournamentTeamDetailsComponent {
     }
   }
 
-  addPlayersToTeam(form: FormGroup) {
-    if (this.team) {
-      const selectedPlayersIds = form.value.player;
-      const selectedPlayerNumber = form.value.playerNumber;
+  // addPlayersToTeam(form: FormGroup) {
+  //   if (this.team) {
+  //     const selectedPlayersIds = form.value.player;
+  //     const selectedPlayerNumber = form.value.playerNumber;
 
-      const selectedPlayers = this.availblePlayers.filter(player =>
-        selectedPlayersIds.includes(player.id)
-      );
+  //     const selectedPlayers = this.availblePlayers.filter(player =>
+  //       selectedPlayersIds.includes(player.id)
+  //     );
 
-      selectedPlayers.forEach(player => {
-        player.number = selectedPlayerNumber;
-      });
+  //     selectedPlayers.forEach(player => {
+  //       player.number = selectedPlayerNumber;
+  //     });
 
-      this.team.players.push(...selectedPlayers);
+  //     this.team.players.push(...selectedPlayers);
 
-      this.teamService.editTeam(this.tournamentId, this.team).subscribe({
-        next: (data) => {
-          this.team = data;
-          this.isAddingPlayer = false;
-        },
-        error: (error) => {
-          console.error('Wystąpił błąd podczas dodawania graczy:', error);
-        }
-      });
-    }
-  }
+  //     this.teamService.editTeam(this.tournamentId, this.team).subscribe({
+  //       next: (data) => {
+  //         this.team = data;
+  //         this.isAddingPlayer = false;
+  //       },
+  //       error: (error) => {
+  //         console.error('Wystąpił błąd podczas dodawania graczy:', error);
+  //       }
+  //     });
+  //   }
+  // }
 
-  removePlayerFromTeam(playerId: number) {
-    if (this.team) {
-      this.team.players = this.team.players.filter(player => player.id !== playerId);
+  // removePlayerFromTeam(playerId: number) {
+  //   if (this.team) {
+  //     this.team.players = this.team.players.filter(player => player.id !== playerId);
 
-      this.teamService.editTeam(this.tournamentId, this.team).subscribe({
-        next: (data) => {
-          this.team = data;
-          this.isAddingPlayer = false;
-        },
-        error: (error) => {
-          console.error('Wystąpił błąd podczas usuwania gracza:', error);
-        }
-      })
-    }
-  }
+  //     this.teamService.editTeam(this.tournamentId, this.team).subscribe({
+  //       next: (data) => {
+  //         this.team = data;
+  //         this.isAddingPlayer = false;
+  //       },
+  //       error: (error) => {
+  //         console.error('Wystąpił błąd podczas usuwania gracza:', error);
+  //       }
+  //     })
+  //   }
+  // }
 }

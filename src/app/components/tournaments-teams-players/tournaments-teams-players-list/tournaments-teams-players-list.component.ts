@@ -2,6 +2,7 @@ import { Component, inject, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TournamentTeamsPlayersService } from '../../../services/tournament-teams-players.service';
 import { TournamentsTeamsPlayer } from '../../../models/tournaments-teams-player';
+import { Player } from '../../../models/player';
 import { PlayersService } from '../../../services/players.service';
 import { TeamsService } from '../../../services/teams.service';
 import { ActivatedRoute, RouterLink, Router } from '@angular/router';
@@ -27,24 +28,47 @@ export class TournamentsTeamsPlayersListComponent {
   @Input() teamId!: number;
   tournamentsTeamsPlayers: TournamentsTeamsPlayer[] = [];
   tournamentTeamsPlayersService = inject(TournamentTeamsPlayersService);
+  playersService = inject(PlayersService);
+  teamsService = inject(TeamsService);
+  availblePlayers: Player[] = [];
+  teamsPlayers: Player[] = [];
   isAddingPlayer = false;
 
   addPlayersForm = new FormGroup({
-    player: new FormControl('', [Validators.required]),
-    playerNumber: new FormControl('', [Validators.required, Validators.min(0), Validators.max(99)])
+    player: new FormControl('', [Validators.required])
   })
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) { 
+    this.playersService.getAllPlayers().then(allPlayers => {
+      console.log(allPlayers);
+      this.tournamentTeamsPlayersService
+      // this.teamsService.getTeamsByTournament(this.tournamentId).then(teams => {
+      //   console.log(teams);
+      //   teams.forEach(teamItem => {
+      //     teamItem.players?.forEach(player => {
+      //       console.log(player);
+      //       this.teamsPlayers.push(player);
+      //     })
+      //   });
+      //   this.availblePlayers = allPlayers.filter(player => {
+      //     return !this.teamsPlayers?.find(teamsPlayer => teamsPlayer.id === player.id);
+      //   });
+      // });
+    });
+  }
 
   ngOnInit() {
     this.tournamentTeamsPlayersService.getAllPlayersByTeam(this.tournamentId, this.teamId).then(tournamentsTeamsPlayers => {
       this.tournamentsTeamsPlayers = tournamentsTeamsPlayers;
-      console.log(this.tournamentsTeamsPlayers);
     });
   }
 
   addNewPlayer() {
     this.isAddingPlayer = true;
+  }
+
+  addPlayersToTeam(form: FormGroup) {
+
   }
 
   removePlayerFromTeam(playerId: number) {

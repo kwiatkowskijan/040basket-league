@@ -2,7 +2,7 @@
     <div class="item-title-area">
         <h3>Players</h3>
         <div class="action-buttons">
-            <a mat-button><mat-icon>add</mat-icon>Add player</a>
+            <a mat-button (click)="addNewPlayer()"><mat-icon>add</mat-icon>Add player</a>
         </div>
     </div>
     <div class="team-count">
@@ -38,7 +38,7 @@
         </div>
         }
 
-        <!-- <div class="list-item" [style.display]="!isAddingPlayer ? 'none' : 'flex'">
+        <div class="list-item" [style.display]="!isAddingPlayer ? 'none' : 'flex'">
             <form [formGroup]="addPlayersForm" (ngSubmit)="addPlayersToTeam(addPlayersForm)">
                 <mat-form-field appearance="outline">
                     <mat-label>Availble players</mat-label>
@@ -51,25 +51,10 @@
                     <mat-error>You have to choose at least <strong>one</strong> player</mat-error>
                     }
                 </mat-form-field>
-                <mat-form-field appearance="outline">
-                    <mat-label>Number</mat-label>
-                    <input matInput type="number" formControlName="playerNumber" min="0" max="99">
-                    @if (addPlayersForm.controls.playerNumber.hasError('required')) {
-                    <mat-error>Number is <strong>required</strong></mat-error>
-                    }
-
-                    @if (addPlayersForm.controls.playerNumber.hasError('min')) {
-                    <mat-error><strong>0</strong> is minimal value</mat-error>
-                    }
-
-                    @if (addPlayersForm.controls.playerNumber.hasError('max')) {
-                    <mat-error><strong>99</strong> is maximal value</mat-error>
-                    }
-                </mat-form-field>
                 <button type="submit" mat-flat-button>
                     <mat-icon>add</mat-icon>Add player
                 </button>
             </form>
-        </div> -->
+        </div>
     </div>
 </div>
