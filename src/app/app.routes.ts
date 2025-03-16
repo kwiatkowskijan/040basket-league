@@ -50,9 +50,9 @@ export const routes: Routes = [
         title: 'Player'
     },
     {
-        path: 'tournament/:id/edit',
+        path: 'tournament/:id/settings',
         component: TournamentSettingsComponent,
-        title: 'Edit tournament'
+        title: 'Settings'
     },
     {
         path: 'players',

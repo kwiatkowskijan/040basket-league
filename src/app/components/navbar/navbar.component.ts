@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { RouterModule, RouterLink } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { TournamentService } from '../../services/tournament.service';
@@ -16,6 +16,8 @@ export class NavbarComponent {
   tournamentService = inject(TournamentService);
   selectedTournamentId: number | null = null;
   tournament: Tournament | undefined;
+  isNestedMenuOpen = signal(false);
+  isMobileSidebarOpen = false;
 
   navItems = [
     {
@@ -30,7 +32,7 @@ export class NavbarComponent {
     }
   ];
 
-  tournamentNavItems: Array<{ route: any[] | string, icon: string, label: string }> = [];
+  tournamentNavItems: Array<{ route: any[] | string, icon: string, label: string, subItems?: any[];}> = [];
 
   ngOnInit() {
     this.tournamentService.selectedTournament$.subscribe(tournamentId => {
@@ -50,9 +52,21 @@ export class NavbarComponent {
             label: 'Dashboard'
           },
           {
-            route: ['/tournament', this.selectedTournamentId, 'edit'],
+            route: [null],
             icon: 'settings',
-            label: 'Settings'
+            label: 'Settings',
+            subItems: [
+              {
+                route: ['/tournament', this.selectedTournamentId, 'settings'],
+                icon: 'settings_applications',
+                label: 'General',
+              },
+              {
+                route: [null],
+                icon: 'delete',
+                label: 'Delete tournament',
+              }
+            ]
           },
           {
             route: ['/tournament', this.selectedTournamentId, 'teams'],
@@ -69,5 +83,25 @@ export class NavbarComponent {
         this.tournamentNavItems = [];
       }
     });
+  }
+
+  toggleNested() {
+    console.log("Nested");
+    this.isNestedMenuOpen.set(!this.isNestedMenuOpen());
+  }
+
+  toggleOffCanvasMenu() {
+    const sidebar = document.getElementById("sidebar");
+    console.log(this.isMobileSidebarOpen)
+
+    if(this.isMobileSidebarOpen) {
+      this.isMobileSidebarOpen = false;
+      sidebar?.classList.remove("mobile-sidebar-active");
+      sidebar?.classList.add("sidebar-container");
+    } else if(!this.isMobileSidebarOpen) {
+      this.isMobileSidebarOpen = true;
+      sidebar?.classList.remove("sidebar-container");
+      sidebar?.classList.add("mobile-sidebar-active");
+    }
   }
 }
