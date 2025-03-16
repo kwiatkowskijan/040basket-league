@@ -17,7 +17,7 @@ export class NavbarComponent {
   selectedTournamentId: number | null = null;
   tournament: Tournament | undefined;
   isNestedMenuOpen = signal(false);
-
+  isMobileSidebarOpen = false;
 
   navItems = [
     {
@@ -52,12 +52,12 @@ export class NavbarComponent {
             label: 'Dashboard'
           },
           {
-            route: ['/tournament', this.selectedTournamentId, 'settings'],
+            route: [null],
             icon: 'settings',
             label: 'Settings',
             subItems: [
               {
-                route: [null],
+                route: ['/tournament', this.selectedTournamentId, 'settings'],
                 icon: 'settings_applications',
                 label: 'General',
               },
@@ -88,5 +88,20 @@ export class NavbarComponent {
   toggleNested() {
     console.log("Nested");
     this.isNestedMenuOpen.set(!this.isNestedMenuOpen());
+  }
+
+  toggleOffCanvasMenu() {
+    const sidebar = document.getElementById("sidebar");
+    console.log(this.isMobileSidebarOpen)
+
+    if(this.isMobileSidebarOpen) {
+      this.isMobileSidebarOpen = false;
+      sidebar?.classList.remove("mobile-sidebar-active");
+      sidebar?.classList.add("sidebar-container");
+    } else if(!this.isMobileSidebarOpen) {
+      this.isMobileSidebarOpen = true;
+      sidebar?.classList.remove("sidebar-container");
+      sidebar?.classList.add("mobile-sidebar-active");
+    }
   }
 }

@@ -13,7 +13,7 @@ import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
   selector: 'app-tournaments-teams-player-details',
-  imports: [MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, MatSelectModule, RouterLink, MatDividerModule, MatListModule, MatMenuModule],
+  imports: [MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, MatSelectModule, MatDividerModule, MatListModule, MatMenuModule],
   templateUrl: './tournaments-teams-player-details.component.html',
   styleUrl: './tournaments-teams-player-details.component.css'
 })

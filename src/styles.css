@@ -26,6 +26,7 @@ a {
 }
 
 .section-title {
+    width: 87.5vw;
     max-height: 150px;
     height: 150px;
     border-bottom: 0.6px solid var(--border);
@@ -35,6 +36,7 @@ a {
 }
 
 .section-container {
+    width: 87.5vw;
     padding: 50px 300px;
 }
 
@@ -64,17 +66,17 @@ a {
     margin-bottom: 20px;
 }
    
-.items-container.one-column {
+.one-column {
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(1, 1fr);
 }
 
-.items-container.two-columns {
+.two-columns {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
 }
 
-.items-container.three-columns {
+.three-columns {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
 }

@@ -4,27 +4,8 @@
     flex-direction: row;
 }
 
-.navigation {
-    min-width: 12.5%;
-    min-height: 100%;
-    background-color: var(--brand);
-}
-
-.content-container {
-    width: 87.5%;
-}
-
 @media only screen and (max-width: 768px) {
     .main-container {
         flex-direction: column;
-    }
-
-    .navigation {
-        width: 100%;
-        min-height: 15%;
-    }
-
-    .content-container {
-        width: 100%;
     }
 }
