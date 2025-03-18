@@ -3,6 +3,10 @@
     --brand: #00471b;
     --accent: #eee1c6;
     --border: #d3d3d3;
+
+    --h1-desktop: 32px;
+    --h1-tablet: 28px;
+    --h1-mobile: 24px;
 }
 
 * {
@@ -114,6 +118,10 @@ a {
         padding: 0 5px;
         justify-content: center;
         width: 100vw;
+    }
+
+    .section-title h1 {
+        font-size: var(--h1-font-mobile);
     }
     
     .section-container {
