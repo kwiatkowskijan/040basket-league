@@ -14,7 +14,91 @@
       "startDate": "2025-09-14",
       "endDate": "2025-09-14",
       "place": "MOSiR Puszczykowo",
-      "maxPlayersInTeam": 5
+      "maxPlayersInTeam": 5,
+      "teams": [
+        {
+          "id": "0",
+          "name": "Otwieracze",
+          "city": "Poznań",
+          "players": [
+            {
+              "id": "0",
+              "email": "kwiatkojan@gmail.com",
+              "name": "Jan",
+              "surname": "Kwiatkowski",
+              "birthDate": "2002-09-19",
+              "number": 1
+            },
+            {
+              "id": "a21b",
+              "name": "Michał",
+              "surname": "Kwiatkowski",
+              "email": "dupa@dupa.pl",
+              "birthDate": "",
+              "number": 2
+            },
+            {
+              "id": "f537",
+              "name": "Debil1",
+              "surname": "debil",
+              "email": "debil@debil.pl",
+              "birthDate": "2025-01-19T23:00:00.000Z",
+              "number": 1
+            },
+            {
+              "id": "287d",
+              "name": "Paweł",
+              "surname": "Kwiatkowski",
+              "email": "pawel@gmail.com",
+              "birthDate": "2016-03-19T23:00:00.000Z",
+              "number": 55
+            },
+            {
+              "id": "42ec",
+              "name": "Marcin",
+              "surname": "Gortat",
+              "email": "marcin@gortat.pl",
+              "birthDate": "2025-02-01T23:00:00.000Z",
+              "number": 22
+            }
+          ]
+        },
+        {
+          "id": "1",
+          "name": "Angry Weasels",
+          "city": "Poznań",
+          "players": []
+        },
+        {
+          "id": "2",
+          "name": "LP3x3",
+          "city": "Poznań",
+          "players": []
+        },
+        {
+          "id": "3",
+          "name": "Cegłą o dechę",
+          "city": "Poznań",
+          "players": []
+        },
+        {
+          "id": "4",
+          "name": "NWP",
+          "city": "Poznań",
+          "players": []
+        },
+        {
+          "id": "d709",
+          "name": "fsafas1",
+          "city": "safsa1",
+          "players": []
+        },
+        {
+          "id": "6fa1",
+          "name": "sfasf",
+          "city": "safas"
+        }
+      ]
     },
     {
       "id": "4",
@@ -78,7 +162,7 @@
           "surname": "Gortat",
           "email": "marcin@gortat.pl",
           "birthDate": "2025-02-01T23:00:00.000Z",
-          "number": 10
+          "number": 22
         }
       ]
     },

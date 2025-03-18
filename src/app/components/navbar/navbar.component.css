@@ -28,13 +28,13 @@
 
 .selected-tournament-title {
     width: 100%;
-    background-color: #05471e;
+    background-color: #05742f;
+    padding: 25px 5px;
 }
 
 .tournamentName {
     color: #fff;
     width: 100%;
-    padding: 25px 5px 0 5px;
 }
 
 .backToTournaments {
@@ -49,7 +49,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-top: 25px;
+    border-top: 0.8px solid lightgray;
 }
 
 .menu .menu-item {
@@ -77,6 +77,8 @@
 .mobile-sidebar-active {
     transition: all 0.2s;
     position: absolute;
+    left: 0;
+    top: 60;
     z-index: 99;
     display: flex;
     flex-direction: column;

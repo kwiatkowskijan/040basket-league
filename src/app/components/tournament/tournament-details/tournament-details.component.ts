@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Tournament } from '../../../models/tournament';
 import { TournamentService } from '../../../services/tournament.service';
 import { TeamsService } from '../../../services/teams.service';
@@ -40,7 +40,7 @@ export class TournamentDetailsComponent {
     maxPlayersInTeam: new FormControl(0, [Validators.required, Validators.min(1)])
   });
 
-  constructor() {
+  constructor(private router: Router) {
     console.log(this.tournament);
 
     this.tournamentId = this.route.snapshot.params["id"];
@@ -87,6 +87,7 @@ export class TournamentDetailsComponent {
             this.tournament = data;
             this.isNew = false;
             this.isEditing = false;
+            this.router.navigate(['/tournaments'])
             console.log("Adding succesful!")
             console.log(this.tournament);
           },
