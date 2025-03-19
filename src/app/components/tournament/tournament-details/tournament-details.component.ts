@@ -29,8 +29,11 @@ export class TournamentDetailsComponent {
   tournamentService = inject(TournamentService);
   teamsService = inject(TeamsService);
   tournament: Tournament | undefined;
+
   isEditing = false;
   isNew = false;
+
+  readonly minStartDate = new Date();
 
   editTournamentForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
@@ -41,8 +44,6 @@ export class TournamentDetailsComponent {
   });
 
   constructor(private router: Router) {
-    console.log(this.tournament);
-
     this.tournamentId = this.route.snapshot.params["id"];
 
     if (this.tournamentId === undefined) {
