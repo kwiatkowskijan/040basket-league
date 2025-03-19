@@ -68,8 +68,12 @@ export class TournamentDetailsComponent {
     }
   }
 
-  turnOnEditMode() {
-    this.isEditing = true;
+  toggleEditMode() {
+    if(!this.isEditing) {
+      this.isEditing = true;
+    } else if(this.isEditing) {
+      this.isEditing = false;
+    }
   }
 
   editAddTournament(form: FormGroup) {
@@ -87,10 +91,8 @@ export class TournamentDetailsComponent {
           next: (data) => {
             this.tournament = data;
             this.isNew = false;
-            this.isEditing = false;
+            this.toggleEditMode();
             this.router.navigate(['/tournaments'])
-            console.log("Adding succesful!")
-            console.log(this.tournament);
           },
           error: (error) => {
             console.error('Error fetching posts:', error);
@@ -100,9 +102,7 @@ export class TournamentDetailsComponent {
         this.tournamentService.editTournament(this.tournament).subscribe({
           next: (data) => {
             this.tournament = data;
-            this.isEditing = false;
-            console.log("Update succesful!")
-            console.log(this.tournament);
+            this.toggleEditMode();
           },
           error: (error) => {
             console.error('Error fetching posts:', error);
@@ -117,7 +117,6 @@ export class TournamentDetailsComponent {
       this.tournamentService.deleteTournament(this.tournament.id).subscribe({
         next: (data) => {
           this.tournament = data;
-          console.log("Delete succesful!")
         },
         error: (error) => {
           console.error('Error fetching posts:', error);

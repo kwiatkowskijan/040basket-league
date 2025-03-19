@@ -5,7 +5,7 @@
 <div class="section-container">
     <div class="above-items-container">
         <div class="title-area-buttons">
-            <button mat-raised-button (click)="turnOnEditMode()" [hidden]="isEditing">
+            <button mat-raised-button (click)="toggleEditMode()" [hidden]="isEditing">
                 <mat-icon>edit</mat-icon>Edit
             </button>
             <button mat-raised-button (click)="deleteTournament()" [hidden]="isNew" [hidden]="isEditing">
@@ -67,20 +67,6 @@
                         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-date-range-picker #picker></mat-date-range-picker>
                     </mat-form-field>
-                    <!-- <mat-form-field appearance="outline">
-                        <mat-label>Start date</mat-label>
-                        <input matInput [min]="minStartDate" [matDatepicker]="startPicker" id="start-date" formControlName="startDate">
-                        <mat-hint>MM/DD/YYYY</mat-hint>
-                        <mat-datepicker-toggle matIconSuffix [for]="startPicker"></mat-datepicker-toggle>
-                        <mat-datepicker #startPicker></mat-datepicker>
-                    </mat-form-field>
-                    <mat-form-field appearance="outline">
-                        <mat-label>End date</mat-label>
-                        <input matInput [matDatepicker]="endPicker" id="end-date" formControlName="endDate">
-                        <mat-hint>MM/DD/YYYY</mat-hint>
-                        <mat-datepicker-toggle matIconSuffix [for]="endPicker"></mat-datepicker-toggle>
-                        <mat-datepicker #endPicker></mat-datepicker>
-                    </mat-form-field> -->
                     <mat-form-field appearance="outline">
                         <mat-label>Max players in team</mat-label>
                         <input matInput type="number" id="name" formControlName="maxPlayersInTeam" min="1">
