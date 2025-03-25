@@ -15,12 +15,10 @@
     <div class="logo">
         <img src="/assets/040Tournaments-logo-white.png" width="200px" />
     </div>
-    @if (selectedTournamentId) {
     <div class="selected-tournament-title">
-        <p class="tournamentName">{{ tournament?.name }}</p>
-        <a [routerLink]="'tournaments'" class="backToTournaments">Back to tournaments</a>
+        <p class="tournamentName">@if(selectedTournamentId) { {{ tournament?.name }} } @else { Choose tournament }</p>
+        @if(selectedTournamentId) { <a [routerLink]="'tournaments'" class="backToTournaments">Back to tournaments</a> }
     </div>
-    }
     <div class="menu">
         @if(selectedTournamentId) {
         @for (item of tournamentNavItems; track $index) {

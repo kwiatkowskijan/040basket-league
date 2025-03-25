@@ -27,6 +27,9 @@ export class PlayerDetailsComponent {
   isEditing = false;
   isNew = false;
 
+  currentDate = new Date();
+  maxBirthdate = new Date(this.currentDate);
+
   playerForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
     surname: new FormControl('', [Validators.required]),
@@ -35,6 +38,7 @@ export class PlayerDetailsComponent {
   })
 
   constructor(private router: Router) {
+    this.maxBirthdate.setFullYear(this.currentDate.getFullYear() - 15);
     this.playerId = this.route.snapshot.params["id"];
 
     if (this.playerId === undefined) {
@@ -70,7 +74,6 @@ export class PlayerDetailsComponent {
       this.player.birthDate = form.value.birthDate ?? '';
       
       //this.player.birthDate.toLocaleDateString();
-
       if (this.isNew) {
         this.playerService.createPlayer(this.player).subscribe({
           next: (data) => {

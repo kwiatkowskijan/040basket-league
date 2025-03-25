@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Tournament } from '../../../models/tournament';
 import { TournamentService } from '../../../services/tournament.service';
 import { TeamsService } from '../../../services/teams.service';
@@ -10,14 +10,13 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { TournamentTeamListComponent } from '../../tournament-teams/tournament-team-list/tournament-team-list.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
 
 @Component({
   selector: 'app-tournament-details',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MatIconModule, MatButtonModule, MatDividerModule, MatInputModule, MatFormFieldModule, TournamentTeamListComponent, MatDatepickerModule],
+  imports: [CommonModule, ReactiveFormsModule, MatIconModule, MatButtonModule, MatDividerModule, MatInputModule, MatFormFieldModule, MatDatepickerModule],
   templateUrl: './tournament-details.component.html',
   styleUrl: './tournament-details.component.css',
   providers: [provideNativeDateAdapter()],
@@ -29,8 +28,11 @@ export class TournamentDetailsComponent {
   tournamentService = inject(TournamentService);
   teamsService = inject(TeamsService);
   tournament: Tournament | undefined;
+
   isEditing = false;
   isNew = false;
+
+  readonly minStartDate = new Date();
 
   editTournamentForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
@@ -40,9 +42,7 @@ export class TournamentDetailsComponent {
     maxPlayersInTeam: new FormControl(0, [Validators.required, Validators.min(1)])
   });
 
-  constructor() {
-    console.log(this.tournament);
-
+  constructor(private router: Router) {
     this.tournamentId = this.route.snapshot.params["id"];
 
     if (this.tournamentId === undefined) {
@@ -67,8 +67,12 @@ export class TournamentDetailsComponent {
     }
   }
 
-  turnOnEditMode() {
-    this.isEditing = true;
+  toggleEditMode() {
+    if(!this.isEditing) {
+      this.isEditing = true;
+    } else if(this.isEditing) {
+      this.isEditing = false;
+    }
   }
 
   editAddTournament(form: FormGroup) {
@@ -86,9 +90,8 @@ export class TournamentDetailsComponent {
           next: (data) => {
             this.tournament = data;
             this.isNew = false;
-            this.isEditing = false;
-            console.log("Adding succesful!")
-            console.log(this.tournament);
+            this.toggleEditMode();
+            this.router.navigate(['/tournaments'])
           },
           error: (error) => {
             console.error('Error fetching posts:', error);
@@ -98,9 +101,7 @@ export class TournamentDetailsComponent {
         this.tournamentService.editTournament(this.tournament).subscribe({
           next: (data) => {
             this.tournament = data;
-            this.isEditing = false;
-            console.log("Update succesful!")
-            console.log(this.tournament);
+            this.toggleEditMode();
           },
           error: (error) => {
             console.error('Error fetching posts:', error);
@@ -115,7 +116,6 @@ export class TournamentDetailsComponent {
       this.tournamentService.deleteTournament(this.tournament.id).subscribe({
         next: (data) => {
           this.tournament = data;
-          console.log("Delete succesful!")
         },
         error: (error) => {
           console.error('Error fetching posts:', error);
