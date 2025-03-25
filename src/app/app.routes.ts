@@ -7,6 +7,7 @@ import { PlayersListComponent } from './components/players/players-list/players-
 import { PlayerDetailsComponent } from './components/players/player-details/player-details.component';
 import { TournamentSettingsComponent } from './components/tournament/tournament-settings/tournament-settings.component';
 import { TournamentsTeamsPlayerDetailsComponent } from './components/tournaments-teams-players/tournaments-teams-player-details/tournaments-teams-player-details.component';
+import { TournamentPublicSiteComponent } from './components/public/tournament-public-site/tournament-public-site.component';
 
 export const routes: Routes = [
     {
@@ -67,6 +68,11 @@ export const routes: Routes = [
     {
         path: 'player/:id',
         component: PlayerDetailsComponent,
+        title: 'Player'
+    },
+    {
+        path: 'tournaments/public/:id',
+        component: TournamentPublicSiteComponent,
         title: 'Player'
     }
 ];

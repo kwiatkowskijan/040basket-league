@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Tournament } from '../../../models/tournament';
 import { TournamentService } from '../../../services/tournament.service';
 import { TeamsService } from '../../../services/teams.service';
@@ -16,7 +16,7 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 @Component({
   selector: 'app-tournament-details',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MatIconModule, MatButtonModule, MatDividerModule, MatInputModule, MatFormFieldModule, MatDatepickerModule],
+  imports: [CommonModule, ReactiveFormsModule, MatIconModule, MatButtonModule, MatDividerModule, MatInputModule, MatFormFieldModule, MatDatepickerModule, RouterLink],
   templateUrl: './tournament-details.component.html',
   styleUrl: './tournament-details.component.css',
   providers: [provideNativeDateAdapter()],
