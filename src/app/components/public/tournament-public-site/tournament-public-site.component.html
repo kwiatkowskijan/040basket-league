@@ -1,1 +1,13 @@
-<p>tournament-public-site works!</p>
+<div class="public-tournament-container">
+    <div class="public-tournament-title-area">
+        <div class="public-tournament-bg-image"></div>
+        <div class="public-tournament-info">
+            <img src="/assets/owl-logo-01.png" alt="" class="public-tournament-logo">
+            <div class="public-tournament-data">
+                <h1>{{ tournament?.name }}</h1>
+                <p><mat-icon>location_on</mat-icon>{{ tournament?.place }}</p>
+                <p><mat-icon>event</mat-icon>{{ tournament?.startDate }} - {{ tournament?.endDate }}</p>
+            </div>
+        </div>
+    </div>
+</div>

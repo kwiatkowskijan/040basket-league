@@ -73,6 +73,6 @@ export const routes: Routes = [
     {
         path: 'tournaments/public/:id',
         component: TournamentPublicSiteComponent,
-        title: 'Player'
+        title: 'Tournament Public'
     }
 ];

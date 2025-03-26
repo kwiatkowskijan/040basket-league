@@ -1,0 +1,55 @@
+.public-tournament-container {
+    width: 87.5vw;
+    padding: 20px 200px;
+}
+
+.public-tournament-title-area {
+    width: 100%;
+    background: #c3c2c2;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+.public-tournament-bg-image {
+    background-image: url("/assets/daniel-mccullough-o86AuYXPDB8-unsplash.jpg");
+    background-size: cover;
+    background-position: 50% 90%;
+    width: 100%;
+    min-height: 250px;
+    border-radius: 4px;
+}
+
+.public-tournament-info {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.public-tournament-info .public-tournament-logo {
+    width: 150px;
+    height: 150px;
+    border-radius: 4px;
+}
+
+.public-tournament-info .public-tournament-data {
+    width: calc(100% - 150px);
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.public-tournament-info .public-tournament-data h1 {
+    margin-bottom: 10px
+}
+
+.public-tournament-info .public-tournament-data p {
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.public-tournament-info .public-tournament-data p mat-icon {
+    margin-right: 10px
+}
+
