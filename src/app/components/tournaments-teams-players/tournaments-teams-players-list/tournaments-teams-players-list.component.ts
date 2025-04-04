@@ -30,41 +30,20 @@ export class TournamentsTeamsPlayersListComponent {
   tournamentTeamsPlayersService = inject(TournamentTeamsPlayersService);
   playersService = inject(PlayersService);
   teamsService = inject(TeamsService);
-  availblePlayers: Player[] = [];
-  teamsPlayers: TournamentsTeamsPlayer[] = [];
   isAddingPlayer = false;
 
   addPlayersForm = new FormGroup({
     player: new FormControl('', [Validators.required])
   })
 
-  constructor(private router: Router) {
-    this.playersService.getAllPlayers().then(allPlayers => {
-      // console.log(allPlayers);
-      // this.teamsService.getTeamsByTournament(this.tournamentId).then(teams => {
-      //   console.log(teams);
-      //   teams.forEach(teamItem => {
-      //     this.tournamentTeamsPlayersService.getAllPlayersByTeam(teamItem.tournamentId, teamItem.id).then(player => {
-      //       console.log(player);
-      //       this.teamsPlayers.push(player);
-      //     })
-      //     // teamItem.players.forEach(player => {
-      //     //   console.log(player);
-      //     //   this.teamsPlayers.push(player);
-      //     // })
-      //   });
-      //   console.log(this.teamsPlayers);
-      //   this.availblePlayers = allPlayers.filter(player => {
-      //     return !this.teamsPlayers?.find(teamsPlayer => teamsPlayer.id === player.id);
-      //   });
-      // });
-    });
-  }
+  constructor(private router: Router) { }
 
-  ngOnInit() {
-    this.tournamentTeamsPlayersService.getAllPlayersByTeam(this.tournamentId, this.teamId).then(tournamentsTeamsPlayers => {
-      this.tournamentsTeamsPlayers = tournamentsTeamsPlayers;
-    });
+  async ngOnInit() {
+    try {
+      this.tournamentsTeamsPlayers = await this.tournamentTeamsPlayersService.getAllPlayersByTeam(this.tournamentId, this.teamId);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   addNewPlayer() {
