@@ -19,7 +19,8 @@
         @for(teamPlayer of tournamentsTeamsPlayers; track $index) {
         <div class="list-item">
             <div class="list-item">
-                <a [routerLink]="['players', teamPlayer.player.id]">{{ teamPlayer.player.name }} {{ teamPlayer.player.surname }}
+                <a [routerLink]="['players', teamPlayer.player.id]">{{ teamPlayer.player.name }} {{
+                    teamPlayer.player.surname }}
                     ({{teamPlayer.number }})</a>
                 <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
                     <mat-icon>more_vert</mat-icon>
@@ -38,7 +39,7 @@
         </div>
         }
 
-        <!-- <div class="list-item" [style.display]="!isAddingPlayer ? 'none' : 'flex'">
+        <div class="list-item" [style.display]="!isAddingPlayer ? 'none' : 'flex'">
             <form [formGroup]="addPlayersForm" (ngSubmit)="addPlayersToTeam(addPlayersForm)">
                 <mat-form-field appearance="outline">
                     <mat-label>Availble players</mat-label>
@@ -55,7 +56,7 @@
                     <mat-icon>add</mat-icon>Add player
                 </button>
             </form>
-        </div> -->
+        </div>
 
     </div>
 </div>

@@ -27,6 +27,7 @@ export class TournamentsTeamsPlayersListComponent {
   @Input() tournamentId!: number;
   @Input() teamId!: number;
   tournamentsTeamsPlayers: TournamentsTeamsPlayer[] = [];
+  availblePlayers: Player[] = [];
   tournamentTeamsPlayersService = inject(TournamentTeamsPlayersService);
   playersService = inject(PlayersService);
   teamsService = inject(TeamsService);
