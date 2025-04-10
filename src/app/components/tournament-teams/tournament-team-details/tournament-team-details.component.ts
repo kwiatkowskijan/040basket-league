@@ -2,7 +2,6 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterLink, Router } from '@angular/router';
 import { Team } from '../../../models/team';
-import { Player } from '../../../models/player';
 import { Tournament } from '../../../models/tournament';
 import { TeamsService } from '../../../services/teams.service';
 import { PlayersService } from '../../../services/players.service';
@@ -16,12 +15,14 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatTabsModule } from '@angular/material/tabs';
 import { TournamentsTeamsPlayersListComponent } from '../../tournaments-teams-players/tournaments-teams-players-list/tournaments-teams-players-list.component';
 
 @Component({
   selector: 'app-tournament-team-details',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, MatSelectModule, RouterLink, MatDividerModule, MatListModule, MatMenuModule, TournamentsTeamsPlayersListComponent],
+  imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, MatSelectModule, RouterLink, MatDividerModule, MatListModule, MatMenuModule,
+    TournamentsTeamsPlayersListComponent, MatTabsModule],
   templateUrl: './tournament-team-details.component.html',
   styleUrl: './tournament-team-details.component.css'
 })
@@ -36,19 +37,11 @@ export class TournamentTeamDetailsComponent {
   tournament: Tournament | undefined;
   isEditing = false;
   isNew = false;
-  // isAddingPlayer = false;
-  // availblePlayers: Player[] = [];
-  // teamsPlayers: Player[] = [];
 
   teamForm = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.maxLength(50)]),
     city: new FormControl('', [Validators.required, Validators.maxLength(50)])
   })
-
-  // addPlayersForm = new FormGroup({
-  //   player: new FormControl('', [Validators.required]),
-  //   playerNumber: new FormControl('', [Validators.required, Validators.min(0), Validators.max(99)])
-  // })
 
   constructor(private router: Router) {
     this.tournamentId = Number(this.route.snapshot.params["id"]);
@@ -74,28 +67,11 @@ export class TournamentTeamDetailsComponent {
     this.tournamentService.getTournamentById(this.tournamentId).then(tournament => {
       this.tournament = tournament;
     })
-
-    // this.playerService.getAllPlayers().then(allPlayers => {
-    //   this.teamService.getTeamsByTournament(this.tournamentId).then(teams => {
-    //     teams.forEach(teamItem => {
-    //       teamItem.players?.forEach(player => {
-    //         this.teamsPlayers.push(player);
-    //       })
-    //     });
-    //     this.availblePlayers = allPlayers.filter(player => {
-    //       return !this.teamsPlayers?.find(teamsPlayer => teamsPlayer.id === player.id);
-    //     });
-    //   });
-    // });
   }
 
   turnOnEditMode() {
     this.isEditing = true;
   }
-
-  // addNewPlayer() {
-  //   this.isAddingPlayer = true;
-  // }
 
   createEditTeam(form: FormGroup) {
     if (this.team) {
@@ -146,47 +122,4 @@ export class TournamentTeamDetailsComponent {
       })
     }
   }
-
-  // addPlayersToTeam(form: FormGroup) {
-  //   if (this.team) {
-  //     const selectedPlayersIds = form.value.player;
-  //     const selectedPlayerNumber = form.value.playerNumber;
-
-  //     const selectedPlayers = this.availblePlayers.filter(player =>
-  //       selectedPlayersIds.includes(player.id)
-  //     );
-
-  //     selectedPlayers.forEach(player => {
-  //       player.number = selectedPlayerNumber;
-  //     });
-
-  //     this.team.players.push(...selectedPlayers);
-
-  //     this.teamService.editTeam(this.tournamentId, this.team).subscribe({
-  //       next: (data) => {
-  //         this.team = data;
-  //         this.isAddingPlayer = false;
-  //       },
-  //       error: (error) => {
-  //         console.error('Wystąpił błąd podczas dodawania graczy:', error);
-  //       }
-  //     });
-  //   }
-  // }
-
-  // removePlayerFromTeam(playerId: number) {
-  //   if (this.team) {
-  //     this.team.players = this.team.players.filter(player => player.id !== playerId);
-
-  //     this.teamService.editTeam(this.tournamentId, this.team).subscribe({
-  //       next: (data) => {
-  //         this.team = data;
-  //         this.isAddingPlayer = false;
-  //       },
-  //       error: (error) => {
-  //         console.error('Wystąpił błąd podczas usuwania gracza:', error);
-  //       }
-  //     })
-  //   }
-  // }
 }

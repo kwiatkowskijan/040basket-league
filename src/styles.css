@@ -41,7 +41,7 @@ a {
 
 .section-container {
     width: 87.5vw;
-    padding: 50px;
+    padding: 50px 200px;
 }
 
 .title-area {
@@ -110,6 +110,7 @@ a {
 
 .item-content {
     padding: 10px 20px;
+    min-width: 100%;
 }
 
 @media only screen and (max-width: 768px) {

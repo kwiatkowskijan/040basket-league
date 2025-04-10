@@ -28,6 +28,7 @@ export class TournamentsTeamsPlayersListComponent {
   tournamentTeamsPlayersService = inject(TournamentTeamsPlayersService);
   tournamentsService = inject(TournamentService)
   tournamentsTeamsPlayers: TournamentsTeamsPlayer[] = [];
+  tournamentsTeamsPlayer?: TournamentsTeamsPlayer;
   availblePlayers: Player[] = [];
   isAddingPlayer = false;
 
@@ -53,7 +54,21 @@ export class TournamentsTeamsPlayersListComponent {
   }
 
   addPlayersToTeam(form: FormGroup) {
-    
+
+    const player: TournamentsTeamsPlayer = {
+      id: 0,
+      teamId: this.teamId,
+      playerId: form.controls['player'].value.id,
+      player: form.controls['player'].value,
+      number: 0,
+      isCaptain: false
+    }
+
+    this.tournamentTeamsPlayersService.addPlayerToTeam(this.tournamentId, this.teamId, player).subscribe({
+      next: (data) => {
+        console.log(data);
+      }
+    })
   }
 
   removePlayerFromTeam(playerId: number) {

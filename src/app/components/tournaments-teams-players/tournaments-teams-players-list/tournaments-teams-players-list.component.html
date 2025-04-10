@@ -43,7 +43,7 @@
             <form [formGroup]="addPlayersForm" (ngSubmit)="addPlayersToTeam(addPlayersForm)">
                 <mat-form-field appearance="outline">
                     <mat-label>Availble players</mat-label>
-                    <mat-select multiple formControlName="player">
+                    <mat-select formControlName="player">
                         @for (player of availblePlayers; track $index) {
                         <mat-option [value]="player">{{player.name}} {{player.surname}}</mat-option>
                         }
