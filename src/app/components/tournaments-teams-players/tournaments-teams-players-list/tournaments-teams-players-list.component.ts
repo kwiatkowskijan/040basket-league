@@ -3,9 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TournamentTeamsPlayersService } from '../../../services/tournament-teams-players.service';
 import { TournamentsTeamsPlayer } from '../../../models/tournaments-teams-player';
 import { Player } from '../../../models/player';
-import { PlayersService } from '../../../services/players.service';
-import { TeamsService } from '../../../services/teams.service';
-import { ActivatedRoute, RouterLink, Router } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -15,6 +13,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
+import { TournamentService } from '../../../services/tournament.service';
 
 @Component({
   selector: 'app-tournaments-teams-players-list',
@@ -26,11 +25,10 @@ import { MatMenuModule } from '@angular/material/menu';
 export class TournamentsTeamsPlayersListComponent {
   @Input() tournamentId!: number;
   @Input() teamId!: number;
+  tournamentTeamsPlayersService = inject(TournamentTeamsPlayersService);
+  tournamentsService = inject(TournamentService)
   tournamentsTeamsPlayers: TournamentsTeamsPlayer[] = [];
   availblePlayers: Player[] = [];
-  tournamentTeamsPlayersService = inject(TournamentTeamsPlayersService);
-  playersService = inject(PlayersService);
-  teamsService = inject(TeamsService);
   isAddingPlayer = false;
 
   addPlayersForm = new FormGroup({
@@ -42,6 +40,9 @@ export class TournamentsTeamsPlayersListComponent {
   async ngOnInit() {
     try {
       this.tournamentsTeamsPlayers = await this.tournamentTeamsPlayersService.getAllPlayersByTeam(this.tournamentId, this.teamId);
+      console.log(this.tournamentsTeamsPlayers);
+      this.availblePlayers = await this.tournamentsService.getPlayersWithoutTeam(this.tournamentId);
+      console.log(this.availblePlayers);
     } catch (error) {
       console.error(error);
     }
@@ -52,7 +53,7 @@ export class TournamentsTeamsPlayersListComponent {
   }
 
   addPlayersToTeam(form: FormGroup) {
-
+    
   }
 
   removePlayerFromTeam(playerId: number) {
