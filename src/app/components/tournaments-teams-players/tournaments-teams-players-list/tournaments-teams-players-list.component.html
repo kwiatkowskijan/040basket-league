@@ -16,11 +16,12 @@
         </div>
     </div>
     <div class="item-content">
-        @for(player of tournamentsTeamsPlayers; track $index) {
+        @for(teamPlayer of tournamentsTeamsPlayers; track $index) {
         <div class="list-item">
             <div class="list-item">
-                <a [routerLink]="['players', player.id]">{{ player.name }} {{ player.surname }} ({{ player.number
-                    }})</a>
+                <a [routerLink]="['players', teamPlayer.player.id]">{{ teamPlayer.player.name }}
+                    {{teamPlayer.player.surname }}
+                    ({{teamPlayer.number }})</a>
                 <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
                     <mat-icon>more_vert</mat-icon>
                 </button>
@@ -42,9 +43,9 @@
             <form [formGroup]="addPlayersForm" (ngSubmit)="addPlayersToTeam(addPlayersForm)">
                 <mat-form-field appearance="outline">
                     <mat-label>Availble players</mat-label>
-                    <mat-select multiple formControlName="player">
+                    <mat-select formControlName="player">
                         @for (player of availblePlayers; track $index) {
-                        <mat-option [value]="player.id">{{player.name}} {{player.surname}}</mat-option>
+                        <mat-option [value]="player">{{player.name}} {{player.surname}}</mat-option>
                         }
                     </mat-select>
                     @if (addPlayersForm.controls.player.hasError('required')) {

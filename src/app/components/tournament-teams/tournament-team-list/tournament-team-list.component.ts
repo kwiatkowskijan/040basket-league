@@ -18,7 +18,6 @@ import { MatButtonModule } from '@angular/material/button';
 export class TournamentTeamListComponent {
   @Input() tournamentId!: number;
   teamsInTournament: Team[] = [];
-  maxVisibleTeams = 5;
   teamsService = inject(TeamsService);
   route: ActivatedRoute = inject(ActivatedRoute);
 
@@ -36,9 +35,5 @@ export class TournamentTeamListComponent {
     this.teamsService.getTeamsByTournament(this.tournamentId).then(teamsInTournament => {
       this.teamsInTournament = teamsInTournament;
     });
-  }
-
-  loadMoreTeams() {
-    this.maxVisibleTeams = this.teamsInTournament.length;
   }
 }

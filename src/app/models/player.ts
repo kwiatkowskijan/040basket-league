@@ -4,5 +4,4 @@ export interface Player {
     name: string,
     surname: string,
     birthDate: Date
-    number?: number;
 }

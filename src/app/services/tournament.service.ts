@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Tournament } from '../models/tournament';
+import { Player } from '../models/player';
 
 
 @Injectable({
@@ -23,6 +24,11 @@ export class TournamentService {
 
   async getTournamentById(id: number): Promise<Tournament | undefined> {
     const data = await fetch(`${this.url}/${id}`);
+    return await data.json() ?? [];
+  }
+
+  async getPlayersWithoutTeam(id: number): Promise<Player[]> {
+    const data = await fetch(`${this.url}/${id}/free-players`);
     return await data.json() ?? [];
   }
 

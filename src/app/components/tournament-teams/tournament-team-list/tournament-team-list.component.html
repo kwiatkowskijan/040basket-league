@@ -19,14 +19,10 @@
     </div>
     <div class="item">
         <div class="item-content">
-            @for (team of teamsInTournament.slice(0, maxVisibleTeams); track $index) {
+            @for (team of teamsInTournament; track $index) {
             <div class="team-item">
                 <a [routerLink]="['../team', team.id]">{{ team.name }}</a>
             </div>
-            }
-    
-            @if (teamsInTournament.length > maxVisibleTeams) {
-            <button (click)="loadMoreTeams()">Show all</button>
             }
         </div>
     </div>

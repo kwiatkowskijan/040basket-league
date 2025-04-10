@@ -3,9 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TournamentTeamsPlayersService } from '../../../services/tournament-teams-players.service';
 import { TournamentsTeamsPlayer } from '../../../models/tournaments-teams-player';
 import { Player } from '../../../models/player';
-import { PlayersService } from '../../../services/players.service';
-import { TeamsService } from '../../../services/teams.service';
-import { ActivatedRoute, RouterLink, Router } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -15,6 +13,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
+import { TournamentService } from '../../../services/tournament.service';
 
 @Component({
   selector: 'app-tournaments-teams-players-list',
@@ -26,45 +25,28 @@ import { MatMenuModule } from '@angular/material/menu';
 export class TournamentsTeamsPlayersListComponent {
   @Input() tournamentId!: number;
   @Input() teamId!: number;
-  tournamentsTeamsPlayers: TournamentsTeamsPlayer[] = [];
   tournamentTeamsPlayersService = inject(TournamentTeamsPlayersService);
-  playersService = inject(PlayersService);
-  teamsService = inject(TeamsService);
+  tournamentsService = inject(TournamentService)
+  tournamentsTeamsPlayers: TournamentsTeamsPlayer[] = [];
+  tournamentsTeamsPlayer?: TournamentsTeamsPlayer;
   availblePlayers: Player[] = [];
-  teamsPlayers: TournamentsTeamsPlayer[] = [];
   isAddingPlayer = false;
 
   addPlayersForm = new FormGroup({
     player: new FormControl('', [Validators.required])
   })
 
-  constructor(private router: Router) {
-    this.playersService.getAllPlayers().then(allPlayers => {
-      // console.log(allPlayers);
-      // this.teamsService.getTeamsByTournament(this.tournamentId).then(teams => {
-      //   console.log(teams);
-      //   teams.forEach(teamItem => {
-      //     this.tournamentTeamsPlayersService.getAllPlayersByTeam(teamItem.tournamentId, teamItem.id).then(player => {
-      //       console.log(player);
-      //       this.teamsPlayers.push(player);
-      //     })
-      //     // teamItem.players.forEach(player => {
-      //     //   console.log(player);
-      //     //   this.teamsPlayers.push(player);
-      //     // })
-      //   });
-      //   console.log(this.teamsPlayers);
-      //   this.availblePlayers = allPlayers.filter(player => {
-      //     return !this.teamsPlayers?.find(teamsPlayer => teamsPlayer.id === player.id);
-      //   });
-      // });
-    });
-  }
+  constructor(private router: Router) { }
 
-  ngOnInit() {
-    this.tournamentTeamsPlayersService.getAllPlayersByTeam(this.tournamentId, this.teamId).then(tournamentsTeamsPlayers => {
-      this.tournamentsTeamsPlayers = tournamentsTeamsPlayers;
-    });
+  async ngOnInit() {
+    try {
+      this.tournamentsTeamsPlayers = await this.tournamentTeamsPlayersService.getAllPlayersByTeam(this.tournamentId, this.teamId);
+      console.log(this.tournamentsTeamsPlayers);
+      this.availblePlayers = await this.tournamentsService.getPlayersWithoutTeam(this.tournamentId);
+      console.log(this.availblePlayers);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   addNewPlayer() {
@@ -73,6 +55,20 @@ export class TournamentsTeamsPlayersListComponent {
 
   addPlayersToTeam(form: FormGroup) {
 
+    const player: TournamentsTeamsPlayer = {
+      id: 0,
+      teamId: this.teamId,
+      playerId: form.controls['player'].value.id,
+      player: form.controls['player'].value,
+      number: 0,
+      isCaptain: false
+    }
+
+    this.tournamentTeamsPlayersService.addPlayerToTeam(this.tournamentId, this.teamId, player).subscribe({
+      next: (data) => {
+        console.log(data);
+      }
+    })
   }
 
   removePlayerFromTeam(playerId: number) {

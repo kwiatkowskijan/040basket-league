@@ -29,9 +29,16 @@ export class TournamentsTeamsPlayerDetailsComponent {
     this.tournamentId = this.route.snapshot.params["id"];
     this.teamId = this.route.snapshot.params["id2"];
     this.playerId = this.route.snapshot.params["id3"];
+  }
 
-    this.tournamentTeamsPlayersService.getPlayerByTeam(this.tournamentId, this.teamId, this.playerId).then(team => {
-      this.player = team;
-    });
+  async NgOnInit() {
+    try {
+      this.player = await this.tournamentTeamsPlayersService.getPlayerByTeam(this.tournamentId, this.teamId, this.playerId);
+      console.log(this.player);
+    } catch (error) {
+      console.log("Not found");
+    }
+
+    console.log(this.player);
   }
 }
