@@ -43,7 +43,9 @@ export class TournamentTeamDetailsComponent {
     city: new FormControl('', [Validators.required, Validators.maxLength(50)])
   })
 
-  constructor(private router: Router) {
+  constructor(private router: Router) { }
+
+  ngOnInit() {
     this.tournamentId = Number(this.route.snapshot.params["id"]);
     this.teamId = this.route.snapshot.params["id2"];
 
