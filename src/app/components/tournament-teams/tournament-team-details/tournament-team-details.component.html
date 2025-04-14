@@ -52,17 +52,11 @@
                                 </mat-form-field>
                             </div>
                         </mat-tab>
-                        <mat-tab label="Player 1">
-                            <div class="tab-content"></div>
-                        </mat-tab>
-                        <mat-tab label="Player 2">
-                            <div class="tab-content"></div>
-                        </mat-tab>
-                        <mat-tab label="Player 3">
-                            <div class="tab-content"></div>
-                        </mat-tab>
-                        <mat-tab label="Player 4">
-                            <div class="tab-content"></div>
+                        <mat-tab *ngFor="let player of [].constructor(maxPlayers); let i = index"
+                            [label]="'Player ' + (i + 1)">
+                            <div class="tab-content">
+                                <p>Content for Player {{ i + 1 }}</p>
+                            </div>
                         </mat-tab>
                     </mat-tab-group>
                     @if (isNew) {
@@ -84,7 +78,7 @@
                 <h3>Stats</h3>
             </div>
         </div>
-        <app-tournaments-teams-players-list [tournamentId]="tournamentId" [teamId]="teamId"
-            [hidden]="isEditing"></app-tournaments-teams-players-list>
+        <!-- <app-tournaments-teams-players-list [tournamentId]="tournamentId" [teamId]="teamId"
+            [hidden]="isEditing"></app-tournaments-teams-players-list> -->
     </div>
 </div>

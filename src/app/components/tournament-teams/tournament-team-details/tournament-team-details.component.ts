@@ -17,6 +17,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
 import { TournamentsTeamsPlayersListComponent } from '../../tournaments-teams-players/tournaments-teams-players-list/tournaments-teams-players-list.component';
+import { max } from 'rxjs';
 
 @Component({
   selector: 'app-tournament-team-details',
@@ -34,7 +35,8 @@ export class TournamentTeamDetailsComponent {
   playerService = inject(PlayersService);
   tournamentService = inject(TournamentService);
   team: Team | undefined;
-  tournament: Tournament | undefined;
+  tournament?: Tournament;
+  maxPlayers: number = 0;
   isEditing = false;
   isNew = false;
 
@@ -45,8 +47,8 @@ export class TournamentTeamDetailsComponent {
 
   constructor(private router: Router) { }
 
-  ngOnInit() {
-    this.tournamentId = Number(this.route.snapshot.params["id"]);
+  async ngOnInit() {
+    this.tournamentId = this.route.snapshot.params["id"];
     this.teamId = this.route.snapshot.params["id2"];
 
     if (this.teamId === undefined) {
@@ -54,21 +56,30 @@ export class TournamentTeamDetailsComponent {
       this.isEditing = true;
     }
 
-    if (this.isNew) {
-      this.team = {} as Team;
-    } else {
-      this.teamService.getTeamById(this.tournamentId, this.teamId).then(team => {
+    try {
+      this.tournament = await this.tournamentService.getTournamentById(this.tournamentId);
+
+      if (this.isNew) {
+        this.team = {} as Team;
+      } else {
+        const team = await this.teamService.getTeamById(this.tournamentId, this.teamId);
         this.team = team;
         this.teamForm.setValue({
           name: this.team?.name ?? '',
           city: this.team?.city ?? ''
         })
-      });
+      }
+    }
+    catch (error) {
+      console.error('Error fetching tournament:', error);
     }
 
-    this.tournamentService.getTournamentById(this.tournamentId).then(tournament => {
-      this.tournament = tournament;
-    })
+
+    this.maxPlayers = this.tournament?.maxPlayersInTeam ?? 0;
+
+    console.log(this.tournamentId);
+    console.log(this.tournament);
+    console.log(this.maxPlayers);
   }
 
   turnOnEditMode() {
