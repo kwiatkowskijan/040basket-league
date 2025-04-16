@@ -1,0 +1,32 @@
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    column-gap: 20px;
+    row-gap: 10px;
+}
+
+form mat-form-field {
+    min-width: 49%;
+}
+
+.tab-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 16px;
+    border-radius: 8px;
+    min-height: 250px;
+}
+
+.submit-button {
+    max-width: 150px;
+}
+
+@media only screen and (max-width: 768px) {
+    form mat-form-field {
+        min-width: 100%;
+    }
+}

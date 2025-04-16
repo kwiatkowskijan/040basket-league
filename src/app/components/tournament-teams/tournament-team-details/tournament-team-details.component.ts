@@ -17,13 +17,15 @@ import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
 import { TournamentsTeamsPlayersListComponent } from '../../tournaments-teams-players/tournaments-teams-players-list/tournaments-teams-players-list.component';
-import { max } from 'rxjs';
+import { TournamentTeamsPlayersService } from '../../../services/tournament-teams-players.service';
+import { Player } from '../../../models/player';
+import { AddEditTeamFormComponent } from '../add-edit-team-form/add-edit-team-form.component';
 
 @Component({
   selector: 'app-tournament-team-details',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, MatSelectModule, RouterLink, MatDividerModule, MatListModule, MatMenuModule,
-    TournamentsTeamsPlayersListComponent, MatTabsModule],
+    TournamentsTeamsPlayersListComponent, MatTabsModule, AddEditTeamFormComponent],
   templateUrl: './tournament-team-details.component.html',
   styleUrl: './tournament-team-details.component.css'
 })
@@ -34,9 +36,11 @@ export class TournamentTeamDetailsComponent {
   teamService = inject(TeamsService);
   playerService = inject(PlayersService);
   tournamentService = inject(TournamentService);
+  tournamentsTeamsPlayersService = inject(TournamentTeamsPlayersService);
   team: Team | undefined;
   tournament?: Tournament;
   maxPlayers: number = 0;
+  availblePlayers: Player[] = [];
   isEditing = false;
   isNew = false;
 
@@ -48,6 +52,7 @@ export class TournamentTeamDetailsComponent {
   constructor(private router: Router) { }
 
   async ngOnInit() {
+
     this.tournamentId = this.route.snapshot.params["id"];
     this.teamId = this.route.snapshot.params["id2"];
 
@@ -58,7 +63,8 @@ export class TournamentTeamDetailsComponent {
 
     try {
       this.tournament = await this.tournamentService.getTournamentById(this.tournamentId);
-
+      this.availblePlayers = await this.tournamentService.getPlayersWithoutTeam(this.tournamentId);
+      console.log(this.availblePlayers)
       if (this.isNew) {
         this.team = {} as Team;
       } else {
@@ -74,11 +80,8 @@ export class TournamentTeamDetailsComponent {
       console.error('Error fetching tournament:', error);
     }
 
-
     this.maxPlayers = this.tournament?.maxPlayersInTeam ?? 0;
 
-    console.log(this.tournamentId);
-    console.log(this.tournament);
     console.log(this.maxPlayers);
   }
 

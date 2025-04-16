@@ -41,9 +41,7 @@ export class TournamentsTeamsPlayersListComponent {
   async ngOnInit() {
     try {
       this.tournamentsTeamsPlayers = await this.tournamentTeamsPlayersService.getAllPlayersByTeam(this.tournamentId, this.teamId);
-      console.log(this.tournamentsTeamsPlayers);
       this.availblePlayers = await this.tournamentsService.getPlayersWithoutTeam(this.tournamentId);
-      console.log(this.availblePlayers);
     } catch (error) {
       console.error(error);
     }

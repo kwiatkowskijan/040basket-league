@@ -1,16 +1,3 @@
-form {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    column-gap: 20px;
-    row-gap: 10px;
-}
-
-form mat-form-field {
-    min-width: 49%;
-}
-
 .list-item {
     width: 100%;
     display: flex;
@@ -47,16 +34,6 @@ form mat-form-field {
 
 .team-counter {
     font-size: 36px;
-}
-
-.tab-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin: 16px;
-    border-radius: 8px;
-    min-height: 250px;
 }
 
 .submit-button {
