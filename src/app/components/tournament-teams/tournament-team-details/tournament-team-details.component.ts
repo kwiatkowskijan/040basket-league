@@ -1,4 +1,5 @@
 import { Component, inject } from '@angular/core';
+import { Location } from '@angular/common';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterLink, Router } from '@angular/router';
 import { Team } from '../../../models/team';
@@ -49,7 +50,7 @@ export class TournamentTeamDetailsComponent {
     city: new FormControl('', [Validators.required, Validators.maxLength(50)])
   })
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private location: Location) { }
 
   async ngOnInit() {
 
@@ -81,6 +82,10 @@ export class TournamentTeamDetailsComponent {
     }
 
     this.maxPlayers = this.tournament?.maxPlayersInTeam ?? 0;
+  }
+
+  goBack() {
+    this.location.back();
   }
 
   turnOnEditMode() {

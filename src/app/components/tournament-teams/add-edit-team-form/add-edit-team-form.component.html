@@ -22,9 +22,18 @@
                     <mat-error>Name must have max 50 characters</mat-error>
                     }
                 </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Main contant email</mat-label>
+                    <input matInput type="text">
+                </mat-form-field>
+                <div class="input-file">
+                    <label for="">Logo</label>
+                    <input type="file">
+                </div>
             </div>
         </mat-tab>
-        <mat-tab *ngFor="let player of [].constructor(maxPlayers); let i = index" [label]="'Player ' + (i + 1)">
+        <mat-tab *ngFor="let player of [].constructor(maxPlayers); let i = index"
+            [label]="'Player ' + (i + 1) + (i === 0 ? ' (captain)' : '')">
             <div class="tab-content">
                 <mat-form-field appearance="outline">
                     <mat-label>Availble players</mat-label>

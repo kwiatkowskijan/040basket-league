@@ -35,3 +35,7 @@
 .team-counter {
     font-size: 36px;
 }
+
+.back-button {
+    display: flex;
+}

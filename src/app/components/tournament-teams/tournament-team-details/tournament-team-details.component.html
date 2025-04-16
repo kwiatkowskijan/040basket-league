@@ -4,7 +4,7 @@
 <div class="section-container">
 
     <div class="above-items-container">
-        <a [routerLink]="['/tournament', tournamentId, 'teams']">Back to teams list</a>
+        <a (click)="goBack()" class="back-button"><mat-icon>arrow_back</mat-icon><span>Back to teams list</span></a>
         <div class="title-area-buttons">
             <button mat-raised-button (click)="turnOnEditMode()">
                 <mat-icon>edit</mat-icon>Edit
