@@ -81,8 +81,6 @@ export class TournamentTeamDetailsComponent {
     }
 
     this.maxPlayers = this.tournament?.maxPlayersInTeam ?? 0;
-
-    console.log(this.maxPlayers);
   }
 
   turnOnEditMode() {

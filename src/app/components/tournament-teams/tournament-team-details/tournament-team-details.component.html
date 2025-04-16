@@ -2,6 +2,7 @@
     <h1>Team</h1>
 </div>
 <div class="section-container">
+
     <div class="above-items-container">
         <a [routerLink]="['/tournament', tournamentId, 'teams']">Back to teams list</a>
         <div class="title-area-buttons">
@@ -13,6 +14,7 @@
             </button>
         </div>
     </div>
+
     <div class="items-container one-column">
         <div class="item">
             <div class="item-title-area">
@@ -31,6 +33,7 @@
             </div>
         </div>
     </div>
+
     <div class="items-container two-columns" *ngIf="!isEditing">
         <div class="item">
             <div class="item-title-area">
@@ -40,4 +43,5 @@
         <app-tournaments-teams-players-list [tournamentId]="tournamentId"
             [teamId]="teamId"></app-tournaments-teams-players-list>
     </div>
+    
 </div>

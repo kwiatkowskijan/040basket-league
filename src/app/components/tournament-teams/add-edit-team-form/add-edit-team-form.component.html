@@ -28,9 +28,9 @@
             <div class="tab-content">
                 <mat-form-field appearance="outline">
                     <mat-label>Availble players</mat-label>
-                    <mat-select>
+                    <mat-select [formControlName]="'player' + i">
                         @for (player of availblePlayers; track $index) {
-                        <mat-option [value]="player" [formControlName]="'player' + (i)">{{player.name}} {{player.surname}}</mat-option>
+                        <mat-option [value]="player">{{player.name}} {{player.surname}}</mat-option>
                         }
                     </mat-select>
                 </mat-form-field>

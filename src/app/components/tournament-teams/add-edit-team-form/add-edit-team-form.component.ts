@@ -33,8 +33,6 @@ export class AddEditTeamFormComponent {
     for (let i = 0; i < this.maxPlayers; i++) {
       this.addEditTeamForm.addControl('player' + i, new FormControl('', [Validators.required]));
     }
-
-    console.log(this.addEditTeamForm.controls);
   }
 
   createEditTeam(form: FormGroup) {

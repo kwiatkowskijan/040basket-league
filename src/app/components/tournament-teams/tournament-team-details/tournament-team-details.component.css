@@ -35,13 +35,3 @@
 .team-counter {
     font-size: 36px;
 }
-
-.submit-button {
-    max-width: 150px;
-}
-
-@media only screen and (max-width: 768px) {
-    form mat-form-field {
-        min-width: 100%;
-    }
-}
