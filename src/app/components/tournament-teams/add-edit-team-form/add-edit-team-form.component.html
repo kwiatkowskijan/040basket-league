@@ -1,7 +1,9 @@
-<form [formGroup]="addEditTeamForm" (ngSubmit)="createEditTeam(addEditTeamForm)">
+<form [formGroup]="addEditTeamForm" (ngSubmit)="sendTeamData(addEditTeamForm)">
+
     <mat-tab-group>
         <mat-tab label="Team details">
             <div class="tab-content">
+
                 <mat-form-field appearance="outline">
                     <mat-label>Name</mat-label>
                     <input matInput type="text" id="team-name" formControlName="name">
@@ -12,6 +14,7 @@
                     <mat-error>Name must have max 50 characters</mat-error>
                     }
                 </mat-form-field>
+
                 <mat-form-field appearance="outline">
                     <mat-label>City</mat-label>
                     <input matInput type="text" id="team-city" formControlName="city">
@@ -22,16 +25,19 @@
                     <mat-error>Name must have max 50 characters</mat-error>
                     }
                 </mat-form-field>
+
                 <mat-form-field appearance="outline">
                     <mat-label>Main contant email</mat-label>
                     <input matInput type="text">
                 </mat-form-field>
+                
                 <div class="input-file">
                     <label for="">Logo</label>
                     <input type="file">
                 </div>
             </div>
         </mat-tab>
+
         <mat-tab *ngFor="let player of [].constructor(maxPlayers); let i = index"
             [label]="'Player ' + (i + 1) + (i === 0 ? ' (captain)' : '')">
             <div class="tab-content">
@@ -46,6 +52,7 @@
             </div>
         </mat-tab>
     </mat-tab-group>
+
     @if (isNew) {
     <button type="submit" class="submit-button" mat-flat-button>
         <mat-icon>add</mat-icon>Add team
@@ -55,4 +62,5 @@
         <mat-icon>edit</mat-icon>Edit team
     </button>
     }
+
 </form>

@@ -5,9 +5,8 @@ import { ActivatedRoute, RouterLink, Router } from '@angular/router';
 import { Team } from '../../../models/team';
 import { Tournament } from '../../../models/tournament';
 import { TeamsService } from '../../../services/teams.service';
-import { PlayersService } from '../../../services/players.service';
 import { TournamentService } from '../../../services/tournament.service';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
@@ -21,6 +20,7 @@ import { TournamentsTeamsPlayersListComponent } from '../../tournaments-teams-pl
 import { TournamentTeamsPlayersService } from '../../../services/tournament-teams-players.service';
 import { Player } from '../../../models/player';
 import { AddEditTeamFormComponent } from '../add-edit-team-form/add-edit-team-form.component';
+import { TournamentsTeamsPlayer } from '../../../models/tournaments-teams-player';
 
 @Component({
   selector: 'app-tournament-team-details',
@@ -35,20 +35,14 @@ export class TournamentTeamDetailsComponent {
   tournamentId!: number;
   route: ActivatedRoute = inject(ActivatedRoute);
   teamService = inject(TeamsService);
-  playerService = inject(PlayersService);
   tournamentService = inject(TournamentService);
   tournamentsTeamsPlayersService = inject(TournamentTeamsPlayersService);
-  team: Team | undefined;
+  team?: Team;
   tournament?: Tournament;
   maxPlayers: number = 0;
   availblePlayers: Player[] = [];
   isEditing = false;
   isNew = false;
-
-  teamForm = new FormGroup({
-    name: new FormControl('', [Validators.required, Validators.maxLength(50)]),
-    city: new FormControl('', [Validators.required, Validators.maxLength(50)])
-  })
 
   constructor(private router: Router, private location: Location) { }
 
@@ -65,16 +59,16 @@ export class TournamentTeamDetailsComponent {
     try {
       this.tournament = await this.tournamentService.getTournamentById(this.tournamentId);
       this.availblePlayers = await this.tournamentService.getPlayersWithoutTeam(this.tournamentId);
-      console.log(this.availblePlayers)
+
       if (this.isNew) {
         this.team = {} as Team;
       } else {
         const team = await this.teamService.getTeamById(this.tournamentId, this.teamId);
         this.team = team;
-        this.teamForm.setValue({
-          name: this.team?.name ?? '',
-          city: this.team?.city ?? ''
-        })
+        // this.teamForm.setValue({
+        //   name: this.team?.name ?? '',
+        //   city: this.team?.city ?? ''
+        // })
       }
     }
     catch (error) {
@@ -92,8 +86,25 @@ export class TournamentTeamDetailsComponent {
     this.isEditing = true;
   }
 
+  getTeamData($event: FormGroup) {
+    console.log($event.controls);
+  }
+
   createEditTeam(form: FormGroup) {
     if (this.team) {
+
+      const players: Player[] = [];
+      let createdTeamId: number;
+
+      Object.keys(form.controls).forEach((key) => {
+        if (key.startsWith('player')) {
+          const player = form.get(key)?.value;
+          if (player) {
+            players.push(player);
+          }
+        }
+      });
+
       this.team.tournamentId = this.tournamentId;
       this.team.name = form.value.name ?? '';
       this.team.city = form.value.city ?? '';
@@ -101,12 +112,33 @@ export class TournamentTeamDetailsComponent {
       if (this.isNew) {
         this.teamService.createTeam(this.tournamentId, this.team).subscribe({
           next: (data) => {
-            console.log(data);
-            console.log(this.team)
             this.team = data;
+            createdTeamId = data.id;
+
+            players.forEach((player) => {
+
+              const teamPlayer: TournamentsTeamsPlayer = {
+                id: 0,
+                teamId: createdTeamId,
+                playerId: player.id,
+                player: player,
+                number: 0,
+                isCaptain: false
+              }
+
+              this.tournamentsTeamsPlayersService.addPlayerToTeam(this.tournamentId, this.teamId, teamPlayer).subscribe({
+                next: (data) => {
+                  console.log("Successfully added player to team:", data);
+                },
+                error: (error) => {
+                  console.error('Error fetching posts:', error);
+                }
+              });
+            });
+
             this.isNew = false;
             this.isEditing = false;
-            console.log("Adding succesful!")
+            console.log("Successfully created team:", data);
           },
           error: (error) => {
             console.error('Error fetching posts:', error);

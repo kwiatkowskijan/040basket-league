@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -21,6 +21,7 @@ export class AddEditTeamFormComponent {
   @Input() isNew: boolean = false;
   @Input() maxPlayers: number = 0;
   @Input() availblePlayers: Player[] = [];
+  @Output() createTeam = new EventEmitter<FormGroup>();
 
   addEditTeamForm = new FormGroup({});
 
@@ -35,7 +36,7 @@ export class AddEditTeamFormComponent {
     }
   }
 
-  createEditTeam(form: FormGroup) {
-
+  sendTeamData(form: FormGroup) {
+    this.createTeam.emit(form);
   }
 }

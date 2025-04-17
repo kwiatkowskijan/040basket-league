@@ -1,12 +1,13 @@
 <div class="section-title">
     <h1>Team</h1>
 </div>
+
 <div class="section-container">
 
     <div class="above-items-container">
         <a (click)="goBack()" class="back-button"><mat-icon>arrow_back</mat-icon><span>Back to teams list</span></a>
         <div class="title-area-buttons">
-            <button mat-raised-button (click)="turnOnEditMode()">
+            <button mat-raised-button (click)="turnOnEditMode()" [hidden]="isNew">
                 <mat-icon>edit</mat-icon>Edit
             </button>
             <button mat-raised-button (click)="deleteTeam()" [hidden]="isNew">
@@ -28,8 +29,8 @@
                 <p>{{ team?.city }}</p>
             </div>
             <div [hidden]="!isEditing" class="item-content">
-                <app-add-edit-team-form [isNew]="isNew" [maxPlayers]="maxPlayers"
-                    [availblePlayers]="availblePlayers"></app-add-edit-team-form>
+                <app-add-edit-team-form [isNew]="isNew" [maxPlayers]="maxPlayers" [availblePlayers]="availblePlayers"
+                    (createTeam)="createEditTeam($event)"></app-add-edit-team-form>
             </div>
         </div>
     </div>
@@ -43,5 +44,5 @@
         <app-tournaments-teams-players-list [tournamentId]="tournamentId"
             [teamId]="teamId"></app-tournaments-teams-players-list>
     </div>
-    
+
 </div>

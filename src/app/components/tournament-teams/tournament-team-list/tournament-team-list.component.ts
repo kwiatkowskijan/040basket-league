@@ -26,12 +26,11 @@ export class TournamentTeamListComponent {
     city: new FormControl('', [Validators.required, Validators.maxLength(50)])
   })
 
-  constructor() {
-    this.tournamentId = this.route.snapshot.params["id"]; 
-    console.log("To jest konstruktor");
-  }
+  constructor() { }
 
   ngOnInit() {
+    this.tournamentId = this.route.snapshot.params["id"];
+
     this.teamsService.getTeamsByTournament(this.tournamentId).then(teamsInTournament => {
       this.teamsInTournament = teamsInTournament;
     });

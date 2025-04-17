@@ -38,4 +38,16 @@
 
 .back-button {
     display: flex;
+    align-items: center;
+}
+
+.back-button span {
+    margin-left: 5px;
+    font-size: 12px;
+}
+
+.back-button mat-icon {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
 }
