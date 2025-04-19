@@ -101,8 +101,7 @@ export class TournamentTeamDetailsComponent {
       this.teamService.deleteTeam(this.tournamentId, this.team.id).subscribe({
         next: (data) => {
           this.team = data;
-          this.router.navigate(['/tournament', this.tournamentId]);
-          console.log("Delete succesful!")
+          this.goBack();
         },
         error: (error) => {
           console.error('Error fetching posts:', error);

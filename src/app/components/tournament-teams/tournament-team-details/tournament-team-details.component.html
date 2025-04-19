@@ -28,7 +28,7 @@
             <div [hidden]="isEditing" class="item-content">
                 <p>{{ team?.city }}</p>
             </div>
-            <div [hidden]="!isEditing" class="item-content">
+            <div class="item-content" *ngIf="isEditing">
                 <app-add-edit-team-form [isNew]="isNew" [maxPlayers]="maxPlayers" [availblePlayers]="availblePlayers"
                     [team]="team" (createTeam)="createEditTeam($event)"></app-add-edit-team-form>
             </div>
