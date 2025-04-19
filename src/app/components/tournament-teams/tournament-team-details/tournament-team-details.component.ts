@@ -185,7 +185,7 @@ export class TournamentTeamDetailsComponent {
   }
 
   private AddPlayersToTeam(teamId: number, players: Player[], numbers: number[]) {
-    let currentNumberIndex = 0;
+    let currentIndex = 0;
 
     players.forEach((player) => {
 
@@ -194,11 +194,11 @@ export class TournamentTeamDetailsComponent {
         teamId: teamId,
         playerId: player.id,
         player: player,
-        number: numbers[currentNumberIndex],
-        isCaptain: false
+        number: numbers[currentIndex],
+        isCaptain: currentIndex === 0 ? true : false,
       }
 
-      currentNumberIndex++;
+      currentIndex++;
 
       this.tournamentsTeamsPlayersService.addPlayerToTeam(this.tournamentId, this.teamId, teamPlayer).subscribe({
         next: (data) => {
