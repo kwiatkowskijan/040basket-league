@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSelectModule } from '@angular/material/select';
+import { Team } from '../../../models/team';
 import { Player } from '../../../models/player';
 
 @Component({
@@ -21,6 +22,7 @@ export class AddEditTeamFormComponent {
   @Input() isNew: boolean = false;
   @Input() maxPlayers: number = 0;
   @Input() availblePlayers: Player[] = [];
+  @Input() team?: Team;
   @Output() createTeam = new EventEmitter<FormGroup>();
 
   addEditTeamForm = new FormGroup({});
@@ -33,6 +35,13 @@ export class AddEditTeamFormComponent {
   ngOnChanges() {
     for (let i = 0; i < this.maxPlayers; i++) {
       this.addEditTeamForm.addControl('player' + i, new FormControl('', [Validators.required]));
+    }
+
+    if (!this.isNew) {
+      this.addEditTeamForm.setValue({
+        name: this.team?.name,
+        city: this.team?.city,
+      })
     }
   }
 

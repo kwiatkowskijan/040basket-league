@@ -30,7 +30,7 @@
                     <mat-label>Main contant email</mat-label>
                     <input matInput type="text">
                 </mat-form-field>
-                
+
                 <div class="input-file">
                     <label for="">Logo</label>
                     <input type="file">
@@ -48,6 +48,11 @@
                         <mat-option [value]="player">{{player.name}} {{player.surname}}</mat-option>
                         }
                     </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Number</mat-label>
+                    <input matInput type="number" id="player-number" formControlName="'number' + i">
                 </mat-form-field>
             </div>
         </mat-tab>

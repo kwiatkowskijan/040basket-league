@@ -65,10 +65,6 @@ export class TournamentTeamDetailsComponent {
       } else {
         const team = await this.teamService.getTeamById(this.tournamentId, this.teamId);
         this.team = team;
-        // this.teamForm.setValue({
-        //   name: this.team?.name ?? '',
-        //   city: this.team?.city ?? ''
-        // })
       }
     }
     catch (error) {
@@ -93,68 +89,16 @@ export class TournamentTeamDetailsComponent {
   createEditTeam(form: FormGroup) {
     if (this.team) {
 
-      const players: Player[] = [];
-      let createdTeamId: number;
+      const players = this.getPlayersFromForm(form);
 
-      Object.keys(form.controls).forEach((key) => {
-        if (key.startsWith('player')) {
-          const player = form.get(key)?.value;
-          if (player) {
-            players.push(player);
-          }
-        }
-      });
-
-      this.team.tournamentId = this.tournamentId;
-      this.team.name = form.value.name ?? '';
-      this.team.city = form.value.city ?? '';
+      // this.team.tournamentId = this.tournamentId;
+      // this.team.name = form.value.name ?? '';
+      // this.team.city = form.value.city ?? '';
 
       if (this.isNew) {
-        this.teamService.createTeam(this.tournamentId, this.team).subscribe({
-          next: (data) => {
-            this.team = data;
-            createdTeamId = data.id;
-
-            players.forEach((player) => {
-
-              const teamPlayer: TournamentsTeamsPlayer = {
-                id: 0,
-                teamId: createdTeamId,
-                playerId: player.id,
-                player: player,
-                number: 0,
-                isCaptain: false
-              }
-
-              this.tournamentsTeamsPlayersService.addPlayerToTeam(this.tournamentId, this.teamId, teamPlayer).subscribe({
-                next: (data) => {
-                  console.log("Successfully added player to team:", data);
-                },
-                error: (error) => {
-                  console.error('Error fetching posts:', error);
-                }
-              });
-            });
-
-            this.isNew = false;
-            this.isEditing = false;
-            console.log("Successfully created team:", data);
-          },
-          error: (error) => {
-            console.error('Error fetching posts:', error);
-          }
-        });
+        this.CreateTeam(players);
       } else {
-        this.teamService.editTeam(this.tournamentId, this.team).subscribe({
-          next: (data) => {
-            this.team = data;
-            this.isEditing = false;
-            console.log("Update succesful!");
-          },
-          error: (error) => {
-            console.error('Error fetching posts:', error);
-          }
-        })
+        this.EditTeam();
       }
     }
   }
@@ -172,5 +116,71 @@ export class TournamentTeamDetailsComponent {
         }
       })
     }
+  }
+
+  private CreateTeam(players: Player[]) {
+    this.teamService.createTeam(this.tournamentId, this.team!).subscribe({
+      next: (data) => {
+        const createdTeamId = data.id;
+        this.team = data;
+        this.AddPlayersToTeam(createdTeamId, players);
+        this.isNew = false;
+        this.isEditing = false;
+        console.log("Successfully created team:", data);
+      },
+      error: (error) => {
+        console.error('Error fetching posts:', error);
+      }
+    });
+  }
+
+  private EditTeam() {
+    this.teamService.editTeam(this.tournamentId, this.team!).subscribe({
+      next: (data) => {
+        this.team = data;
+        this.isEditing = false;
+        console.log("Update succesful!");
+      },
+      error: (error) => {
+        console.error('Error fetching posts:', error);
+      }
+    })
+  }
+
+  private getPlayersFromForm(form: FormGroup): Player[] {
+    const players: Player[] = [];
+
+    Object.keys(form.controls).forEach((key) => {
+      if (key.startsWith('player')) {
+        const player = form.get(key)?.value;
+        if (player) {
+          players.push(player);
+        }
+      }
+    });
+
+    return players;
+  }
+
+  private AddPlayersToTeam(teamId: number, players: Player[]) {
+    players.forEach((player) => {
+      const teamPlayer: TournamentsTeamsPlayer = {
+        id: 0,
+        teamId: teamId,
+        playerId: player.id,
+        player: player,
+        number: 0,
+        isCaptain: false
+      }
+
+      this.tournamentsTeamsPlayersService.addPlayerToTeam(this.tournamentId, this.teamId, teamPlayer).subscribe({
+        next: (data) => {
+          console.log("Successfully added player to team:", data);
+        },
+        error: (error) => {
+          console.error('Error fetching posts:', error);
+        }
+      });
+    });
   }
 }

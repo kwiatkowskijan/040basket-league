@@ -30,7 +30,7 @@
             </div>
             <div [hidden]="!isEditing" class="item-content">
                 <app-add-edit-team-form [isNew]="isNew" [maxPlayers]="maxPlayers" [availblePlayers]="availblePlayers"
-                    (createTeam)="createEditTeam($event)"></app-add-edit-team-form>
+                    [team]="team" (createTeam)="createEditTeam($event)"></app-add-edit-team-form>
             </div>
         </div>
     </div>
