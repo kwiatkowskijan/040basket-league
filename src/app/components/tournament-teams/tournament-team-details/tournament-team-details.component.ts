@@ -31,12 +31,13 @@ import { TournamentsTeamsPlayer } from '../../../models/tournaments-teams-player
   styleUrl: './tournament-team-details.component.css'
 })
 export class TournamentTeamDetailsComponent {
-  teamId!: number;
-  tournamentId!: number;
   route: ActivatedRoute = inject(ActivatedRoute);
   teamService = inject(TeamsService);
   tournamentService = inject(TournamentService);
   tournamentsTeamsPlayersService = inject(TournamentTeamsPlayersService);
+
+  teamId!: number;
+  tournamentId!: number;
   team?: Team;
   tournament?: Tournament;
   maxPlayers: number = 0;
@@ -63,8 +64,7 @@ export class TournamentTeamDetailsComponent {
       if (this.isNew) {
         this.team = {} as Team;
       } else {
-        const team = await this.teamService.getTeamById(this.tournamentId, this.teamId);
-        this.team = team;
+        this.team = await this.teamService.getTeamById(this.tournamentId, this.teamId);
       }
     }
     catch (error) {
@@ -82,24 +82,17 @@ export class TournamentTeamDetailsComponent {
     this.isEditing = true;
   }
 
-  getTeamData($event: FormGroup) {
+  getTeamDataFromForm($event: FormGroup) {
     console.log($event.controls);
   }
 
   createEditTeam(form: FormGroup) {
     if (this.team) {
-
+      this.setTeamData(form);
       const players = this.getPlayersFromForm(form);
+      const numbers = this.getNumbersFromForm(form);
 
-      // this.team.tournamentId = this.tournamentId;
-      // this.team.name = form.value.name ?? '';
-      // this.team.city = form.value.city ?? '';
-
-      if (this.isNew) {
-        this.CreateTeam(players);
-      } else {
-        this.EditTeam();
-      }
+      this.isNew ? this.CreateTeam(players, numbers) : this.EditTeam();
     }
   }
 
@@ -118,12 +111,20 @@ export class TournamentTeamDetailsComponent {
     }
   }
 
-  private CreateTeam(players: Player[]) {
+  private setTeamData(form: FormGroup) {
+    if (this.team) {
+      this.team.tournamentId = this.tournamentId;
+      this.team.name = form.value.name ?? '';
+      this.team.city = form.value.city ?? '';
+    }
+  }
+
+  private CreateTeam(players: Player[], numbers: number[]) {
     this.teamService.createTeam(this.tournamentId, this.team!).subscribe({
       next: (data) => {
         const createdTeamId = data.id;
         this.team = data;
-        this.AddPlayersToTeam(createdTeamId, players);
+        this.AddPlayersToTeam(createdTeamId, players, numbers);
         this.isNew = false;
         this.isEditing = false;
         console.log("Successfully created team:", data);
@@ -153,25 +154,51 @@ export class TournamentTeamDetailsComponent {
     Object.keys(form.controls).forEach((key) => {
       if (key.startsWith('player')) {
         const player = form.get(key)?.value;
+
         if (player) {
           players.push(player);
         }
+
       }
     });
 
     return players;
   }
 
-  private AddPlayersToTeam(teamId: number, players: Player[]) {
+  private getNumbersFromForm(form: FormGroup): number[] {
+    const numbers: number[] = [];
+
+    Object.keys(form.controls).forEach((key) => {
+      if (key.startsWith('number')) {
+        const number = form.get(key)?.value;
+
+        if (number) {
+          numbers.push(number);
+        }
+
+      }
+    });
+
+    console.log('Numbers:' + numbers)
+
+    return numbers;
+  }
+
+  private AddPlayersToTeam(teamId: number, players: Player[], numbers: number[]) {
+    let currentNumberIndex = 0;
+
     players.forEach((player) => {
+
       const teamPlayer: TournamentsTeamsPlayer = {
         id: 0,
         teamId: teamId,
         playerId: player.id,
         player: player,
-        number: 0,
+        number: numbers[currentNumberIndex],
         isCaptain: false
       }
+
+      currentNumberIndex++;
 
       this.tournamentsTeamsPlayersService.addPlayerToTeam(this.tournamentId, this.teamId, teamPlayer).subscribe({
         next: (data) => {

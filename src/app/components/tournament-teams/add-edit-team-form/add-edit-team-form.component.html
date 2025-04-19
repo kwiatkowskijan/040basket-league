@@ -41,6 +41,7 @@
         <mat-tab *ngFor="let player of [].constructor(maxPlayers); let i = index"
             [label]="'Player ' + (i + 1) + (i === 0 ? ' (captain)' : '')">
             <div class="tab-content">
+
                 <mat-form-field appearance="outline">
                     <mat-label>Availble players</mat-label>
                     <mat-select [formControlName]="'player' + i">
@@ -52,8 +53,9 @@
 
                 <mat-form-field appearance="outline">
                     <mat-label>Number</mat-label>
-                    <input matInput type="number" id="player-number" formControlName="'number' + i">
+                    <input matInput type="number" id="player-number" [formControlName]="'number' + i">
                 </mat-form-field>
+
             </div>
         </mat-tab>
     </mat-tab-group>

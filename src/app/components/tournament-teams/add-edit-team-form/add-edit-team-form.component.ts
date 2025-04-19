@@ -35,6 +35,7 @@ export class AddEditTeamFormComponent {
   ngOnChanges() {
     for (let i = 0; i < this.maxPlayers; i++) {
       this.addEditTeamForm.addControl('player' + i, new FormControl('', [Validators.required]));
+      this.addEditTeamForm.addControl('number' + i, new FormControl('', [Validators.required, Validators.min(1), Validators.max(99)]));
     }
 
     if (!this.isNew) {
