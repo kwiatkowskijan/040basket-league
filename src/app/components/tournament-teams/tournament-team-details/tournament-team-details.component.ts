@@ -45,7 +45,7 @@ export class TournamentTeamDetailsComponent {
   isEditing = false;
   isNew = false;
 
-  constructor(private router: Router, private location: Location) { }
+  constructor(private location: Location) { }
 
   async ngOnInit() {
 
@@ -60,12 +60,7 @@ export class TournamentTeamDetailsComponent {
     try {
       this.tournament = await this.tournamentService.getTournamentById(this.tournamentId);
       this.availblePlayers = await this.tournamentService.getPlayersWithoutTeam(this.tournamentId);
-
-      if (this.isNew) {
-        this.team = {} as Team;
-      } else {
-        this.team = await this.teamService.getTeamById(this.tournamentId, this.teamId);
-      }
+      this.isNew ? this.team = {} as Team : this.team = await this.teamService.getTeamById(this.tournamentId, this.teamId);
     }
     catch (error) {
       console.error('Error fetching tournament:', error);
@@ -96,20 +91,6 @@ export class TournamentTeamDetailsComponent {
     }
   }
 
-  deleteTeam() {
-    if (this.team && !this.isNew) {
-      this.teamService.deleteTeam(this.tournamentId, this.team.id).subscribe({
-        next: (data) => {
-          this.team = data;
-          this.goBack();
-        },
-        error: (error) => {
-          console.error('Error fetching posts:', error);
-        }
-      })
-    }
-  }
-
   private setTeamData(form: FormGroup) {
     if (this.team) {
       this.team.tournamentId = this.tournamentId;
@@ -132,19 +113,6 @@ export class TournamentTeamDetailsComponent {
         console.error('Error fetching posts:', error);
       }
     });
-  }
-
-  private EditTeam() {
-    this.teamService.editTeam(this.tournamentId, this.team!).subscribe({
-      next: (data) => {
-        this.team = data;
-        this.isEditing = false;
-        console.log("Update succesful!");
-      },
-      error: (error) => {
-        console.error('Error fetching posts:', error);
-      }
-    })
   }
 
   private getPlayersFromForm(form: FormGroup): Player[] {
@@ -178,8 +146,6 @@ export class TournamentTeamDetailsComponent {
       }
     });
 
-    console.log('Numbers:' + numbers)
-
     return numbers;
   }
 
@@ -208,5 +174,32 @@ export class TournamentTeamDetailsComponent {
         }
       });
     });
+  }
+
+  private EditTeam() {
+    this.teamService.editTeam(this.tournamentId, this.team!).subscribe({
+      next: (data) => {
+        this.team = data;
+        this.isEditing = false;
+        console.log("Update succesful!");
+      },
+      error: (error) => {
+        console.error('Error fetching posts:', error);
+      }
+    })
+  }
+
+  deleteTeam() {
+    if (this.team && !this.isNew) {
+      this.teamService.deleteTeam(this.tournamentId, this.team.id).subscribe({
+        next: (data) => {
+          this.team = data;
+          this.goBack();
+        },
+        error: (error) => {
+          console.error('Error fetching posts:', error);
+        }
+      })
+    }
   }
 }

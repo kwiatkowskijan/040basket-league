@@ -30,19 +30,19 @@ export class AddEditTeamFormComponent {
   ngOnInit() {
     this.addEditTeamForm.addControl('name', new FormControl('', [Validators.required, Validators.maxLength(50)]));
     this.addEditTeamForm.addControl('city', new FormControl('', [Validators.required, Validators.maxLength(50)]));
+
+    if (!this.isNew) {
+      this.addEditTeamForm.patchValue({
+        name: this.team?.name,
+        city: this.team?.city,
+      })
+    }
   }
 
   ngOnChanges() {
     for (let i = 0; i < this.maxPlayers; i++) {
       this.addEditTeamForm.addControl('player' + i, new FormControl('', [Validators.required]));
       this.addEditTeamForm.addControl('number' + i, new FormControl('', [Validators.required, Validators.min(1), Validators.max(99)]));
-    }
-
-    if (!this.isNew) {
-      this.addEditTeamForm.setValue({
-        name: this.team?.name,
-        city: this.team?.city,
-      })
     }
   }
 

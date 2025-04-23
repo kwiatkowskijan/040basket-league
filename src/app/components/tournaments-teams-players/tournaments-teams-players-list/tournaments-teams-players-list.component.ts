@@ -36,7 +36,7 @@ export class TournamentsTeamsPlayersListComponent {
     player: new FormControl('', [Validators.required])
   })
 
-  constructor(private router: Router) { }
+  constructor() { }
 
   async ngOnInit() {
     try {
